@@ -51,9 +51,12 @@ def _rul_days(rul: pd.DataFrame, unit: int, cycle: int) -> float:
     if "rul_bundle" not in _cache:
         _cache["rul_bundle"] = joblib.load(os.path.join(MODEL_DIR, "rul.joblib"))
     bundle = _cache["rul_bundle"]
-    row = rul[(rul.unit == unit) & (rul.cycle == cycle)]
+    # engineer the same rolling features within this unit's cycle history, then
+    # pick the requested cycle (keeps train/serve features identical)
+    uf, _ = fe.rul_features(rul[rul.unit == unit])
+    row = uf[uf.cycle == cycle]
     if row.empty:
-        row = rul[rul.unit == unit].tail(1)
+        row = uf.tail(1)
     pred = float(bundle["model"].predict(row[bundle["features"]])[0])
     return max(0.0, pred)
 
@@ -207,7 +210,11 @@ def _pick_demo_drive(storage, component_risk: float = 0.05, rul_days: float = 90
                         float(win.smart_198_raw.max() - win.smart_198_raw.min()))
         if disp_ramp < min_disp_ramp:
             continue
-        key = (health_lead, drop)
+        # cleanliness: count upward health bounces; a clean caught-decline barely
+        # recovers. Prefer the cleanest curve, then the most visible SMART ramp,
+        # then the longest health lead -- so the live demo reads as a clear story.
+        wobbles = int((np.diff(arr) > 3).sum())
+        key = (-wobbles, disp_ramp, health_lead, drop)
         if best is None or key > best[0]:
             best = (key, str(s), fd, disp_ramp, lead, health_lead)
     if best is None:

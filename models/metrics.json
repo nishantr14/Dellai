@@ -1,21 +1,21 @@
 {
   "storage": {
-    "precision": 0.0008,
-    "recall": 0.5535,
-    "f1": 0.0017,
-    "roc_auc": 0.7689,
-    "pr_auc": 0.0051,
-    "fpr": 0.1498,
-    "threshold": 0.0967,
+    "precision": 0.0011,
+    "recall": 0.537,
+    "f1": 0.0022,
+    "roc_auc": 0.7711,
+    "pr_auc": 0.0059,
+    "fpr": 0.1499,
+    "threshold": 0.1808,
     "confusion": {
-      "tn": 797154,
-      "fp": 140445,
-      "fn": 96,
-      "tp": 119
+      "tn": 1331078,
+      "fp": 234798,
+      "fn": 219,
+      "tp": 254
     },
-    "positive_rate": 0.0002,
-    "naive_accuracy_baseline": 0.9998,
-    "n_test": 937814,
+    "positive_rate": 0.0003,
+    "naive_accuracy_baseline": 0.9997,
+    "n_test": 1566349,
     "source": "real",
     "split": {
       "type": "group_by_serial + time-based",
@@ -27,16 +27,17 @@
         "2025-11-25",
         "2025-12-31"
       ],
-      "n_train": 4142817,
-      "n_test_rows": 937814
+      "n_train": 6923465,
+      "n_test_rows": 1566349
     },
     "lead_time": {
-      "n_failing_drives": 72,
-      "n_flagged_before_failure": 48,
-      "median_lead_days": 29.0,
-      "mean_lead_days": 29.1,
-      "max_lead_days": 74,
-      "pct_flagged_7d_plus": 83.3
+      "n_failing_drives": 138,
+      "n_flagged_before_failure": 109,
+      "drive_recall": 0.7899,
+      "median_lead_days": 20.0,
+      "mean_lead_days": 26.5,
+      "max_lead_days": 80,
+      "pct_flagged_7d_plus": 76.1
     }
   },
   "components": {
@@ -59,11 +60,13 @@
     "source": "real"
   },
   "rul": {
-    "rmse": 17.5,
-    "mae": 13.28,
-    "nasa_score": 26402.3,
+    "rmse": 17.48,
+    "mae": 13.27,
+    "nasa_score": 26421.7,
     "rul_cap": 125,
     "n_test_units": 25,
+    "n_features": 17,
+    "n_features_dropped": 7,
     "source": "real"
   }
 }

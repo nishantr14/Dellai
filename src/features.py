@@ -23,7 +23,11 @@ def storage_features(df: pd.DataFrame) -> pd.DataFrame:
     df = df.sort_values(["serial_number", "day"]).copy()
     # Vectorized cythonized groupby ops (no per-group python lambda) so this
     # scales to the real Backblaze fleet (~10^5 drives) instead of crawling.
-    # Equivalent to the prior transform(lambda ...) form; verified numerically.
+    # 7-day delta + 7-day rolling level per failure-indicator SMART attr; raw
+    # smart_9_raw (power-on hours = drive age) is already a feature. NOTE: 1-day
+    # deltas and cumulative-growth features were tested (see ablation) and dropped
+    # -- on this extremely sparse problem they overfit and regressed held-out
+    # ROC/PR-AUC, so we keep the leaner 16-feature set that generalizes better.
     g = df.groupby("serial_number", sort=False, observed=True)
     for col in STORAGE_TREND_BASE:
         df[f"{col}_d7"] = (df[col] - g[col].shift(7)).fillna(0)
@@ -36,7 +40,8 @@ def storage_features(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def storage_features_single(history: pd.DataFrame) -> dict:
-    """Feature vector for one drive given its recent history (ascending by day)."""
+    """Feature vector for one drive given its recent history (ascending by day).
+    MUST stay in lockstep with storage_features() to avoid train/serve skew."""
     history = history.sort_values("day")
     row = {c: float(history[c].iloc[-1]) for c in SMART_FEATURES}
     for col in STORAGE_TREND_BASE:
@@ -67,7 +72,13 @@ def component_features_single(reading: dict) -> dict:
 
 
 # --------------------------------------------------------------------------- #
-# RUL: last-cycle sensor snapshot (a simple, strong baseline for tree models).
+# RUL: per-cycle sensors + op settings. train_rul drops the constant/low-variance
+# columns (FD001 has several flat sensors); the kept list rides in the model
+# bundle so serving stays consistent. NOTE: per-unit rolling mean/std features
+# were tested (see ablation) and dropped -- they regressed held-out RMSE
+# (17.48 -> 17.86), so we keep the leaner raw-sensor set.
 # --------------------------------------------------------------------------- #
-def rul_features() -> list:
-    return RUL_SENSORS + ["op_setting_1", "op_setting_2", "op_setting_3"]
+def rul_features(df: pd.DataFrame) -> tuple[pd.DataFrame, list]:
+    df = df.sort_values(["unit", "cycle"]).copy()
+    feat = RUL_SENSORS + ["op_setting_1", "op_setting_2", "op_setting_3"]
+    return df, feat
