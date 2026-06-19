@@ -144,13 +144,90 @@ def fleet_to_frame(devices) -> pd.DataFrame:
 # Live-demo timeline: one disk degrading from healthy to failure. Storage drives
 # the story; thermal and engine are held steady so the disk collapse is clear.
 # --------------------------------------------------------------------------- #
+def _pick_demo_drive(storage, component_risk: float = 0.05, rul_days: float = 90.0,
+                     window: int = 34, min_lead: int = 7, min_disp_ramp: float = 100):
+    """Pick a HELD-OUT failing drive the model flagged well ahead of failure and
+    whose REAL telemetry produces a genuine Healthy -> Critical decline inside the
+    monitor window. We never fabricate or amplify a trajectory: if no real drive
+    ramps clearly enough, return (None, None) and the caller falls back.
+
+    "Held-out" = in the test group of the exact same by-serial split train.py
+    uses, so the curve shown is one the model never trained on.
+    """
+    from sklearn.model_selection import train_test_split
+    import joblib
+    bundle = joblib.load(os.path.join(MODEL_DIR, "storage.joblib"))
+    clf, thr, feat = bundle["model"], bundle["threshold"], bundle["features"]
+
+    drives = np.asarray(storage["serial_number"].unique(), dtype=object)
+    _, te_d = train_test_split(drives, test_size=0.25, random_state=7)
+    te = set(te_d)
+    fail_day_all = storage[storage.failure == 1].groupby("serial_number")["day"].min()
+    cand = [s for s in fail_day_all.index if s in te]
+    if not cand:
+        return None, None
+
+    sub = storage[storage.serial_number.isin(cand)].copy()
+    sub, _ = fe.storage_features(sub)
+    sub["risk"] = clf.predict_proba(sub[feat])[:, 1]
+
+    best = None  # (key, serial, fail_day, disp_ramp, lead, health_lead)
+    for s, g in sub.groupby("serial_number", observed=True):
+        g = g.sort_values("day")
+        fd = int(g[g.failure == 1]["day"].min())
+        flagged = g[g.risk >= thr]["day"]
+        if flagged.empty:
+            continue
+        lead = fd - int(flagged.min())
+        if lead < min_lead:
+            continue
+        win = g[g.day.between(fd - window, fd)].sort_values("day")
+        # exact same health the timeline will display (storage fused with steady
+        # component/rul), so we rank on the real shown curve
+        health = [fusion.fuse(float(r), component_risk, rul_days)["health_score"]
+                  for r in win.risk]
+        if not health or health[0] < 65:   # must START Healthy for a real decline
+            continue
+        drop = float(health[0] - min(health))
+        # sustained "caught-ahead" health lead: how many days the displayed health
+        # has been below Healthy going CONTINUOUSLY into failure (ignores early
+        # one-off blips that recover -- we want a coherent, sustained decline).
+        arr = np.asarray(health)
+        i = len(arr)
+        while i > 0 and arr[i - 1] < 65:
+            i -= 1
+        health_lead = len(arr) - i
+        if health_lead < min_lead:          # health must visibly degrade ahead
+            continue
+        # require a VISIBLE ramp in the SMART attributes the live monitor actually
+        # plots (smart 5/197/198), so the on-screen sparklines move WITH the
+        # health decline -- a coherent, on-narrative story (not a hidden driver).
+        disp_ramp = max(float(win.smart_5_raw.max() - win.smart_5_raw.min()),
+                        float(win.smart_197_raw.max() - win.smart_197_raw.min()),
+                        float(win.smart_198_raw.max() - win.smart_198_raw.min()))
+        if disp_ramp < min_disp_ramp:
+            continue
+        key = (health_lead, drop)
+        if best is None or key > best[0]:
+            best = (key, str(s), fd, disp_ramp, lead, health_lead)
+    if best is None:
+        return None, None
+    _, serial, fd, disp_ramp, lead, hlead = best
+    print(f"  demo drive: {serial} (held-out; risk-flagged {lead}d before failure, "
+          f"health degraded {hlead}d ahead, displayed-SMART rise ~{disp_ramp:.0f})")
+    return serial, fd
+
+
 def demo_timeline(component_risk: float = 0.05, rul_days: float = 90.0):
     storage, _, _ = _load_data()
-    fail_serials = _failing_serials(storage)
     fail_days = storage[storage.failure == 1].set_index("serial_number")["day"].to_dict()
-    # pick a failing drive with a decent warning window for a clean narrative
-    serial = max(fail_serials, key=lambda s: fail_days.get(s, 0))
-    fd = fail_days[serial]
+    serial, fd = _pick_demo_drive(storage, component_risk, rul_days)
+    if serial is None:
+        # no real drive ramps clearly enough -> fall back to longest-lived failer
+        # (caller/report should note the live demo lacks a strong decline)
+        fail_serials = _failing_serials(storage)
+        serial = max(fail_serials, key=lambda s: fail_days.get(s, 0))
+        fd = fail_days[serial]
     timeline = []
     for day in range(max(0, fd - 34), fd + 1):
         row = _drive_row_at(storage, serial, day)

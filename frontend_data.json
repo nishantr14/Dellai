@@ -6525,357 +6525,187 @@
     }
   },
   "timeline": {
-    "serial": "ZYD1WDPL",
+    "serial": "ZYD1STL0",
     "steps": [
       {
-        "day": 57,
-        "daysToFailure": 34,
-        "storageRisk": 0.1652,
-        "health": 88,
-        "tier": "Healthy",
-        "smart5": 0,
-        "smart197": 66,
-        "smart198": 66
-      },
-      {
-        "day": 58,
-        "daysToFailure": 33,
-        "storageRisk": 0.2548,
-        "health": 82,
-        "tier": "Healthy",
-        "smart5": 0,
-        "smart197": 52,
-        "smart198": 52
-      },
-      {
-        "day": 59,
-        "daysToFailure": 32,
-        "storageRisk": 0.9624,
-        "health": 33,
-        "tier": "Critical",
-        "smart5": 0,
-        "smart197": 140,
-        "smart198": 140
-      },
-      {
-        "day": 60,
-        "daysToFailure": 31,
-        "storageRisk": 0.9481,
-        "health": 34,
-        "tier": "Critical",
-        "smart5": 0,
-        "smart197": 148,
-        "smart198": 148
-      },
-      {
-        "day": 61,
-        "daysToFailure": 30,
-        "storageRisk": 0.9481,
-        "health": 34,
-        "tier": "Critical",
-        "smart5": 0,
-        "smart197": 157,
-        "smart198": 157
-      },
-      {
-        "day": 62,
-        "daysToFailure": 29,
-        "storageRisk": 0.9528,
-        "health": 33,
-        "tier": "Critical",
-        "smart5": 0,
-        "smart197": 175,
-        "smart198": 175
-      },
-      {
-        "day": 63,
-        "daysToFailure": 28,
-        "storageRisk": 0.928,
-        "health": 35,
-        "tier": "At Risk",
-        "smart5": 0,
-        "smart197": 175,
-        "smart198": 175
-      },
-      {
-        "day": 64,
-        "daysToFailure": 27,
-        "storageRisk": 0.8876,
-        "health": 38,
-        "tier": "At Risk",
-        "smart5": 0,
-        "smart197": 173,
-        "smart198": 173
-      },
-      {
-        "day": 65,
-        "daysToFailure": 26,
-        "storageRisk": 0.7457,
-        "health": 48,
-        "tier": "At Risk",
-        "smart5": 0,
-        "smart197": 173,
-        "smart198": 173
-      },
-      {
-        "day": 66,
-        "daysToFailure": 25,
-        "storageRisk": 0.9463,
-        "health": 34,
-        "tier": "Critical",
-        "smart5": 0,
-        "smart197": 173,
-        "smart198": 173
-      },
-      {
-        "day": 67,
-        "daysToFailure": 24,
-        "storageRisk": 0.9537,
-        "health": 33,
-        "tier": "Critical",
-        "smart5": 0,
-        "smart197": 178,
-        "smart198": 178
-      },
-      {
-        "day": 68,
-        "daysToFailure": 23,
-        "storageRisk": 0.9654,
-        "health": 32,
-        "tier": "Critical",
-        "smart5": 0,
-        "smart197": 201,
-        "smart198": 201
-      },
-      {
-        "day": 69,
-        "daysToFailure": 22,
-        "storageRisk": 0.9654,
-        "health": 32,
-        "tier": "Critical",
-        "smart5": 0,
-        "smart197": 201,
-        "smart198": 201
-      },
-      {
-        "day": 70,
-        "daysToFailure": 21,
-        "storageRisk": 0.9648,
-        "health": 32,
-        "tier": "Critical",
-        "smart5": 0,
-        "smart197": 201,
-        "smart198": 201
-      },
-      {
-        "day": 71,
-        "daysToFailure": 20,
-        "storageRisk": 0.9654,
-        "health": 32,
-        "tier": "Critical",
-        "smart5": 0,
-        "smart197": 205,
-        "smart198": 205
-      },
-      {
-        "day": 72,
-        "daysToFailure": 19,
-        "storageRisk": 0.9648,
-        "health": 32,
-        "tier": "Critical",
-        "smart5": 0,
-        "smart197": 205,
-        "smart198": 205
-      },
-      {
-        "day": 73,
-        "daysToFailure": 18,
-        "storageRisk": 0.9648,
-        "health": 32,
-        "tier": "Critical",
-        "smart5": 0,
-        "smart197": 213,
-        "smart198": 213
-      },
-      {
-        "day": 74,
+        "day": 0,
         "daysToFailure": 17,
-        "storageRisk": 0.9648,
-        "health": 32,
-        "tier": "Critical",
+        "storageRisk": 0.0151,
+        "health": 96,
+        "tier": "Healthy",
         "smart5": 0,
-        "smart197": 214,
-        "smart198": 214
+        "smart197": 0,
+        "smart198": 0
       },
       {
-        "day": 75,
+        "day": 1,
         "daysToFailure": 16,
-        "storageRisk": 0.9693,
-        "health": 32,
-        "tier": "Critical",
+        "storageRisk": 0.016,
+        "health": 96,
+        "tier": "Healthy",
         "smart5": 0,
-        "smart197": 283,
-        "smart198": 283
+        "smart197": 0,
+        "smart198": 0
       },
       {
-        "day": 76,
+        "day": 2,
         "daysToFailure": 15,
-        "storageRisk": 0.9693,
-        "health": 32,
-        "tier": "Critical",
+        "storageRisk": 0.0151,
+        "health": 96,
+        "tier": "Healthy",
         "smart5": 0,
-        "smart197": 285,
-        "smart198": 285
+        "smart197": 0,
+        "smart198": 0
       },
       {
-        "day": 77,
+        "day": 3,
         "daysToFailure": 14,
-        "storageRisk": 0.6695,
+        "storageRisk": 0.0151,
+        "health": 96,
+        "tier": "Healthy",
+        "smart5": 0,
+        "smart197": 0,
+        "smart198": 0
+      },
+      {
+        "day": 4,
+        "daysToFailure": 13,
+        "storageRisk": 0.0151,
+        "health": 96,
+        "tier": "Healthy",
+        "smart5": 0,
+        "smart197": 0,
+        "smart198": 0
+      },
+      {
+        "day": 5,
+        "daysToFailure": 12,
+        "storageRisk": 0.5876,
+        "health": 59,
+        "tier": "At Risk",
+        "smart5": 0,
+        "smart197": 1443,
+        "smart198": 1443
+      },
+      {
+        "day": 6,
+        "daysToFailure": 11,
+        "storageRisk": 0.7093,
+        "health": 50,
+        "tier": "At Risk",
+        "smart5": 0,
+        "smart197": 3017,
+        "smart198": 3017
+      },
+      {
+        "day": 7,
+        "daysToFailure": 10,
+        "storageRisk": 0.7093,
+        "health": 50,
+        "tier": "At Risk",
+        "smart5": 0,
+        "smart197": 3057,
+        "smart198": 3057
+      },
+      {
+        "day": 8,
+        "daysToFailure": 9,
+        "storageRisk": 0.708,
+        "health": 50,
+        "tier": "At Risk",
+        "smart5": 0,
+        "smart197": 11727,
+        "smart198": 11727
+      },
+      {
+        "day": 9,
+        "daysToFailure": 8,
+        "storageRisk": 0.7093,
+        "health": 50,
+        "tier": "At Risk",
+        "smart5": 0,
+        "smart197": 11745,
+        "smart198": 11745
+      },
+      {
+        "day": 10,
+        "daysToFailure": 7,
+        "storageRisk": 0.675,
         "health": 53,
         "tier": "At Risk",
         "smart5": 0,
-        "smart197": 293,
-        "smart198": 293
+        "smart197": 11754,
+        "smart198": 11754
       },
       {
-        "day": 78,
-        "daysToFailure": 13,
-        "storageRisk": 0.6349,
-        "health": 56,
-        "tier": "At Risk",
-        "smart5": 0,
-        "smart197": 361,
-        "smart198": 361
-      },
-      {
-        "day": 79,
-        "daysToFailure": 12,
-        "storageRisk": 0.2762,
-        "health": 81,
-        "tier": "Healthy",
-        "smart5": 0,
-        "smart197": 406,
-        "smart198": 406
-      },
-      {
-        "day": 80,
-        "daysToFailure": 11,
-        "storageRisk": 0.6096,
-        "health": 57,
-        "tier": "At Risk",
-        "smart5": 0,
-        "smart197": 413,
-        "smart198": 413
-      },
-      {
-        "day": 81,
-        "daysToFailure": 10,
-        "storageRisk": 0.3762,
-        "health": 74,
-        "tier": "Healthy",
-        "smart5": 0,
-        "smart197": 429,
-        "smart198": 429
-      },
-      {
-        "day": 82,
-        "daysToFailure": 9,
-        "storageRisk": 0.2154,
-        "health": 85,
-        "tier": "Healthy",
-        "smart5": 0,
-        "smart197": 429,
-        "smart198": 429
-      },
-      {
-        "day": 83,
-        "daysToFailure": 8,
-        "storageRisk": 0.3762,
-        "health": 74,
-        "tier": "Healthy",
-        "smart5": 0,
-        "smart197": 429,
-        "smart198": 429
-      },
-      {
-        "day": 84,
-        "daysToFailure": 7,
-        "storageRisk": 0.2154,
-        "health": 85,
-        "tier": "Healthy",
-        "smart5": 0,
-        "smart197": 431,
-        "smart198": 431
-      },
-      {
-        "day": 85,
+        "day": 11,
         "daysToFailure": 6,
-        "storageRisk": 0.3851,
-        "health": 73,
-        "tier": "Healthy",
+        "storageRisk": 0.675,
+        "health": 53,
+        "tier": "At Risk",
         "smart5": 0,
-        "smart197": 441,
-        "smart198": 441
+        "smart197": 11947,
+        "smart198": 11947
       },
       {
-        "day": 86,
+        "day": 12,
         "daysToFailure": 5,
-        "storageRisk": 0.1085,
-        "health": 92,
-        "tier": "Healthy",
+        "storageRisk": 0.675,
+        "health": 53,
+        "tier": "At Risk",
         "smart5": 0,
-        "smart197": 441,
-        "smart198": 441
+        "smart197": 12002,
+        "smart198": 12002
       },
       {
-        "day": 87,
+        "day": 13,
         "daysToFailure": 4,
-        "storageRisk": 0.1059,
-        "health": 93,
-        "tier": "Healthy",
+        "storageRisk": 0.6767,
+        "health": 53,
+        "tier": "At Risk",
         "smart5": 0,
-        "smart197": 574,
-        "smart198": 574
+        "smart197": 12002,
+        "smart198": 12002
       },
       {
-        "day": 88,
+        "day": 14,
         "daysToFailure": 3,
-        "storageRisk": 0.1121,
-        "health": 92,
-        "tier": "Healthy",
+        "storageRisk": 0.6767,
+        "health": 53,
+        "tier": "At Risk",
         "smart5": 0,
-        "smart197": 576,
-        "smart198": 576
+        "smart197": 12004,
+        "smart198": 12004
       },
       {
-        "day": 89,
+        "day": 15,
         "daysToFailure": 2,
-        "storageRisk": 0.1121,
-        "health": 92,
-        "tier": "Healthy",
+        "storageRisk": 0.6767,
+        "health": 53,
+        "tier": "At Risk",
         "smart5": 0,
-        "smart197": 576,
-        "smart198": 576
+        "smart197": 12004,
+        "smart198": 12004
       },
       {
-        "day": 90,
+        "day": 16,
         "daysToFailure": 1,
-        "storageRisk": 0.1121,
-        "health": 92,
-        "tier": "Healthy",
+        "storageRisk": 0.675,
+        "health": 53,
+        "tier": "At Risk",
         "smart5": 0,
-        "smart197": 576,
-        "smart198": 576
+        "smart197": 12004,
+        "smart198": 12004
       },
       {
-        "day": 91,
+        "day": 17,
         "daysToFailure": 0,
-        "storageRisk": 0.1437,
-        "health": 90,
-        "tier": "Healthy",
+        "storageRisk": 0.849,
+        "health": 41,
+        "tier": "At Risk",
         "smart5": 0,
-        "smart197": 586,
-        "smart198": 586
+        "smart197": 18204,
+        "smart198": 18204
       }
     ]
   },
