@@ -10,6 +10,7 @@ import RackFlythrough from "./sections/RackFlythrough.jsx";
 import Degradation from "./sections/Degradation.jsx";
 import AIAnalysis from "./sections/AIAnalysis.jsx";
 import FleetView from "./sections/FleetView.jsx";
+import Architecture from "./sections/Architecture.jsx";
 
 export default function App() {
   const { data } = usePulseData();
@@ -37,6 +38,7 @@ export default function App() {
         <Degradation />
         <AIAnalysis />
         <FleetView fleet={fleet} summary={data?.summary} />
+        <Architecture />
       </main>
     </div>
   );
