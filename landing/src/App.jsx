@@ -9,6 +9,7 @@ import Hero from "./sections/Hero.jsx";
 import RackFlythrough from "./sections/RackFlythrough.jsx";
 import Degradation from "./sections/Degradation.jsx";
 import AIAnalysis from "./sections/AIAnalysis.jsx";
+import FleetView from "./sections/FleetView.jsx";
 
 export default function App() {
   const { data } = usePulseData();
@@ -35,6 +36,7 @@ export default function App() {
         <RackFlythrough />
         <Degradation />
         <AIAnalysis />
+        <FleetView fleet={fleet} summary={data?.summary} />
       </main>
     </div>
   );
