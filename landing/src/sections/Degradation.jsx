@@ -5,6 +5,7 @@ import {
 import SectionWrapper from "../components/SectionWrapper.jsx";
 import { useScrollScene } from "../hooks/useScrollScene.js";
 import { gsap } from "../lib/gsap.js";
+import { prefersReducedMotion } from "../hooks/useGpuTier.js";
 import { T } from "../theme.js";
 
 const STAGES = [96, 74, 41, 5];
@@ -15,10 +16,12 @@ const SERIES = [
 
 export default function Degradation() {
   const scopeRef = useRef(null);
-  const [health, setHealth] = useState(96);
-  const [revealT, setRevealT] = useState(-40);
+  const reduced = prefersReducedMotion();
+  const [health, setHealth] = useState(reduced ? 5 : 96);
+  const [revealT, setRevealT] = useState(reduced ? 0 : -40);
 
   useScrollScene(scopeRef, () => {
+    if (reduced) return;
     const proxy = { p: 0 };
     gsap.to(proxy, {
       p: 1,

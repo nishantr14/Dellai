@@ -11,7 +11,7 @@ export default function Metrics({ metrics, summary }) {
   const STATS = [
     { value: recall, suffix: "%", label: "Failure recall", note: "of failing drives caught, 30 days ahead", color: T.brand },
     { value: 30, suffix: "", label: "Day lead time", note: "advance warning before failure", color: T.dell },
-    { value: 1, prefix: "sub-", suffix: "s", label: "Predictions", note: "real-time scoring per device", color: T.healthy, literal: "sub-second" },
+    { value: 1, suffix: "s", label: "Predictions", note: "real-time scoring per device", color: T.healthy, literal: "sub-second" },
     { value: prevented, suffix: "", label: "Failures prevented", note: "flagged across the live fleet", color: T.risk },
   ];
 

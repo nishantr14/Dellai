@@ -2,6 +2,7 @@ import { useRef } from "react";
 import SectionWrapper from "../components/SectionWrapper.jsx";
 import { useScrollScene } from "../hooks/useScrollScene.js";
 import { gsap } from "../lib/gsap.js";
+import { prefersReducedMotion } from "../hooks/useGpuTier.js";
 import { T } from "../theme.js";
 
 const STAGES = [
@@ -12,6 +13,7 @@ export default function Architecture() {
   const scopeRef = useRef(null);
 
   useScrollScene(scopeRef, () => {
+    if (prefersReducedMotion()) return;
     gsap.from(".pg-stage", {
       opacity: 0, y: 24, stagger: 0.5, ease: "none",
       scrollTrigger: { trigger: scopeRef.current, start: "top top", end: "+=200%", pin: true, scrub: true },
