@@ -20,6 +20,12 @@ env/
 # OS files
 .DS_Store
 Thumbs.db
+.superpowers/
+
+superpowers-main/
+ui-ux-pro-max-skill-main
+# loose source video (copied into landing/public/media)
+/Holographic_*.mp4
 
 # Trained model binaries: pure output of `python -m src.train`, regenerable from
 # source + data. Keep metrics.json and frontend_data.json tracked (small,
