@@ -26,3 +26,8 @@ Thumbs.db
 # meaningful diffs); the frontend consumes the JSON snapshot, never the .joblib.
 # To pin a final checkpoint near submission: `git add -f models/*.joblib`.
 models/*.joblib
+
+# Raw real datasets (Backblaze ~12 GB, AI4I, C-MAPSS). Downloaded locally and
+# fed through src/data_loaders.py; never committed. data/ (generated CSVs) is
+# likewise untracked.
+realdata/
