@@ -2,9 +2,6 @@ import { useEffect } from "react";
 import Nav from "./components/Nav.jsx";
 import ScrollProgress from "./components/ScrollProgress.jsx";
 import ServerRoom from "./three/ServerRoom.jsx";
-import { usePulseData } from "./data/usePulseData.js";
-import { initLenis } from "./lib/lenis.js";
-import { sceneState } from "./three/sceneStore.js";
 import Hero from "./sections/Hero.jsx";
 import RackFlythrough from "./sections/RackFlythrough.jsx";
 import Degradation from "./sections/Degradation.jsx";
@@ -14,6 +11,9 @@ import Architecture from "./sections/Architecture.jsx";
 import Metrics from "./sections/Metrics.jsx";
 import DashboardShowcase from "./sections/DashboardShowcase.jsx";
 import Finale from "./sections/Finale.jsx";
+import { usePulseData } from "./data/usePulseData.js";
+import { initLenis } from "./lib/lenis.js";
+import { sceneState } from "./three/sceneStore.js";
 
 export default function App() {
   const { data } = usePulseData();
