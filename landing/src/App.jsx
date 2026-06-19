@@ -13,6 +13,7 @@ import FleetView from "./sections/FleetView.jsx";
 import Architecture from "./sections/Architecture.jsx";
 import Metrics from "./sections/Metrics.jsx";
 import DashboardShowcase from "./sections/DashboardShowcase.jsx";
+import Finale from "./sections/Finale.jsx";
 
 export default function App() {
   const { data } = usePulseData();
@@ -43,6 +44,7 @@ export default function App() {
         <Architecture />
         <Metrics metrics={data?.metrics} summary={data?.summary} />
         <DashboardShowcase />
+        <Finale />
       </main>
     </div>
   );
