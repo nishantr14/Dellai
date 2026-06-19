@@ -20,3 +20,9 @@ env/
 # OS files
 .DS_Store
 Thumbs.db
+
+# Trained model binaries: pure output of `python -m src.train`, regenerable from
+# source + data. Keep metrics.json and frontend_data.json tracked (small,
+# meaningful diffs); the frontend consumes the JSON snapshot, never the .joblib.
+# To pin a final checkpoint near submission: `git add -f models/*.joblib`.
+models/*.joblib
