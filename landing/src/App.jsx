@@ -11,6 +11,7 @@ import Degradation from "./sections/Degradation.jsx";
 import AIAnalysis from "./sections/AIAnalysis.jsx";
 import FleetView from "./sections/FleetView.jsx";
 import Architecture from "./sections/Architecture.jsx";
+import Metrics from "./sections/Metrics.jsx";
 
 export default function App() {
   const { data } = usePulseData();
@@ -39,6 +40,7 @@ export default function App() {
         <AIAnalysis />
         <FleetView fleet={fleet} summary={data?.summary} />
         <Architecture />
+        <Metrics metrics={data?.metrics} summary={data?.summary} />
       </main>
     </div>
   );
