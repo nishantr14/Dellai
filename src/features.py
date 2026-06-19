@@ -21,10 +21,15 @@ STORAGE_TREND_BASE = ["smart_5_raw", "smart_197_raw", "smart_198_raw", "smart_18
 
 def storage_features(df: pd.DataFrame) -> pd.DataFrame:
     df = df.sort_values(["serial_number", "day"]).copy()
-    g = df.groupby("serial_number", group_keys=False)
+    # Vectorized cythonized groupby ops (no per-group python lambda) so this
+    # scales to the real Backblaze fleet (~10^5 drives) instead of crawling.
+    # Equivalent to the prior transform(lambda ...) form; verified numerically.
+    g = df.groupby("serial_number", sort=False, observed=True)
     for col in STORAGE_TREND_BASE:
-        df[f"{col}_d7"] = g[col].transform(lambda s: s - s.shift(7)).fillna(0)
-        df[f"{col}_roll7"] = g[col].transform(lambda s: s.rolling(7, min_periods=1).mean())
+        df[f"{col}_d7"] = (df[col] - g[col].shift(7)).fillna(0)
+        df[f"{col}_roll7"] = (
+            g[col].rolling(7, min_periods=1).mean().reset_index(level=0, drop=True)
+        )
     feat = SMART_FEATURES + [f"{c}_d7" for c in STORAGE_TREND_BASE] + \
         [f"{c}_roll7" for c in STORAGE_TREND_BASE]
     return df, feat

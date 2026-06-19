@@ -26,3 +26,14 @@ superpowers-main/
 ui-ux-pro-max-skill-main
 # loose source video (copied into landing/public/media)
 /Holographic_*.mp4
+
+# Trained model binaries: pure output of `python -m src.train`, regenerable from
+# source + data. Keep metrics.json and frontend_data.json tracked (small,
+# meaningful diffs); the frontend consumes the JSON snapshot, never the .joblib.
+# To pin a final checkpoint near submission: `git add -f models/*.joblib`.
+models/*.joblib
+
+# Raw real datasets (Backblaze ~12 GB, AI4I, C-MAPSS). Downloaded locally and
+# fed through src/data_loaders.py; never committed. data/ (generated CSVs) is
+# likewise untracked.
+realdata/

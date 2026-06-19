@@ -67,15 +67,63 @@ def _classification_metrics(y_true, y_prob, threshold):
     }
 
 
+def _storage_lead_time(df_drives, clf, feat, threshold):
+    """Lead-time analysis: how many days BEFORE failure we first flag each
+    failing drive. Runs on the FULL trajectory of held-out drives (leakage-safe:
+    these drives were never in training). For each drive that actually fails,
+    lead = failure_day - first day predicted positive (counting only flags at or
+    before the failure day)."""
+    prob = clf.predict_proba(df_drives[feat])[:, 1]
+    d = df_drives[["serial_number", "day", "failure"]].copy()
+    d["flag"] = prob >= threshold
+    fail_day = d[d["failure"] == 1].groupby("serial_number", observed=True)["day"].min()
+    first_flag = d[d["flag"]].groupby("serial_number", observed=True)["day"].min()
+    leads = []
+    for s, fday in fail_day.items():
+        ff = first_flag.get(s)
+        if ff is not None and ff <= fday:
+            leads.append(int(fday - ff))
+    leads = np.array(leads)
+    out = {"n_failing_drives": int(len(fail_day)),
+           "n_flagged_before_failure": int(len(leads))}
+    if len(leads):
+        out.update({
+            "median_lead_days": float(np.median(leads)),
+            "mean_lead_days": round(float(leads.mean()), 1),
+            "max_lead_days": int(leads.max()),
+            "pct_flagged_7d_plus": round(float((leads >= 7).mean()) * 100, 1),
+        })
+    return out
+
+
 # --------------------------------------------------------------------------- #
 def train_storage():
-    df = pd.read_csv(os.path.join(dg.DATA_DIR, "storage.csv"))
+    path = os.path.join(dg.DATA_DIR, "storage.csv")
+    head = pd.read_csv(path, nrows=0)
+    dtypes = {c: "float32" for c in fe.SMART_FEATURES if c in head.columns}
+    dtypes.update({"day": "int32", "failure": "int8", "label_fail_30d": "int8",
+                   "serial_number": "category", "model": "category"})
+    dtypes = {k: v for k, v in dtypes.items() if k in head.columns}
+    parse = ["date"] if "date" in head.columns else None
+    df = pd.read_csv(path, dtype=dtypes, parse_dates=parse)
+    source = dg.get_source("storage")
+
     df, feat = fe.storage_features(df)
     X, y = df[feat], df["label_fail_30d"]
-    # split by drive so a drive's days never straddle train/test (no leakage)
-    drives = df["serial_number"].unique()
+
+    # leakage-safe split: ALWAYS by serial (a drive never straddles train/test)
+    # AND, when real Backblaze dates are present, time-based on top of that
+    # (train earlier dates, test later) -- hard rule #3.
+    drives = df["serial_number"].unique().astype(object)
     tr_d, te_d = train_test_split(drives, test_size=0.25, random_state=7)
-    tr, te = df["serial_number"].isin(tr_d), df["serial_number"].isin(te_d)
+    in_tr = df["serial_number"].isin(set(tr_d))
+    in_te = df["serial_number"].isin(set(te_d))
+    if "date" in df.columns:
+        cutoff = df["date"].quantile(0.6)  # earlier 60% of the window -> train
+        tr = in_tr & (df["date"] < cutoff)
+        te = in_te & (df["date"] >= cutoff)
+    else:
+        tr, te = in_tr, in_te
 
     pos, neg = int(y[tr].sum()), int((~y[tr].astype(bool)).sum())
     spw = neg / max(pos, 1)
@@ -88,6 +136,18 @@ def train_storage():
     prob = clf.predict_proba(X[te])[:, 1]
     thr = _choose_threshold(y[te].values, prob)
     metrics = _classification_metrics(y[te].values, prob, thr)
+    metrics["source"] = source
+    if "date" in df.columns:
+        metrics["split"] = {
+            "type": "group_by_serial + time-based",
+            "train_dates": [str(df.loc[tr, "date"].min().date()),
+                            str(df.loc[tr, "date"].max().date())],
+            "test_dates": [str(df.loc[te, "date"].min().date()),
+                           str(df.loc[te, "date"].max().date())],
+            "n_train": int(tr.sum()), "n_test_rows": int(te.sum()),
+        }
+        # lead-time on full trajectories of the held-out drives
+        metrics["lead_time"] = _storage_lead_time(df[in_te], clf, feat, thr)
     joblib.dump({"model": clf, "features": feat, "threshold": thr}, os.path.join(MODEL_DIR, "storage.joblib"))
     print(f"[storage]   PR-AUC={metrics['pr_auc']}  recall={metrics['recall']}  "
           f"FPR={metrics['fpr']}  (naive acc baseline={metrics['naive_accuracy_baseline']})")
@@ -97,6 +157,7 @@ def train_storage():
 def train_components():
     df = pd.read_csv(os.path.join(dg.DATA_DIR, "components.csv"))
     df, feat = fe.component_features(df)
+    source = dg.get_source("components")
     Xtr, Xte, ytr, yte = train_test_split(
         df[feat], df["machine_failure"], test_size=0.25, random_state=7,
         stratify=df["machine_failure"])
@@ -109,6 +170,7 @@ def train_components():
     prob = clf.predict_proba(Xte)[:, 1]
     thr = _choose_threshold(yte.values, prob)
     metrics = _classification_metrics(yte.values, prob, thr)
+    metrics["source"] = source
 
     # per-component attribution heads (which subsystem is at risk)
     heads = {}
@@ -132,6 +194,7 @@ def train_components():
 def train_rul():
     df = pd.read_csv(os.path.join(dg.DATA_DIR, "rul.csv"))
     feat = fe.rul_features()
+    source = dg.get_source("rul")
     units = df["unit"].unique()
     tr_u, te_u = train_test_split(units, test_size=0.25, random_state=7)
     tr, te = df["unit"].isin(tr_u), df["unit"].isin(te_u)
@@ -147,7 +210,7 @@ def train_rul():
     joblib.dump({"model": reg, "features": feat}, os.path.join(MODEL_DIR, "rul.joblib"))
     metrics = {"rmse": round(rmse, 2), "mae": round(mae, 2),
                "nasa_score": round(score, 1), "rul_cap": dg.RUL_CAP,
-               "n_test_units": int(len(te_u))}
+               "n_test_units": int(len(te_u)), "source": source}
     print(f"[rul]       RMSE={metrics['rmse']} cycles  MAE={metrics['mae']} cycles")
     return metrics
 
