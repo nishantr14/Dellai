@@ -31,22 +31,43 @@ from .data_gen import DATA_DIR, SMART_FEATURES, RUL_SENSORS, RUL_CAP, record_sou
 # Daily snapshot CSVs (one per day) with date, serial_number, model,
 # capacity_bytes, failure, and many smart_N_raw / smart_N_normalized columns.
 # --------------------------------------------------------------------------- #
-def load_real_storage(path: str, label_horizon: int = 30) -> pd.DataFrame:
+def load_real_storage(path: str, label_horizon: int = 30,
+                      sample_pct: int = 30) -> pd.DataFrame:
+    """Load real Backblaze daily snapshots into the storage schema.
+
+    Backblaze is ~12 GB/quarter (~30M drive-days), so this is memory-bounded:
+      * read ONLY the columns we use (each daily CSV has ~190 columns),
+      * take a deterministic, PREVALENCE-PRESERVING subsample of whole DRIVES
+        (keep serial if hash(serial) % 100 < sample_pct). Sampling by serial
+        keeps the failure rate unchanged (so PR-AUC stays honest) AND keeps the
+        by-serial split leakage-safe; a drive is wholly kept or wholly dropped.
+      * downcast SMART columns to float32.
+    The real `date` column is PRESERVED (the synthetic schema has only the
+    per-drive `day` index) so train.py can do a leakage-safe time-based split:
+    train on earlier dates, test on later dates (hard rule #3).
+    """
     files = sorted(glob.glob(os.path.join(path, "*.csv"))) if os.path.isdir(path) else [path]
-    keep = ["date", "serial_number", "model", "capacity_bytes", "failure", *SMART_FEATURES]
+    needed = {"date", "serial_number", "model", "capacity_bytes", "failure", *SMART_FEATURES}
     frames = []
     for f in files:
-        df = pd.read_csv(f)
-        cols = [c for c in keep if c in df.columns]
-        frames.append(df[cols])
+        part = pd.read_csv(f, usecols=lambda c: c in needed)
+        if sample_pct < 100:  # keep whole drives, deterministically + consistently
+            keep = (pd.util.hash_pandas_object(part["serial_number"], index=False)
+                    % 100) < sample_pct
+            part = part[keep]
+        for c in SMART_FEATURES:
+            if c in part.columns:
+                part[c] = pd.to_numeric(part[c], errors="coerce").astype("float32")
+        frames.append(part)
     df = pd.concat(frames, ignore_index=True)
+    del frames
     df["date"] = pd.to_datetime(df["date"])
-    df = df.sort_values(["serial_number", "date"])
-    # integer day index per serial (keeps the time order; enables time-based split)
+    df = df.sort_values(["serial_number", "date"]).reset_index(drop=True)
+    # integer day index per serial (keeps time order within a drive)
     df["day"] = df.groupby("serial_number").cumcount()
     for c in SMART_FEATURES:
         if c not in df.columns:
-            df[c] = 0
+            df[c] = np.float32(0)
         df[c] = df[c].fillna(0)
 
     # label: does this drive fail within the next `label_horizon` days?
@@ -55,8 +76,13 @@ def load_real_storage(path: str, label_horizon: int = 30) -> pd.DataFrame:
     mask = df["serial_number"].isin(fail_day)
     fd = df.loc[mask, "serial_number"].map(fail_day)
     df.loc[mask, "label_fail_30d"] = ((fd - df.loc[mask, "day"]).between(0, label_horizon)).astype(int)
-    return df[["day", "serial_number", "model", "capacity_bytes", "failure",
-               *SMART_FEATURES, "label_fail_30d"]]
+    out = df[["day", "date", "serial_number", "model", "capacity_bytes", "failure",
+              *SMART_FEATURES, "label_fail_30d"]]
+    print(f"  storage: {len(out):,} drive-days | {out['serial_number'].nunique():,} drives "
+          f"({sample_pct}% sample) | failing drives={len(fail_day):,} | "
+          f"positive rate={out['label_fail_30d'].mean():.4f} | "
+          f"dates {df['date'].min().date()}..{df['date'].max().date()}")
+    return out
 
 
 # --------------------------------------------------------------------------- #
@@ -94,12 +120,15 @@ def load_real_rul(txt_path: str) -> pd.DataFrame:
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--storage", help="Backblaze dir or csv")
+    ap.add_argument("--storage-sample-pct", type=int, default=30,
+                    help="%% of drives to keep (prevalence-preserving; bounds memory on the ~12GB set)")
     ap.add_argument("--components", help="AI4I csv")
     ap.add_argument("--rul", help="C-MAPSS train_FD001.txt")
     a = ap.parse_args()
     os.makedirs(DATA_DIR, exist_ok=True)
     if a.storage:
-        load_real_storage(a.storage).to_csv(os.path.join(DATA_DIR, "storage.csv"), index=False)
+        load_real_storage(a.storage, sample_pct=a.storage_sample_pct).to_csv(
+            os.path.join(DATA_DIR, "storage.csv"), index=False)
         record_source("storage", "real")
         print("wrote real storage.csv")
     if a.components:

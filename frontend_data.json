@@ -1,30 +1,51 @@
 {
   "summary": {
     "total": 28,
-    "healthy": 18,
-    "atRisk": 4,
-    "critical": 6,
-    "predictedFailures30d": 8
+    "healthy": 20,
+    "atRisk": 3,
+    "critical": 5,
+    "predictedFailures30d": 7
   },
   "metrics": {
     "storage": {
-      "precision": 0.0832,
-      "recall": 0.7013,
-      "f1": 0.1487,
-      "roc_auc": 0.863,
-      "pr_auc": 0.672,
-      "fpr": 0.1499,
-      "threshold": 0.028,
+      "precision": 0.0008,
+      "recall": 0.5535,
+      "f1": 0.0017,
+      "roc_auc": 0.7689,
+      "pr_auc": 0.0051,
+      "fpr": 0.1498,
+      "threshold": 0.0967,
       "confusion": {
-        "tn": 36693,
-        "fp": 6469,
-        "fn": 250,
-        "tp": 587
+        "tn": 797154,
+        "fp": 140445,
+        "fn": 96,
+        "tp": 119
       },
-      "positive_rate": 0.019,
-      "naive_accuracy_baseline": 0.981,
-      "n_test": 43999,
-      "source": "synthetic"
+      "positive_rate": 0.0002,
+      "naive_accuracy_baseline": 0.9998,
+      "n_test": 937814,
+      "source": "real",
+      "split": {
+        "type": "group_by_serial + time-based",
+        "train_dates": [
+          "2025-10-01",
+          "2025-11-24"
+        ],
+        "test_dates": [
+          "2025-11-25",
+          "2025-12-31"
+        ],
+        "n_train": 4142817,
+        "n_test_rows": 937814
+      },
+      "lead_time": {
+        "n_failing_drives": 72,
+        "n_flagged_before_failure": 48,
+        "median_lead_days": 29.0,
+        "mean_lead_days": 29.1,
+        "max_lead_days": 74,
+        "pct_flagged_7d_plus": 83.3
+      }
     },
     "components": {
       "precision": 0.1854,
@@ -46,78 +67,78 @@
       "source": "real"
     },
     "rul": {
-      "rmse": 16.03,
-      "mae": 11.28,
-      "nasa_score": 28906.7,
+      "rmse": 17.5,
+      "mae": 13.28,
+      "nasa_score": 26402.3,
       "rul_cap": 125,
       "n_test_units": 25,
-      "source": "synthetic"
+      "source": "real"
     }
   },
   "fleet": [
     {
       "device": "srv-001",
       "rack": "RACK-A",
-      "health": 98,
+      "health": 99,
       "tier": "Healthy",
-      "storageRisk": 0.0233,
+      "storageRisk": 0.0016,
       "componentRisk": 0.0095,
-      "rulDays": 124.7,
-      "dominant": "Storage (disk)",
+      "rulDays": 114.8,
+      "dominant": "Thermal / power / mechanical",
       "priority": "P4 - routine"
     },
     {
       "device": "srv-002",
       "rack": "RACK-B",
-      "health": 43,
-      "tier": "At Risk",
-      "storageRisk": 0.8166,
+      "health": 97,
+      "tier": "Healthy",
+      "storageRisk": 0.0371,
       "componentRisk": 0.0002,
-      "rulDays": 123.0,
+      "rulDays": 115.0,
       "dominant": "Storage (disk)",
-      "priority": "P2 - schedule within maintenance window"
+      "priority": "P4 - routine"
     },
     {
       "device": "srv-003",
       "rack": "RACK-C",
-      "health": 100,
+      "health": 93,
       "tier": "Healthy",
-      "storageRisk": 0.0025,
+      "storageRisk": 0.0994,
       "componentRisk": 0.0001,
-      "rulDays": 125.2,
+      "rulDays": 119.3,
       "dominant": "Storage (disk)",
       "priority": "P4 - routine"
     },
     {
       "device": "srv-004",
       "rack": "RACK-D",
-      "health": 34,
+      "health": 33,
       "tier": "Critical",
-      "storageRisk": 0.9495,
+      "storageRisk": 0.9539,
       "componentRisk": 0.0001,
-      "rulDays": 110.0,
+      "rulDays": 116.8,
       "dominant": "Storage (disk)",
       "priority": "P1 - act now, high failure probability"
     },
     {
       "device": "srv-005",
       "rack": "RACK-A",
-      "health": 100,
+      "health": 98,
       "tier": "Healthy",
-      "storageRisk": 0.0068,
+      "storageRisk": 0.0319,
       "componentRisk": 0.0002,
-      "rulDays": 123.8,
+      "rulDays": 108.0,
       "dominant": "Storage (disk)",
       "priority": "P4 - routine"
     },
     {
       "device": "srv-006",
       "rack": "RACK-B",
-      "health": 100,
+      "health": 98,
       "tier": "Healthy",
-      "storageRisk": 0.0005,
+      "storageRisk": 0.022,
       "componentRisk": 0.0003,
-      "rulDays": 125.2,
+      "rulDays": 126.2,
       "dominant": "Storage (disk)",
       "priority": "P4 - routine"
     },
@@ -126,31 +147,31 @@
       "rack": "RACK-C",
       "health": 100,
       "tier": "Healthy",
-      "storageRisk": 0.0,
+      "storageRisk": 0.0005,
       "componentRisk": 0.004,
-      "rulDays": 125.5,
+      "rulDays": 124.9,
       "dominant": "Thermal / power / mechanical",
       "priority": "P4 - routine"
     },
     {
       "device": "srv-008",
       "rack": "RACK-D",
-      "health": 100,
+      "health": 98,
       "tier": "Healthy",
-      "storageRisk": 0.0033,
+      "storageRisk": 0.0223,
       "componentRisk": 0.0001,
-      "rulDays": 125.1,
+      "rulDays": 108.3,
       "dominant": "Storage (disk)",
       "priority": "P4 - routine"
     },
     {
       "device": "srv-009",
       "rack": "RACK-A",
-      "health": 100,
+      "health": 96,
       "tier": "Healthy",
-      "storageRisk": 0.0025,
+      "storageRisk": 0.0504,
       "componentRisk": 0.0014,
-      "rulDays": 123.7,
+      "rulDays": 114.2,
       "dominant": "Storage (disk)",
       "priority": "P4 - routine"
     },
@@ -159,9 +180,9 @@
       "rack": "RACK-B",
       "health": 30,
       "tier": "Critical",
-      "storageRisk": 0.0043,
+      "storageRisk": 0.0572,
       "componentRisk": 0.9947,
-      "rulDays": 124.5,
+      "rulDays": 126.5,
       "dominant": "Thermal / power / mechanical",
       "priority": "P1 - act now, high failure probability"
     },
@@ -170,7 +191,7 @@
       "rack": "RACK-C",
       "health": 58,
       "tier": "At Risk",
-      "storageRisk": 0.0104,
+      "storageRisk": 0.0875,
       "componentRisk": 0.0104,
       "rulDays": 12.0,
       "dominant": "Engine wear (remaining useful life)",
@@ -181,20 +202,20 @@
       "rack": "RACK-D",
       "health": 100,
       "tier": "Healthy",
-      "storageRisk": 0.0023,
+      "storageRisk": 0.0002,
       "componentRisk": 0.0011,
-      "rulDays": 123.9,
-      "dominant": "Storage (disk)",
+      "rulDays": 122.3,
+      "dominant": "Thermal / power / mechanical",
       "priority": "P4 - routine"
     },
     {
       "device": "srv-013",
       "rack": "RACK-A",
-      "health": 99,
+      "health": 100,
       "tier": "Healthy",
-      "storageRisk": 0.0161,
+      "storageRisk": 0.0014,
       "componentRisk": 0.0002,
-      "rulDays": 125.3,
+      "rulDays": 96.0,
       "dominant": "Storage (disk)",
       "priority": "P4 - routine"
     },
@@ -203,7 +224,7 @@
       "rack": "RACK-B",
       "health": 5,
       "tier": "Critical",
-      "storageRisk": 0.9576,
+      "storageRisk": 0.9588,
       "componentRisk": 0.991,
       "rulDays": 5.0,
       "dominant": "Thermal / power / mechanical",
@@ -214,10 +235,10 @@
       "rack": "RACK-C",
       "health": 99,
       "tier": "Healthy",
-      "storageRisk": 0.0,
+      "storageRisk": 0.0131,
       "componentRisk": 0.0086,
-      "rulDays": 125.0,
-      "dominant": "Thermal / power / mechanical",
+      "rulDays": 111.4,
+      "dominant": "Storage (disk)",
       "priority": "P4 - routine"
     },
     {
@@ -225,10 +246,10 @@
       "rack": "RACK-D",
       "health": 100,
       "tier": "Healthy",
-      "storageRisk": 0.0,
+      "storageRisk": 0.0002,
       "componentRisk": 0.0001,
-      "rulDays": 124.8,
-      "dominant": "Thermal / power / mechanical",
+      "rulDays": 117.7,
+      "dominant": "Storage (disk)",
       "priority": "P4 - routine"
     },
     {
@@ -236,7 +257,7 @@
       "rack": "RACK-A",
       "health": 58,
       "tier": "At Risk",
-      "storageRisk": 0.0,
+      "storageRisk": 0.0183,
       "componentRisk": 0.0001,
       "rulDays": 12.0,
       "dominant": "Engine wear (remaining useful life)",
@@ -245,22 +266,22 @@
     {
       "device": "srv-018",
       "rack": "RACK-B",
-      "health": 39,
-      "tier": "At Risk",
-      "storageRisk": 0.8755,
+      "health": 100,
+      "tier": "Healthy",
+      "storageRisk": 0.0012,
       "componentRisk": 0.0017,
-      "rulDays": 124.7,
-      "dominant": "Storage (disk)",
-      "priority": "P2 - schedule within maintenance window"
+      "rulDays": 122.7,
+      "dominant": "Thermal / power / mechanical",
+      "priority": "P4 - routine"
     },
     {
       "device": "srv-019",
       "rack": "RACK-C",
-      "health": 100,
+      "health": 99,
       "tier": "Healthy",
-      "storageRisk": 0.0019,
+      "storageRisk": 0.0093,
       "componentRisk": 0.0009,
-      "rulDays": 125.3,
+      "rulDays": 124.2,
       "dominant": "Storage (disk)",
       "priority": "P4 - routine"
     },
@@ -269,31 +290,31 @@
       "rack": "RACK-D",
       "health": 30,
       "tier": "Critical",
-      "storageRisk": 0.997,
+      "storageRisk": 0.9975,
       "componentRisk": 0.0006,
-      "rulDays": 124.7,
+      "rulDays": 123.9,
       "dominant": "Storage (disk)",
       "priority": "P1 - act now, high failure probability"
     },
     {
       "device": "srv-021",
       "rack": "RACK-A",
-      "health": 72,
+      "health": 71,
       "tier": "Healthy",
-      "storageRisk": 0.396,
+      "storageRisk": 0.4206,
       "componentRisk": 0.0,
-      "rulDays": 124.8,
+      "rulDays": 109.6,
       "dominant": "Storage (disk)",
       "priority": "P4 - routine"
     },
     {
       "device": "srv-022",
       "rack": "RACK-B",
-      "health": 94,
+      "health": 99,
       "tier": "Healthy",
-      "storageRisk": 0.0821,
+      "storageRisk": 0.0109,
       "componentRisk": 0.0001,
-      "rulDays": 125.0,
+      "rulDays": 122.9,
       "dominant": "Storage (disk)",
       "priority": "P4 - routine"
     },
@@ -302,42 +323,42 @@
       "rack": "RACK-C",
       "health": 30,
       "tier": "Critical",
-      "storageRisk": 0.0148,
+      "storageRisk": 0.0008,
       "componentRisk": 0.9996,
-      "rulDays": 124.5,
+      "rulDays": 123.3,
       "dominant": "Thermal / power / mechanical",
       "priority": "P1 - act now, high failure probability"
     },
     {
       "device": "srv-024",
       "rack": "RACK-D",
-      "health": 30,
-      "tier": "Critical",
-      "storageRisk": 0.9979,
+      "health": 57,
+      "tier": "At Risk",
+      "storageRisk": 0.6132,
       "componentRisk": 0.0,
-      "rulDays": 124.2,
+      "rulDays": 113.3,
       "dominant": "Storage (disk)",
-      "priority": "P1 - act now, high failure probability"
+      "priority": "P2 - schedule within maintenance window"
     },
     {
       "device": "srv-025",
       "rack": "RACK-A",
-      "health": 98,
+      "health": 99,
       "tier": "Healthy",
-      "storageRisk": 0.0256,
+      "storageRisk": 0.0081,
       "componentRisk": 0.0002,
-      "rulDays": 123.8,
+      "rulDays": 119.0,
       "dominant": "Storage (disk)",
       "priority": "P4 - routine"
     },
     {
       "device": "srv-026",
       "rack": "RACK-B",
-      "health": 100,
+      "health": 93,
       "tier": "Healthy",
-      "storageRisk": 0.0031,
+      "storageRisk": 0.0964,
       "componentRisk": 0.0003,
-      "rulDays": 123.6,
+      "rulDays": 108.0,
       "dominant": "Storage (disk)",
       "priority": "P4 - routine"
     },
@@ -346,9 +367,9 @@
       "rack": "RACK-C",
       "health": 100,
       "tier": "Healthy",
-      "storageRisk": 0.0006,
+      "storageRisk": 0.0023,
       "componentRisk": 0.0001,
-      "rulDays": 125.0,
+      "rulDays": 119.9,
       "dominant": "Storage (disk)",
       "priority": "P4 - routine"
     },
@@ -357,9 +378,9 @@
       "rack": "RACK-D",
       "health": 100,
       "tier": "Healthy",
-      "storageRisk": 0.003,
+      "storageRisk": 0.0032,
       "componentRisk": 0.0001,
-      "rulDays": 124.3,
+      "rulDays": 119.8,
       "dominant": "Storage (disk)",
       "priority": "P4 - routine"
     }
@@ -368,208 +389,423 @@
     "srv-001": {
       "why": [
         {
-          "signal": "Power-on hours",
-          "raw_feature": "smart_9_raw",
-          "value": 19602.0,
-          "impact": -1.4364,
+          "signal": "Fan / rotor speed",
+          "raw_feature": "rotational_speed_rpm",
+          "value": 1694.0,
+          "impact": -1.7719,
           "direction": "lowers risk"
         },
         {
-          "signal": "Pending sectors (7-day avg)",
-          "raw_feature": "smart_197_raw_roll7",
-          "value": 0.14,
-          "impact": -0.6544,
+          "signal": "Wear x load (overstrain index)",
+          "raw_feature": "wear_torque",
+          "value": 5596.5,
+          "impact": -0.9968,
           "direction": "lowers risk"
         },
         {
-          "signal": "Drive temperature",
-          "raw_feature": "smart_194_raw",
-          "value": 32.4,
-          "impact": -0.471,
+          "signal": "Mechanical wear",
+          "raw_feature": "tool_wear_min",
+          "value": 195.0,
+          "impact": -0.9957,
           "direction": "lowers risk"
         },
         {
-          "signal": "Power-cycle count",
-          "raw_feature": "smart_12_raw",
-          "value": 26.0,
-          "impact": -0.3935,
+          "signal": "Process temperature",
+          "raw_feature": "process_temp_k",
+          "value": 308.4,
+          "impact": -0.801,
           "direction": "lowers risk"
         }
       ],
       "history": [
         {
           "t": -39,
-          "health": 98
+          "health": 99
         },
         {
           "t": -38,
-          "health": 98
+          "health": 99
         },
         {
           "t": -37,
-          "health": 98
+          "health": 99
         },
         {
           "t": -36,
-          "health": 98
+          "health": 99
         },
         {
           "t": -35,
-          "health": 98
+          "health": 99
         },
         {
           "t": -34,
-          "health": 98
+          "health": 99
         },
         {
           "t": -33,
-          "health": 98
+          "health": 99
         },
         {
           "t": -32,
-          "health": 98
+          "health": 99
         },
         {
           "t": -31,
-          "health": 98
+          "health": 99
         },
         {
           "t": -30,
-          "health": 98
+          "health": 99
         },
         {
           "t": -29,
-          "health": 98
+          "health": 99
         },
         {
           "t": -28,
-          "health": 98
+          "health": 99
         },
         {
           "t": -27,
-          "health": 98
+          "health": 99
         },
         {
           "t": -26,
-          "health": 98
+          "health": 99
         },
         {
           "t": -25,
-          "health": 98
+          "health": 99
         },
         {
           "t": -24,
-          "health": 98
+          "health": 99
         },
         {
           "t": -23,
-          "health": 98
+          "health": 99
         },
         {
           "t": -22,
-          "health": 98
+          "health": 99
         },
         {
           "t": -21,
-          "health": 98
+          "health": 99
         },
         {
           "t": -20,
-          "health": 98
+          "health": 99
         },
         {
           "t": -19,
-          "health": 98
+          "health": 99
         },
         {
           "t": -18,
-          "health": 98
+          "health": 99
         },
         {
           "t": -17,
-          "health": 98
+          "health": 99
         },
         {
           "t": -16,
-          "health": 98
+          "health": 99
         },
         {
           "t": -15,
-          "health": 98
+          "health": 99
         },
         {
           "t": -14,
-          "health": 98
+          "health": 99
         },
         {
           "t": -13,
-          "health": 98
+          "health": 99
         },
         {
           "t": -12,
-          "health": 98
+          "health": 99
         },
         {
           "t": -11,
-          "health": 98
+          "health": 99
         },
         {
           "t": -10,
-          "health": 98
+          "health": 99
         },
         {
           "t": -9,
-          "health": 98
+          "health": 99
         },
         {
           "t": -8,
-          "health": 98
+          "health": 99
         },
         {
           "t": -7,
-          "health": 98
+          "health": 99
         },
         {
           "t": -6,
-          "health": 98
+          "health": 99
         },
         {
           "t": -5,
-          "health": 98
+          "health": 99
         },
         {
           "t": -4,
-          "health": 98
+          "health": 99
         },
         {
           "t": -3,
-          "health": 98
+          "health": 99
         },
         {
           "t": -2,
-          "health": 98
+          "health": 99
         },
         {
           "t": -1,
-          "health": 98
+          "health": 99
         },
         {
           "t": 0,
-          "health": 98
+          "health": 99
         }
       ],
       "alerts": [],
       "predictedFailureDays": null,
       "subsystems": {
         "storage": {
-          "risk": 0.0233
+          "risk": 0.0016
         },
         "components": {
           "risk": 0.0095
         },
         "rul": {
           "risk": 0.0,
-          "days": 124.7
+          "days": 114.8
+        }
+      },
+      "recommendation": {
+        "tier": "Healthy",
+        "priority": "P4 - routine",
+        "action": "No action required. Continue monitoring.",
+        "dominant": "Thermal / power / mechanical"
+      },
+      "profile": "healthy"
+    },
+    "srv-002": {
+      "why": [
+        {
+          "signal": "Drive temperature",
+          "raw_feature": "smart_194_raw",
+          "value": 38.0,
+          "impact": -0.804,
+          "direction": "lowers risk"
+        },
+        {
+          "signal": "Power-on hours",
+          "raw_feature": "smart_9_raw",
+          "value": 38128.0,
+          "impact": -0.6963,
+          "direction": "lowers risk"
+        },
+        {
+          "signal": "Power-cycle count",
+          "raw_feature": "smart_12_raw",
+          "value": 13.0,
+          "impact": -0.5398,
+          "direction": "lowers risk"
+        },
+        {
+          "signal": "Reallocated sectors",
+          "raw_feature": "smart_5_raw",
+          "value": 0.0,
+          "impact": -0.5125,
+          "direction": "lowers risk"
+        }
+      ],
+      "history": [
+        {
+          "t": -39,
+          "health": 97
+        },
+        {
+          "t": -38,
+          "health": 97
+        },
+        {
+          "t": -37,
+          "health": 97
+        },
+        {
+          "t": -36,
+          "health": 97
+        },
+        {
+          "t": -35,
+          "health": 97
+        },
+        {
+          "t": -34,
+          "health": 97
+        },
+        {
+          "t": -33,
+          "health": 97
+        },
+        {
+          "t": -32,
+          "health": 97
+        },
+        {
+          "t": -31,
+          "health": 97
+        },
+        {
+          "t": -30,
+          "health": 97
+        },
+        {
+          "t": -29,
+          "health": 97
+        },
+        {
+          "t": -28,
+          "health": 97
+        },
+        {
+          "t": -27,
+          "health": 97
+        },
+        {
+          "t": -26,
+          "health": 97
+        },
+        {
+          "t": -25,
+          "health": 97
+        },
+        {
+          "t": -24,
+          "health": 97
+        },
+        {
+          "t": -23,
+          "health": 97
+        },
+        {
+          "t": -22,
+          "health": 97
+        },
+        {
+          "t": -21,
+          "health": 97
+        },
+        {
+          "t": -20,
+          "health": 97
+        },
+        {
+          "t": -19,
+          "health": 97
+        },
+        {
+          "t": -18,
+          "health": 97
+        },
+        {
+          "t": -17,
+          "health": 97
+        },
+        {
+          "t": -16,
+          "health": 97
+        },
+        {
+          "t": -15,
+          "health": 97
+        },
+        {
+          "t": -14,
+          "health": 97
+        },
+        {
+          "t": -13,
+          "health": 97
+        },
+        {
+          "t": -12,
+          "health": 97
+        },
+        {
+          "t": -11,
+          "health": 97
+        },
+        {
+          "t": -10,
+          "health": 97
+        },
+        {
+          "t": -9,
+          "health": 97
+        },
+        {
+          "t": -8,
+          "health": 97
+        },
+        {
+          "t": -7,
+          "health": 97
+        },
+        {
+          "t": -6,
+          "health": 97
+        },
+        {
+          "t": -5,
+          "health": 97
+        },
+        {
+          "t": -4,
+          "health": 97
+        },
+        {
+          "t": -3,
+          "health": 97
+        },
+        {
+          "t": -2,
+          "health": 97
+        },
+        {
+          "t": -1,
+          "health": 97
+        },
+        {
+          "t": 0,
+          "health": 97
+        }
+      ],
+      "alerts": [],
+      "predictedFailureDays": null,
+      "subsystems": {
+        "storage": {
+          "risk": 0.0371
+        },
+        "components": {
+          "risk": 0.0002
+        },
+        "rul": {
+          "risk": 0.0,
+          "days": 115.0
         }
       },
       "recommendation": {
@@ -578,439 +814,213 @@
         "action": "No action required. Continue monitoring.",
         "dominant": "Storage (disk)"
       },
-      "profile": "healthy"
-    },
-    "srv-002": {
-      "why": [
-        {
-          "signal": "Power-cycle count",
-          "raw_feature": "smart_12_raw",
-          "value": 64.0,
-          "impact": 2.2005,
-          "direction": "raises risk"
-        },
-        {
-          "signal": "Power-on hours",
-          "raw_feature": "smart_9_raw",
-          "value": 35458.0,
-          "impact": 0.6233,
-          "direction": "raises risk"
-        },
-        {
-          "signal": "Drive temperature",
-          "raw_feature": "smart_194_raw",
-          "value": 35.2,
-          "impact": -0.621,
-          "direction": "lowers risk"
-        },
-        {
-          "signal": "Pending sectors (7-day avg)",
-          "raw_feature": "smart_197_raw_roll7",
-          "value": 0.0,
-          "impact": -0.2208,
-          "direction": "lowers risk"
-        }
-      ],
-      "history": [
-        {
-          "t": -39,
-          "health": 97
-        },
-        {
-          "t": -38,
-          "health": 95
-        },
-        {
-          "t": -37,
-          "health": 95
-        },
-        {
-          "t": -36,
-          "health": 97
-        },
-        {
-          "t": -35,
-          "health": 97
-        },
-        {
-          "t": -34,
-          "health": 98
-        },
-        {
-          "t": -33,
-          "health": 99
-        },
-        {
-          "t": -32,
-          "health": 97
-        },
-        {
-          "t": -31,
-          "health": 96
-        },
-        {
-          "t": -30,
-          "health": 96
-        },
-        {
-          "t": -29,
-          "health": 99
-        },
-        {
-          "t": -28,
-          "health": 97
-        },
-        {
-          "t": -27,
-          "health": 96
-        },
-        {
-          "t": -26,
-          "health": 91
-        },
-        {
-          "t": -25,
-          "health": 92
-        },
-        {
-          "t": -24,
-          "health": 91
-        },
-        {
-          "t": -23,
-          "health": 91
-        },
-        {
-          "t": -22,
-          "health": 94
-        },
-        {
-          "t": -21,
-          "health": 91
-        },
-        {
-          "t": -20,
-          "health": 94
-        },
-        {
-          "t": -19,
-          "health": 91
-        },
-        {
-          "t": -18,
-          "health": 93
-        },
-        {
-          "t": -17,
-          "health": 96
-        },
-        {
-          "t": -16,
-          "health": 96
-        },
-        {
-          "t": -15,
-          "health": 96
-        },
-        {
-          "t": -14,
-          "health": 95
-        },
-        {
-          "t": -13,
-          "health": 97
-        },
-        {
-          "t": -12,
-          "health": 96
-        },
-        {
-          "t": -11,
-          "health": 96
-        },
-        {
-          "t": -10,
-          "health": 99
-        },
-        {
-          "t": -9,
-          "health": 83
-        },
-        {
-          "t": -8,
-          "health": 88
-        },
-        {
-          "t": -7,
-          "health": 97
-        },
-        {
-          "t": -6,
-          "health": 83
-        },
-        {
-          "t": -5,
-          "health": 85
-        },
-        {
-          "t": -4,
-          "health": 83
-        },
-        {
-          "t": -3,
-          "health": 74
-        },
-        {
-          "t": -2,
-          "health": 36
-        },
-        {
-          "t": -1,
-          "health": 36
-        },
-        {
-          "t": 0,
-          "health": 43
-        }
-      ],
-      "alerts": [
-        {
-          "t": -2,
-          "level": "At Risk",
-          "text": "Device crossed into At Risk: health 36"
-        },
-        {
-          "t": 0,
-          "level": "Prediction",
-          "text": "Predicted failure in ~33 days (Storage (disk))"
-        }
-      ],
-      "predictedFailureDays": 33,
-      "subsystems": {
-        "storage": {
-          "risk": 0.8166
-        },
-        "components": {
-          "risk": 0.0002
-        },
-        "rul": {
-          "risk": 0.0,
-          "days": 123.0
-        }
-      },
-      "recommendation": {
-        "tier": "At Risk",
-        "priority": "P2 - schedule within maintenance window",
-        "action": "Back up data now and schedule drive replacement. Reallocated and pending-sector growth indicates the disk is approaching end of life.",
-        "dominant": "Storage (disk)"
-      },
       "profile": "watch_disk"
     },
     "srv-003": {
       "why": [
         {
-          "signal": "Power-on hours",
-          "raw_feature": "smart_9_raw",
-          "value": 7832.0,
-          "impact": -4.0721,
+          "signal": "Power-cycle count",
+          "raw_feature": "smart_12_raw",
+          "value": 10.0,
+          "impact": -0.7806,
+          "direction": "lowers risk"
+        },
+        {
+          "signal": "Reallocated sectors",
+          "raw_feature": "smart_5_raw",
+          "value": 0.0,
+          "impact": -0.5157,
           "direction": "lowers risk"
         },
         {
           "signal": "Pending sectors (7-day avg)",
           "raw_feature": "smart_197_raw_roll7",
-          "value": 0.14,
-          "impact": -0.8913,
-          "direction": "lowers risk"
-        },
-        {
-          "signal": "Power-cycle count",
-          "raw_feature": "smart_12_raw",
-          "value": 168.0,
-          "impact": -0.4038,
-          "direction": "lowers risk"
-        },
-        {
-          "signal": "Offline uncorrectable sectors",
-          "raw_feature": "smart_198_raw",
           "value": 0.0,
-          "impact": -0.267,
+          "impact": -0.3489,
+          "direction": "lowers risk"
+        },
+        {
+          "signal": "Drive temperature",
+          "raw_feature": "smart_194_raw",
+          "value": 38.0,
+          "impact": -0.1742,
           "direction": "lowers risk"
         }
       ],
       "history": [
         {
           "t": -39,
-          "health": 100
+          "health": 96
         },
         {
           "t": -38,
-          "health": 100
+          "health": 96
         },
         {
           "t": -37,
-          "health": 100
+          "health": 96
         },
         {
           "t": -36,
-          "health": 100
+          "health": 96
         },
         {
           "t": -35,
-          "health": 100
+          "health": 96
         },
         {
           "t": -34,
-          "health": 100
+          "health": 96
         },
         {
           "t": -33,
-          "health": 100
+          "health": 96
         },
         {
           "t": -32,
-          "health": 100
+          "health": 96
         },
         {
           "t": -31,
-          "health": 100
+          "health": 96
         },
         {
           "t": -30,
-          "health": 100
+          "health": 96
         },
         {
           "t": -29,
-          "health": 100
+          "health": 96
         },
         {
           "t": -28,
-          "health": 100
+          "health": 96
         },
         {
           "t": -27,
-          "health": 100
+          "health": 96
         },
         {
           "t": -26,
-          "health": 100
+          "health": 96
         },
         {
           "t": -25,
-          "health": 100
+          "health": 96
         },
         {
           "t": -24,
-          "health": 100
+          "health": 96
         },
         {
           "t": -23,
-          "health": 100
+          "health": 96
         },
         {
           "t": -22,
-          "health": 100
+          "health": 96
         },
         {
           "t": -21,
-          "health": 100
+          "health": 96
         },
         {
           "t": -20,
-          "health": 100
+          "health": 96
         },
         {
           "t": -19,
-          "health": 100
+          "health": 96
         },
         {
           "t": -18,
-          "health": 100
+          "health": 96
         },
         {
           "t": -17,
-          "health": 100
+          "health": 96
         },
         {
           "t": -16,
-          "health": 100
+          "health": 96
         },
         {
           "t": -15,
-          "health": 100
+          "health": 96
         },
         {
           "t": -14,
-          "health": 100
+          "health": 96
         },
         {
           "t": -13,
-          "health": 100
+          "health": 96
         },
         {
           "t": -12,
-          "health": 100
+          "health": 96
         },
         {
           "t": -11,
-          "health": 100
+          "health": 96
         },
         {
           "t": -10,
-          "health": 100
+          "health": 96
         },
         {
           "t": -9,
-          "health": 100
+          "health": 95
         },
         {
           "t": -8,
-          "health": 100
+          "health": 95
         },
         {
           "t": -7,
-          "health": 100
+          "health": 95
         },
         {
           "t": -6,
-          "health": 100
+          "health": 94
         },
         {
           "t": -5,
-          "health": 100
+          "health": 94
         },
         {
           "t": -4,
-          "health": 100
+          "health": 94
         },
         {
           "t": -3,
-          "health": 100
+          "health": 94
         },
         {
           "t": -2,
-          "health": 100
+          "health": 94
         },
         {
           "t": -1,
-          "health": 100
+          "health": 93
         },
         {
           "t": 0,
-          "health": 100
+          "health": 93
         }
       ],
       "alerts": [],
       "predictedFailureDays": null,
       "subsystems": {
         "storage": {
-          "risk": 0.0025
+          "risk": 0.0994
         },
         "components": {
           "risk": 0.0001
         },
         "rul": {
           "risk": 0.0,
-          "days": 125.2
+          "days": 119.3
         }
       },
       "recommendation": {
@@ -1024,219 +1034,229 @@
     "srv-004": {
       "why": [
         {
-          "signal": "Reallocated sectors (7-day rise)",
-          "raw_feature": "smart_5_raw_d7",
-          "value": 4.0,
-          "impact": 3.9129,
+          "signal": "Reallocated sectors",
+          "raw_feature": "smart_5_raw",
+          "value": 104.0,
+          "impact": 2.3312,
           "direction": "raises risk"
         },
         {
-          "signal": "Power-on hours",
-          "raw_feature": "smart_9_raw",
-          "value": 14238.0,
-          "impact": -1.9353,
+          "signal": "Drive temperature",
+          "raw_feature": "smart_194_raw",
+          "value": 27.0,
+          "impact": -1.9511,
           "direction": "lowers risk"
         },
         {
-          "signal": "Power-cycle count",
-          "raw_feature": "smart_12_raw",
-          "value": 78.0,
-          "impact": -1.1595,
-          "direction": "lowers risk"
+          "signal": "Uncorrectable errors reported",
+          "raw_feature": "smart_187_raw",
+          "value": 2313.0,
+          "impact": 1.4473,
+          "direction": "raises risk"
         },
         {
-          "signal": "Uncorrectable errors (7-day avg)",
-          "raw_feature": "smart_187_raw_roll7",
-          "value": 0.43,
-          "impact": 0.9786,
+          "signal": "Pending sectors (7-day avg)",
+          "raw_feature": "smart_197_raw_roll7",
+          "value": 2444.0,
+          "impact": 1.3656,
           "direction": "raises risk"
         }
       ],
       "history": [
         {
           "t": -39,
-          "health": 99
+          "health": 32
         },
         {
           "t": -38,
-          "health": 100
+          "health": 32
         },
         {
           "t": -37,
-          "health": 100
+          "health": 32
         },
         {
           "t": -36,
-          "health": 100
+          "health": 32
         },
         {
           "t": -35,
-          "health": 100
+          "health": 32
         },
         {
           "t": -34,
-          "health": 100
+          "health": 32
         },
         {
           "t": -33,
-          "health": 99
+          "health": 32
         },
         {
           "t": -32,
-          "health": 100
+          "health": 32
         },
         {
           "t": -31,
-          "health": 99
+          "health": 32
         },
         {
           "t": -30,
-          "health": 99
+          "health": 32
         },
         {
           "t": -29,
-          "health": 100
+          "health": 32
         },
         {
           "t": -28,
-          "health": 100
+          "health": 32
         },
         {
           "t": -27,
-          "health": 99
+          "health": 32
         },
         {
           "t": -26,
-          "health": 100
+          "health": 32
         },
         {
           "t": -25,
-          "health": 100
+          "health": 32
         },
         {
           "t": -24,
-          "health": 100
+          "health": 32
         },
         {
           "t": -23,
-          "health": 99
+          "health": 32
         },
         {
           "t": -22,
-          "health": 99
+          "health": 32
         },
         {
           "t": -21,
-          "health": 99
+          "health": 32
         },
         {
           "t": -20,
-          "health": 99
+          "health": 32
         },
         {
           "t": -19,
-          "health": 99
+          "health": 32
         },
         {
           "t": -18,
-          "health": 99
+          "health": 32
         },
         {
           "t": -17,
-          "health": 99
+          "health": 32
         },
         {
           "t": -16,
-          "health": 99
+          "health": 32
         },
         {
           "t": -15,
-          "health": 99
+          "health": 32
         },
         {
           "t": -14,
-          "health": 99
+          "health": 32
         },
         {
           "t": -13,
-          "health": 99
+          "health": 32
         },
         {
           "t": -12,
-          "health": 98
+          "health": 32
         },
         {
           "t": -11,
-          "health": 98
+          "health": 32
         },
         {
           "t": -10,
-          "health": 97
+          "health": 32
         },
         {
           "t": -9,
-          "health": 98
+          "health": 32
         },
         {
           "t": -8,
-          "health": 98
+          "health": 32
         },
         {
           "t": -7,
-          "health": 98
+          "health": 32
         },
         {
           "t": -6,
-          "health": 98
+          "health": 32
         },
         {
           "t": -5,
-          "health": 97
+          "health": 32
         },
         {
           "t": -4,
-          "health": 98
+          "health": 42
         },
         {
           "t": -3,
-          "health": 98
+          "health": 34
         },
         {
           "t": -2,
-          "health": 97
+          "health": 33
         },
         {
           "t": -1,
-          "health": 84
+          "health": 33
         },
         {
           "t": 0,
-          "health": 34
+          "health": 33
         }
       ],
       "alerts": [
         {
-          "t": 0,
+          "t": -39,
+          "level": "Critical",
+          "text": "Device crossed into Critical: health 32"
+        },
+        {
+          "t": -4,
+          "level": "At Risk",
+          "text": "Device crossed into At Risk: health 42"
+        },
+        {
+          "t": -3,
           "level": "Critical",
           "text": "Device crossed into Critical: health 34"
         },
         {
           "t": 0,
           "level": "Prediction",
-          "text": "Predicted failure in ~31 days (Storage (disk))"
+          "text": "Predicted failure in ~-2 days (Storage (disk))"
         }
       ],
-      "predictedFailureDays": 31,
+      "predictedFailureDays": -2,
       "subsystems": {
         "storage": {
-          "risk": 0.9495
+          "risk": 0.9539
         },
         "components": {
           "risk": 0.0001
         },
         "rul": {
           "risk": 0.0,
-          "days": 110.0
+          "days": 116.8
         }
       },
       "recommendation": {
@@ -1250,208 +1270,208 @@
     "srv-005": {
       "why": [
         {
-          "signal": "Power-cycle count",
-          "raw_feature": "smart_12_raw",
-          "value": 248.0,
-          "impact": -2.0986,
+          "signal": "Power-on hours",
+          "raw_feature": "smart_9_raw",
+          "value": 14924.0,
+          "impact": -2.372,
           "direction": "lowers risk"
         },
         {
           "signal": "Drive temperature",
           "raw_feature": "smart_194_raw",
-          "value": 26.2,
-          "impact": -1.0138,
+          "value": 37.0,
+          "impact": 0.8039,
+          "direction": "raises risk"
+        },
+        {
+          "signal": "Power-cycle count",
+          "raw_feature": "smart_12_raw",
+          "value": 4.0,
+          "impact": -0.697,
           "direction": "lowers risk"
         },
         {
-          "signal": "Power-on hours",
-          "raw_feature": "smart_9_raw",
-          "value": 20823.0,
-          "impact": -0.8469,
-          "direction": "lowers risk"
-        },
-        {
-          "signal": "Pending sectors (7-day avg)",
-          "raw_feature": "smart_197_raw_roll7",
+          "signal": "Reallocated sectors",
+          "raw_feature": "smart_5_raw",
           "value": 0.0,
-          "impact": -0.3296,
+          "impact": -0.3806,
           "direction": "lowers risk"
         }
       ],
       "history": [
         {
           "t": -39,
-          "health": 100
+          "health": 98
         },
         {
           "t": -38,
-          "health": 100
+          "health": 98
         },
         {
           "t": -37,
-          "health": 100
+          "health": 98
         },
         {
           "t": -36,
-          "health": 100
+          "health": 98
         },
         {
           "t": -35,
-          "health": 100
+          "health": 98
         },
         {
           "t": -34,
-          "health": 100
+          "health": 98
         },
         {
           "t": -33,
-          "health": 100
+          "health": 98
         },
         {
           "t": -32,
-          "health": 100
+          "health": 98
         },
         {
           "t": -31,
-          "health": 100
+          "health": 98
         },
         {
           "t": -30,
-          "health": 100
+          "health": 98
         },
         {
           "t": -29,
-          "health": 100
+          "health": 98
         },
         {
           "t": -28,
-          "health": 100
+          "health": 98
         },
         {
           "t": -27,
-          "health": 100
+          "health": 98
         },
         {
           "t": -26,
-          "health": 100
+          "health": 98
         },
         {
           "t": -25,
-          "health": 100
+          "health": 98
         },
         {
           "t": -24,
-          "health": 100
+          "health": 98
         },
         {
           "t": -23,
-          "health": 100
+          "health": 98
         },
         {
           "t": -22,
-          "health": 100
+          "health": 98
         },
         {
           "t": -21,
-          "health": 100
+          "health": 98
         },
         {
           "t": -20,
-          "health": 100
+          "health": 98
         },
         {
           "t": -19,
-          "health": 100
+          "health": 98
         },
         {
           "t": -18,
-          "health": 100
+          "health": 98
         },
         {
           "t": -17,
-          "health": 100
+          "health": 98
         },
         {
           "t": -16,
-          "health": 100
+          "health": 98
         },
         {
           "t": -15,
-          "health": 100
+          "health": 98
         },
         {
           "t": -14,
-          "health": 100
+          "health": 98
         },
         {
           "t": -13,
-          "health": 100
+          "health": 98
         },
         {
           "t": -12,
-          "health": 100
+          "health": 98
         },
         {
           "t": -11,
-          "health": 100
+          "health": 98
         },
         {
           "t": -10,
-          "health": 100
+          "health": 98
         },
         {
           "t": -9,
-          "health": 100
+          "health": 98
         },
         {
           "t": -8,
-          "health": 100
+          "health": 98
         },
         {
           "t": -7,
-          "health": 100
+          "health": 98
         },
         {
           "t": -6,
-          "health": 100
+          "health": 98
         },
         {
           "t": -5,
-          "health": 100
+          "health": 98
         },
         {
           "t": -4,
-          "health": 100
+          "health": 98
         },
         {
           "t": -3,
-          "health": 100
+          "health": 98
         },
         {
           "t": -2,
-          "health": 100
+          "health": 98
         },
         {
           "t": -1,
-          "health": 100
+          "health": 98
         },
         {
           "t": 0,
-          "health": 100
+          "health": 98
         }
       ],
       "alerts": [],
       "predictedFailureDays": null,
       "subsystems": {
         "storage": {
-          "risk": 0.0068
+          "risk": 0.0319
         },
         "components": {
           "risk": 0.0002
         },
         "rul": {
           "risk": 0.0,
-          "days": 123.8
+          "days": 108.0
         }
       },
       "recommendation": {
@@ -1467,206 +1487,206 @@
         {
           "signal": "Power-on hours",
           "raw_feature": "smart_9_raw",
-          "value": 41110.0,
-          "impact": -2.9079,
+          "value": 10908.0,
+          "impact": -2.1185,
           "direction": "lowers risk"
         },
         {
-          "signal": "Power-cycle count",
-          "raw_feature": "smart_12_raw",
-          "value": 382.0,
-          "impact": -2.4007,
-          "direction": "lowers risk"
-        },
-        {
-          "signal": "Drive temperature",
-          "raw_feature": "smart_194_raw",
-          "value": 27.3,
-          "impact": -1.0296,
+          "signal": "Reallocated sectors",
+          "raw_feature": "smart_5_raw",
+          "value": 0.0,
+          "impact": -0.5408,
           "direction": "lowers risk"
         },
         {
           "signal": "Pending sectors (7-day avg)",
           "raw_feature": "smart_197_raw_roll7",
-          "value": 0.14,
-          "impact": -0.6487,
+          "value": 0.0,
+          "impact": -0.5147,
+          "direction": "lowers risk"
+        },
+        {
+          "signal": "Power-cycle count",
+          "raw_feature": "smart_12_raw",
+          "value": 9.0,
+          "impact": -0.3614,
           "direction": "lowers risk"
         }
       ],
       "history": [
         {
           "t": -39,
-          "health": 100
+          "health": 98
         },
         {
           "t": -38,
-          "health": 100
+          "health": 98
         },
         {
           "t": -37,
-          "health": 100
+          "health": 98
         },
         {
           "t": -36,
-          "health": 100
+          "health": 98
         },
         {
           "t": -35,
-          "health": 100
+          "health": 98
         },
         {
           "t": -34,
-          "health": 100
+          "health": 98
         },
         {
           "t": -33,
-          "health": 100
+          "health": 98
         },
         {
           "t": -32,
-          "health": 100
+          "health": 98
         },
         {
           "t": -31,
-          "health": 100
+          "health": 98
         },
         {
           "t": -30,
-          "health": 100
+          "health": 98
         },
         {
           "t": -29,
-          "health": 100
+          "health": 98
         },
         {
           "t": -28,
-          "health": 100
+          "health": 98
         },
         {
           "t": -27,
-          "health": 100
+          "health": 98
         },
         {
           "t": -26,
-          "health": 100
+          "health": 98
         },
         {
           "t": -25,
-          "health": 100
+          "health": 98
         },
         {
           "t": -24,
-          "health": 100
+          "health": 98
         },
         {
           "t": -23,
-          "health": 100
+          "health": 98
         },
         {
           "t": -22,
-          "health": 100
+          "health": 98
         },
         {
           "t": -21,
-          "health": 100
+          "health": 98
         },
         {
           "t": -20,
-          "health": 100
+          "health": 98
         },
         {
           "t": -19,
-          "health": 100
+          "health": 98
         },
         {
           "t": -18,
-          "health": 100
+          "health": 98
         },
         {
           "t": -17,
-          "health": 100
+          "health": 98
         },
         {
           "t": -16,
-          "health": 100
+          "health": 98
         },
         {
           "t": -15,
-          "health": 100
+          "health": 98
         },
         {
           "t": -14,
-          "health": 100
+          "health": 98
         },
         {
           "t": -13,
-          "health": 100
+          "health": 98
         },
         {
           "t": -12,
-          "health": 100
+          "health": 98
         },
         {
           "t": -11,
-          "health": 100
+          "health": 98
         },
         {
           "t": -10,
-          "health": 100
+          "health": 98
         },
         {
           "t": -9,
-          "health": 100
+          "health": 98
         },
         {
           "t": -8,
-          "health": 100
+          "health": 98
         },
         {
           "t": -7,
-          "health": 100
+          "health": 98
         },
         {
           "t": -6,
-          "health": 100
+          "health": 98
         },
         {
           "t": -5,
-          "health": 100
+          "health": 98
         },
         {
           "t": -4,
-          "health": 100
+          "health": 98
         },
         {
           "t": -3,
-          "health": 100
+          "health": 98
         },
         {
           "t": -2,
-          "health": 100
+          "health": 98
         },
         {
           "t": -1,
-          "health": 100
+          "health": 98
         },
         {
           "t": 0,
-          "health": 100
+          "health": 98
         }
       ],
       "alerts": [],
       "predictedFailureDays": null,
       "subsystems": {
         "storage": {
-          "risk": 0.0005
+          "risk": 0.022
         },
         "components": {
           "risk": 0.0003
         },
         "rul": {
           "risk": 0.0,
-          "days": 125.2
+          "days": 126.2
         }
       },
       "recommendation": {
@@ -1874,14 +1894,14 @@
       "predictedFailureDays": null,
       "subsystems": {
         "storage": {
-          "risk": 0.0
+          "risk": 0.0005
         },
         "components": {
           "risk": 0.004
         },
         "rul": {
           "risk": 0.0,
-          "days": 125.5
+          "days": 124.9
         }
       },
       "recommendation": {
@@ -1897,206 +1917,206 @@
         {
           "signal": "Power-cycle count",
           "raw_feature": "smart_12_raw",
-          "value": 313.0,
-          "impact": -2.401,
+          "value": 17.0,
+          "impact": -1.5157,
           "direction": "lowers risk"
         },
         {
           "signal": "Power-on hours",
           "raw_feature": "smart_9_raw",
-          "value": 18330.0,
-          "impact": -2.1383,
+          "value": 2044.0,
+          "impact": -1.2397,
           "direction": "lowers risk"
         },
         {
           "signal": "Pending sectors (7-day avg)",
           "raw_feature": "smart_197_raw_roll7",
-          "value": 0.14,
-          "impact": -0.4678,
+          "value": 0.0,
+          "impact": -0.4261,
           "direction": "lowers risk"
         },
         {
-          "signal": "Offline uncorrectable sectors",
-          "raw_feature": "smart_198_raw",
+          "signal": "Reallocated sectors",
+          "raw_feature": "smart_5_raw",
           "value": 0.0,
-          "impact": -0.2663,
+          "impact": -0.3908,
           "direction": "lowers risk"
         }
       ],
       "history": [
         {
           "t": -39,
-          "health": 100
+          "health": 98
         },
         {
           "t": -38,
-          "health": 100
+          "health": 98
         },
         {
           "t": -37,
-          "health": 100
+          "health": 98
         },
         {
           "t": -36,
-          "health": 100
+          "health": 98
         },
         {
           "t": -35,
-          "health": 100
+          "health": 98
         },
         {
           "t": -34,
-          "health": 100
+          "health": 98
         },
         {
           "t": -33,
-          "health": 100
+          "health": 98
         },
         {
           "t": -32,
-          "health": 100
+          "health": 98
         },
         {
           "t": -31,
-          "health": 100
+          "health": 98
         },
         {
           "t": -30,
-          "health": 100
+          "health": 98
         },
         {
           "t": -29,
-          "health": 100
+          "health": 98
         },
         {
           "t": -28,
-          "health": 100
+          "health": 98
         },
         {
           "t": -27,
-          "health": 100
+          "health": 98
         },
         {
           "t": -26,
-          "health": 100
+          "health": 98
         },
         {
           "t": -25,
-          "health": 100
+          "health": 98
         },
         {
           "t": -24,
-          "health": 100
+          "health": 98
         },
         {
           "t": -23,
-          "health": 100
+          "health": 98
         },
         {
           "t": -22,
-          "health": 100
+          "health": 98
         },
         {
           "t": -21,
-          "health": 100
+          "health": 98
         },
         {
           "t": -20,
-          "health": 100
+          "health": 98
         },
         {
           "t": -19,
-          "health": 100
+          "health": 98
         },
         {
           "t": -18,
-          "health": 100
+          "health": 98
         },
         {
           "t": -17,
-          "health": 100
+          "health": 98
         },
         {
           "t": -16,
-          "health": 100
+          "health": 98
         },
         {
           "t": -15,
-          "health": 100
+          "health": 98
         },
         {
           "t": -14,
-          "health": 100
+          "health": 98
         },
         {
           "t": -13,
-          "health": 100
+          "health": 98
         },
         {
           "t": -12,
-          "health": 100
+          "health": 98
         },
         {
           "t": -11,
-          "health": 100
+          "health": 98
         },
         {
           "t": -10,
-          "health": 100
+          "health": 98
         },
         {
           "t": -9,
-          "health": 100
+          "health": 98
         },
         {
           "t": -8,
-          "health": 100
+          "health": 98
         },
         {
           "t": -7,
-          "health": 100
+          "health": 98
         },
         {
           "t": -6,
-          "health": 100
+          "health": 98
         },
         {
           "t": -5,
-          "health": 100
+          "health": 98
         },
         {
           "t": -4,
-          "health": 100
+          "health": 98
         },
         {
           "t": -3,
-          "health": 100
+          "health": 98
         },
         {
           "t": -2,
-          "health": 100
+          "health": 98
         },
         {
           "t": -1,
-          "health": 100
+          "health": 98
         },
         {
           "t": 0,
-          "health": 100
+          "health": 98
         }
       ],
       "alerts": [],
       "predictedFailureDays": null,
       "subsystems": {
         "storage": {
-          "risk": 0.0033
+          "risk": 0.0223
         },
         "components": {
           "risk": 0.0001
         },
         "rul": {
           "risk": 0.0,
-          "days": 125.1
+          "days": 108.3
         }
       },
       "recommendation": {
@@ -2110,208 +2130,208 @@
     "srv-009": {
       "why": [
         {
-          "signal": "Power-cycle count",
-          "raw_feature": "smart_12_raw",
-          "value": 82.0,
-          "impact": -3.3947,
-          "direction": "lowers risk"
-        },
-        {
-          "signal": "Drive temperature",
-          "raw_feature": "smart_194_raw",
-          "value": 35.0,
-          "impact": -1.3618,
-          "direction": "lowers risk"
-        },
-        {
-          "signal": "Offline uncorrectable sectors",
-          "raw_feature": "smart_198_raw",
-          "value": 0.0,
-          "impact": -0.3107,
+          "signal": "Power-on hours",
+          "raw_feature": "smart_9_raw",
+          "value": 53687.0,
+          "impact": -1.1378,
           "direction": "lowers risk"
         },
         {
           "signal": "Pending sectors (7-day avg)",
           "raw_feature": "smart_197_raw_roll7",
           "value": 0.0,
-          "impact": -0.2621,
+          "impact": -0.4351,
+          "direction": "lowers risk"
+        },
+        {
+          "signal": "Reallocated sectors",
+          "raw_feature": "smart_5_raw",
+          "value": 0.0,
+          "impact": -0.376,
+          "direction": "lowers risk"
+        },
+        {
+          "signal": "Power-cycle count",
+          "raw_feature": "smart_12_raw",
+          "value": 19.0,
+          "impact": -0.2855,
           "direction": "lowers risk"
         }
       ],
       "history": [
         {
           "t": -39,
-          "health": 100
+          "health": 96
         },
         {
           "t": -38,
-          "health": 100
+          "health": 96
         },
         {
           "t": -37,
-          "health": 100
+          "health": 96
         },
         {
           "t": -36,
-          "health": 100
+          "health": 96
         },
         {
           "t": -35,
-          "health": 100
+          "health": 96
         },
         {
           "t": -34,
-          "health": 100
+          "health": 96
         },
         {
           "t": -33,
-          "health": 100
+          "health": 96
         },
         {
           "t": -32,
-          "health": 100
+          "health": 96
         },
         {
           "t": -31,
-          "health": 100
+          "health": 96
         },
         {
           "t": -30,
-          "health": 100
+          "health": 96
         },
         {
           "t": -29,
-          "health": 100
+          "health": 96
         },
         {
           "t": -28,
-          "health": 100
+          "health": 96
         },
         {
           "t": -27,
-          "health": 100
+          "health": 96
         },
         {
           "t": -26,
-          "health": 100
+          "health": 96
         },
         {
           "t": -25,
-          "health": 100
+          "health": 96
         },
         {
           "t": -24,
-          "health": 100
+          "health": 96
         },
         {
           "t": -23,
-          "health": 100
+          "health": 96
         },
         {
           "t": -22,
-          "health": 100
+          "health": 96
         },
         {
           "t": -21,
-          "health": 100
+          "health": 96
         },
         {
           "t": -20,
-          "health": 100
+          "health": 96
         },
         {
           "t": -19,
-          "health": 100
+          "health": 96
         },
         {
           "t": -18,
-          "health": 100
+          "health": 96
         },
         {
           "t": -17,
-          "health": 100
+          "health": 96
         },
         {
           "t": -16,
-          "health": 100
+          "health": 96
         },
         {
           "t": -15,
-          "health": 100
+          "health": 96
         },
         {
           "t": -14,
-          "health": 100
+          "health": 96
         },
         {
           "t": -13,
-          "health": 100
+          "health": 96
         },
         {
           "t": -12,
-          "health": 100
+          "health": 96
         },
         {
           "t": -11,
-          "health": 100
+          "health": 96
         },
         {
           "t": -10,
-          "health": 100
+          "health": 96
         },
         {
           "t": -9,
-          "health": 100
+          "health": 96
         },
         {
           "t": -8,
-          "health": 100
+          "health": 96
         },
         {
           "t": -7,
-          "health": 100
+          "health": 96
         },
         {
           "t": -6,
-          "health": 100
+          "health": 96
         },
         {
           "t": -5,
-          "health": 100
+          "health": 96
         },
         {
           "t": -4,
-          "health": 100
+          "health": 96
         },
         {
           "t": -3,
-          "health": 100
+          "health": 96
         },
         {
           "t": -2,
-          "health": 100
+          "health": 96
         },
         {
           "t": -1,
-          "health": 100
+          "health": 96
         },
         {
           "t": 0,
-          "health": 100
+          "health": 96
         }
       ],
       "alerts": [],
       "predictedFailureDays": null,
       "subsystems": {
         "storage": {
-          "risk": 0.0025
+          "risk": 0.0504
         },
         "components": {
           "risk": 0.0014
         },
         "rul": {
           "risk": 0.0,
-          "days": 123.7
+          "days": 114.2
         }
       },
       "recommendation": {
@@ -2535,14 +2555,14 @@
       "predictedFailureDays": 10,
       "subsystems": {
         "storage": {
-          "risk": 0.0043
+          "risk": 0.0572
         },
         "components": {
           "risk": 0.9947
         },
         "rul": {
           "risk": 0.0,
-          "days": 124.5
+          "days": 126.5
         }
       },
       "recommendation": {
@@ -2745,7 +2765,7 @@
       "predictedFailureDays": 12,
       "subsystems": {
         "storage": {
-          "risk": 0.0104
+          "risk": 0.0875
         },
         "components": {
           "risk": 0.0104
@@ -2766,31 +2786,31 @@
     "srv-012": {
       "why": [
         {
-          "signal": "Power-cycle count",
-          "raw_feature": "smart_12_raw",
-          "value": 320.0,
-          "impact": -2.6815,
+          "signal": "Fan / rotor speed",
+          "raw_feature": "rotational_speed_rpm",
+          "value": 1615.0,
+          "impact": -2.7283,
           "direction": "lowers risk"
         },
         {
-          "signal": "Power-on hours",
-          "raw_feature": "smart_9_raw",
-          "value": 37409.0,
-          "impact": -2.2003,
+          "signal": "Wear x load (overstrain index)",
+          "raw_feature": "wear_torque",
+          "value": 5731.2,
+          "impact": -1.0893,
           "direction": "lowers risk"
         },
         {
-          "signal": "Pending sectors (7-day avg)",
-          "raw_feature": "smart_197_raw_roll7",
-          "value": 0.14,
-          "impact": -0.5062,
+          "signal": "Process temperature",
+          "raw_feature": "process_temp_k",
+          "value": 309.9,
+          "impact": -0.876,
           "direction": "lowers risk"
         },
         {
-          "signal": "Offline uncorrectable sectors",
-          "raw_feature": "smart_198_raw",
-          "value": 0.0,
-          "impact": -0.2953,
+          "signal": "Mechanical wear",
+          "raw_feature": "tool_wear_min",
+          "value": 199.0,
+          "impact": -0.7579,
           "direction": "lowers risk"
         }
       ],
@@ -2960,21 +2980,21 @@
       "predictedFailureDays": null,
       "subsystems": {
         "storage": {
-          "risk": 0.0023
+          "risk": 0.0002
         },
         "components": {
           "risk": 0.0011
         },
         "rul": {
           "risk": 0.0,
-          "days": 123.9
+          "days": 122.3
         }
       },
       "recommendation": {
         "tier": "Healthy",
         "priority": "P4 - routine",
         "action": "No action required. Continue monitoring.",
-        "dominant": "Storage (disk)"
+        "dominant": "Thermal / power / mechanical"
       },
       "profile": "healthy"
     },
@@ -2983,206 +3003,206 @@
         {
           "signal": "Power-on hours",
           "raw_feature": "smart_9_raw",
-          "value": 25321.0,
-          "impact": -1.4443,
-          "direction": "lowers risk"
-        },
-        {
-          "signal": "Power-cycle count",
-          "raw_feature": "smart_12_raw",
-          "value": 233.0,
-          "impact": -1.271,
+          "value": 33152.0,
+          "impact": -2.5768,
           "direction": "lowers risk"
         },
         {
           "signal": "Drive temperature",
           "raw_feature": "smart_194_raw",
-          "value": 33.3,
-          "impact": -0.5622,
+          "value": 43.0,
+          "impact": -1.2822,
           "direction": "lowers risk"
         },
         {
-          "signal": "Pending sectors (7-day avg)",
-          "raw_feature": "smart_197_raw_roll7",
+          "signal": "Power-cycle count",
+          "raw_feature": "smart_12_raw",
+          "value": 4.0,
+          "impact": -1.2338,
+          "direction": "lowers risk"
+        },
+        {
+          "signal": "Reallocated sectors",
+          "raw_feature": "smart_5_raw",
           "value": 0.0,
-          "impact": -0.2705,
+          "impact": -0.5603,
           "direction": "lowers risk"
         }
       ],
       "history": [
         {
           "t": -39,
-          "health": 99
+          "health": 100
         },
         {
           "t": -38,
-          "health": 99
+          "health": 100
         },
         {
           "t": -37,
-          "health": 99
+          "health": 100
         },
         {
           "t": -36,
-          "health": 99
+          "health": 100
         },
         {
           "t": -35,
-          "health": 99
+          "health": 100
         },
         {
           "t": -34,
-          "health": 99
+          "health": 100
         },
         {
           "t": -33,
-          "health": 99
+          "health": 100
         },
         {
           "t": -32,
-          "health": 99
+          "health": 100
         },
         {
           "t": -31,
-          "health": 99
+          "health": 100
         },
         {
           "t": -30,
-          "health": 99
+          "health": 100
         },
         {
           "t": -29,
-          "health": 99
+          "health": 100
         },
         {
           "t": -28,
-          "health": 99
+          "health": 100
         },
         {
           "t": -27,
-          "health": 99
+          "health": 100
         },
         {
           "t": -26,
-          "health": 99
+          "health": 100
         },
         {
           "t": -25,
-          "health": 99
+          "health": 100
         },
         {
           "t": -24,
-          "health": 99
+          "health": 100
         },
         {
           "t": -23,
-          "health": 99
+          "health": 100
         },
         {
           "t": -22,
-          "health": 99
+          "health": 100
         },
         {
           "t": -21,
-          "health": 99
+          "health": 100
         },
         {
           "t": -20,
-          "health": 99
+          "health": 100
         },
         {
           "t": -19,
-          "health": 99
+          "health": 100
         },
         {
           "t": -18,
-          "health": 99
+          "health": 100
         },
         {
           "t": -17,
-          "health": 99
+          "health": 100
         },
         {
           "t": -16,
-          "health": 99
+          "health": 100
         },
         {
           "t": -15,
-          "health": 99
+          "health": 100
         },
         {
           "t": -14,
-          "health": 99
+          "health": 100
         },
         {
           "t": -13,
-          "health": 99
+          "health": 100
         },
         {
           "t": -12,
-          "health": 99
+          "health": 100
         },
         {
           "t": -11,
-          "health": 99
+          "health": 100
         },
         {
           "t": -10,
-          "health": 99
+          "health": 100
         },
         {
           "t": -9,
-          "health": 99
+          "health": 100
         },
         {
           "t": -8,
-          "health": 99
+          "health": 100
         },
         {
           "t": -7,
-          "health": 99
+          "health": 100
         },
         {
           "t": -6,
-          "health": 99
+          "health": 100
         },
         {
           "t": -5,
-          "health": 99
+          "health": 100
         },
         {
           "t": -4,
-          "health": 99
+          "health": 100
         },
         {
           "t": -3,
-          "health": 99
+          "health": 100
         },
         {
           "t": -2,
-          "health": 99
+          "health": 100
         },
         {
           "t": -1,
-          "health": 99
+          "health": 100
         },
         {
           "t": 0,
-          "health": 99
+          "health": 100
         }
       ],
       "alerts": [],
       "predictedFailureDays": null,
       "subsystems": {
         "storage": {
-          "risk": 0.0161
+          "risk": 0.0014
         },
         "components": {
           "risk": 0.0002
         },
         "rul": {
           "risk": 0.0,
-          "days": 125.3
+          "days": 96.0
         }
       },
       "recommendation": {
@@ -3406,7 +3426,7 @@
       "predictedFailureDays": 10,
       "subsystems": {
         "storage": {
-          "risk": 0.9576
+          "risk": 0.9588
         },
         "components": {
           "risk": 0.991
@@ -3427,31 +3447,31 @@
     "srv-015": {
       "why": [
         {
-          "signal": "Fan / rotor speed",
-          "raw_feature": "rotational_speed_rpm",
-          "value": 1987.0,
-          "impact": -2.0748,
+          "signal": "Drive temperature",
+          "raw_feature": "smart_194_raw",
+          "value": 26.0,
+          "impact": -2.0585,
           "direction": "lowers risk"
         },
         {
-          "signal": "Thermal margin (process - ambient)",
-          "raw_feature": "temp_diff_k",
-          "value": 9.8,
-          "impact": -1.2442,
+          "signal": "Power-cycle count",
+          "raw_feature": "smart_12_raw",
+          "value": 28.0,
+          "impact": -0.9519,
           "direction": "lowers risk"
         },
         {
-          "signal": "Power draw",
-          "raw_feature": "power_w",
-          "value": 4119.95,
-          "impact": -1.0041,
+          "signal": "Power-on hours",
+          "raw_feature": "smart_9_raw",
+          "value": 36153.0,
+          "impact": -0.4649,
           "direction": "lowers risk"
         },
         {
-          "signal": "Wear x load (overstrain index)",
-          "raw_feature": "wear_torque",
-          "value": 3920.4,
-          "impact": -0.6801,
+          "signal": "Reallocated sectors",
+          "raw_feature": "smart_5_raw",
+          "value": 0.0,
+          "impact": -0.4157,
           "direction": "lowers risk"
         }
       ],
@@ -3621,52 +3641,52 @@
       "predictedFailureDays": null,
       "subsystems": {
         "storage": {
-          "risk": 0.0
+          "risk": 0.0131
         },
         "components": {
           "risk": 0.0086
         },
         "rul": {
           "risk": 0.0,
-          "days": 125.0
+          "days": 111.4
         }
       },
       "recommendation": {
         "tier": "Healthy",
         "priority": "P4 - routine",
         "action": "No action required. Continue monitoring.",
-        "dominant": "Thermal / power / mechanical"
+        "dominant": "Storage (disk)"
       },
       "profile": "healthy"
     },
     "srv-016": {
       "why": [
         {
-          "signal": "Fan / rotor speed",
-          "raw_feature": "rotational_speed_rpm",
-          "value": 1946.0,
-          "impact": -1.9497,
+          "signal": "Power-cycle count",
+          "raw_feature": "smart_12_raw",
+          "value": 3.0,
+          "impact": -4.246,
           "direction": "lowers risk"
         },
         {
-          "signal": "Wear x load (overstrain index)",
-          "raw_feature": "wear_torque",
-          "value": 2363.2,
-          "impact": -1.4861,
+          "signal": "Power-on hours",
+          "raw_feature": "smart_9_raw",
+          "value": 34151.0,
+          "impact": -2.3064,
           "direction": "lowers risk"
         },
         {
-          "signal": "Mechanical wear",
-          "raw_feature": "tool_wear_min",
-          "value": 112.0,
-          "impact": -1.4242,
+          "signal": "Reallocated sectors",
+          "raw_feature": "smart_5_raw",
+          "value": 0.0,
+          "impact": -0.7508,
           "direction": "lowers risk"
         },
         {
-          "signal": "Thermal margin (process - ambient)",
-          "raw_feature": "temp_diff_k",
-          "value": 8.8,
-          "impact": -1.3042,
+          "signal": "Pending sectors (7-day avg)",
+          "raw_feature": "smart_197_raw_roll7",
+          "value": 0.0,
+          "impact": -0.417,
           "direction": "lowers risk"
         }
       ],
@@ -3836,21 +3856,21 @@
       "predictedFailureDays": null,
       "subsystems": {
         "storage": {
-          "risk": 0.0
+          "risk": 0.0002
         },
         "components": {
           "risk": 0.0001
         },
         "rul": {
           "risk": 0.0,
-          "days": 124.8
+          "days": 117.7
         }
       },
       "recommendation": {
         "tier": "Healthy",
         "priority": "P4 - routine",
         "action": "No action required. Continue monitoring.",
-        "dominant": "Thermal / power / mechanical"
+        "dominant": "Storage (disk)"
       },
       "profile": "healthy"
     },
@@ -4046,7 +4066,7 @@
       "predictedFailureDays": 12,
       "subsystems": {
         "storage": {
-          "risk": 0.0
+          "risk": 0.0183
         },
         "components": {
           "risk": 0.0001
@@ -4067,272 +4087,31 @@
     "srv-018": {
       "why": [
         {
-          "signal": "Power-cycle count",
-          "raw_feature": "smart_12_raw",
-          "value": 306.0,
-          "impact": 1.7689,
-          "direction": "raises risk"
-        },
-        {
-          "signal": "Power-on hours",
-          "raw_feature": "smart_9_raw",
-          "value": 20317.0,
-          "impact": 1.0455,
-          "direction": "raises risk"
-        },
-        {
-          "signal": "Pending sectors (7-day avg)",
-          "raw_feature": "smart_197_raw_roll7",
-          "value": 0.0,
-          "impact": -0.2769,
+          "signal": "Power draw",
+          "raw_feature": "power_w",
+          "value": 6572.71,
+          "impact": -2.5534,
           "direction": "lowers risk"
         },
         {
-          "signal": "Offline uncorrectable sectors",
-          "raw_feature": "smart_198_raw",
-          "value": 0.0,
-          "impact": -0.2146,
-          "direction": "lowers risk"
-        }
-      ],
-      "history": [
-        {
-          "t": -39,
-          "health": 97
-        },
-        {
-          "t": -38,
-          "health": 95
-        },
-        {
-          "t": -37,
-          "health": 97
-        },
-        {
-          "t": -36,
-          "health": 98
-        },
-        {
-          "t": -35,
-          "health": 95
-        },
-        {
-          "t": -34,
-          "health": 95
-        },
-        {
-          "t": -33,
-          "health": 96
-        },
-        {
-          "t": -32,
-          "health": 96
-        },
-        {
-          "t": -31,
-          "health": 96
-        },
-        {
-          "t": -30,
-          "health": 92
-        },
-        {
-          "t": -29,
-          "health": 96
-        },
-        {
-          "t": -28,
-          "health": 94
-        },
-        {
-          "t": -27,
-          "health": 97
-        },
-        {
-          "t": -26,
-          "health": 96
-        },
-        {
-          "t": -25,
-          "health": 95
-        },
-        {
-          "t": -24,
-          "health": 95
-        },
-        {
-          "t": -23,
-          "health": 96
-        },
-        {
-          "t": -22,
-          "health": 97
-        },
-        {
-          "t": -21,
-          "health": 95
-        },
-        {
-          "t": -20,
-          "health": 94
-        },
-        {
-          "t": -19,
-          "health": 98
-        },
-        {
-          "t": -18,
-          "health": 96
-        },
-        {
-          "t": -17,
-          "health": 34
-        },
-        {
-          "t": -16,
-          "health": 37
-        },
-        {
-          "t": -15,
-          "health": 34
-        },
-        {
-          "t": -14,
-          "health": 35
-        },
-        {
-          "t": -13,
-          "health": 34
-        },
-        {
-          "t": -12,
-          "health": 33
-        },
-        {
-          "t": -11,
-          "health": 37
-        },
-        {
-          "t": -10,
-          "health": 33
-        },
-        {
-          "t": -9,
-          "health": 35
-        },
-        {
-          "t": -8,
-          "health": 33
-        },
-        {
-          "t": -7,
-          "health": 36
-        },
-        {
-          "t": -6,
-          "health": 33
-        },
-        {
-          "t": -5,
-          "health": 34
-        },
-        {
-          "t": -4,
-          "health": 33
-        },
-        {
-          "t": -3,
-          "health": 35
-        },
-        {
-          "t": -2,
-          "health": 33
-        },
-        {
-          "t": -1,
-          "health": 33
-        },
-        {
-          "t": 0,
-          "health": 39
-        }
-      ],
-      "alerts": [
-        {
-          "t": -6,
-          "level": "Critical",
-          "text": "Device crossed into Critical: health 33"
-        },
-        {
-          "t": -3,
-          "level": "At Risk",
-          "text": "Device crossed into At Risk: health 35"
-        },
-        {
-          "t": -2,
-          "level": "Critical",
-          "text": "Device crossed into Critical: health 33"
-        },
-        {
-          "t": 0,
-          "level": "At Risk",
-          "text": "Device crossed into At Risk: health 39"
-        },
-        {
-          "t": 0,
-          "level": "Prediction",
-          "text": "Predicted failure in ~17 days (Storage (disk))"
-        }
-      ],
-      "predictedFailureDays": 17,
-      "subsystems": {
-        "storage": {
-          "risk": 0.8755
-        },
-        "components": {
-          "risk": 0.0017
-        },
-        "rul": {
-          "risk": 0.0,
-          "days": 124.7
-        }
-      },
-      "recommendation": {
-        "tier": "At Risk",
-        "priority": "P2 - schedule within maintenance window",
-        "action": "Back up data now and schedule drive replacement. Reallocated and pending-sector growth indicates the disk is approaching end of life.",
-        "dominant": "Storage (disk)"
-      },
-      "profile": "watch_disk"
-    },
-    "srv-019": {
-      "why": [
-        {
-          "signal": "Power-cycle count",
-          "raw_feature": "smart_12_raw",
-          "value": 195.0,
-          "impact": -2.4737,
+          "signal": "Thermal margin (process - ambient)",
+          "raw_feature": "temp_diff_k",
+          "value": 10.3,
+          "impact": -1.9474,
           "direction": "lowers risk"
         },
         {
-          "signal": "Power-on hours",
-          "raw_feature": "smart_9_raw",
-          "value": 3870.0,
-          "impact": -2.3877,
+          "signal": "Mechanical wear",
+          "raw_feature": "tool_wear_min",
+          "value": 133.0,
+          "impact": -1.7204,
           "direction": "lowers risk"
         },
         {
-          "signal": "Pending sectors (7-day avg)",
-          "raw_feature": "smart_197_raw_roll7",
-          "value": 0.14,
-          "impact": -0.4896,
-          "direction": "lowers risk"
-        },
-        {
-          "signal": "Offline uncorrectable sectors",
-          "raw_feature": "smart_198_raw",
-          "value": 0.0,
-          "impact": -0.2577,
+          "signal": "Wear x load (overstrain index)",
+          "raw_feature": "wear_torque",
+          "value": 6211.1,
+          "impact": -1.07,
           "direction": "lowers risk"
         }
       ],
@@ -4502,14 +4281,229 @@
       "predictedFailureDays": null,
       "subsystems": {
         "storage": {
-          "risk": 0.0019
+          "risk": 0.0012
+        },
+        "components": {
+          "risk": 0.0017
+        },
+        "rul": {
+          "risk": 0.0,
+          "days": 122.7
+        }
+      },
+      "recommendation": {
+        "tier": "Healthy",
+        "priority": "P4 - routine",
+        "action": "No action required. Continue monitoring.",
+        "dominant": "Thermal / power / mechanical"
+      },
+      "profile": "watch_disk"
+    },
+    "srv-019": {
+      "why": [
+        {
+          "signal": "Power-cycle count",
+          "raw_feature": "smart_12_raw",
+          "value": 6.0,
+          "impact": -1.6624,
+          "direction": "lowers risk"
+        },
+        {
+          "signal": "Power-on hours",
+          "raw_feature": "smart_9_raw",
+          "value": 48660.0,
+          "impact": -1.085,
+          "direction": "lowers risk"
+        },
+        {
+          "signal": "Drive temperature",
+          "raw_feature": "smart_194_raw",
+          "value": 33.0,
+          "impact": -0.5973,
+          "direction": "lowers risk"
+        },
+        {
+          "signal": "Reallocated sectors",
+          "raw_feature": "smart_5_raw",
+          "value": 0.0,
+          "impact": -0.4682,
+          "direction": "lowers risk"
+        }
+      ],
+      "history": [
+        {
+          "t": -39,
+          "health": 99
+        },
+        {
+          "t": -38,
+          "health": 99
+        },
+        {
+          "t": -37,
+          "health": 99
+        },
+        {
+          "t": -36,
+          "health": 99
+        },
+        {
+          "t": -35,
+          "health": 99
+        },
+        {
+          "t": -34,
+          "health": 99
+        },
+        {
+          "t": -33,
+          "health": 99
+        },
+        {
+          "t": -32,
+          "health": 99
+        },
+        {
+          "t": -31,
+          "health": 99
+        },
+        {
+          "t": -30,
+          "health": 99
+        },
+        {
+          "t": -29,
+          "health": 99
+        },
+        {
+          "t": -28,
+          "health": 99
+        },
+        {
+          "t": -27,
+          "health": 99
+        },
+        {
+          "t": -26,
+          "health": 99
+        },
+        {
+          "t": -25,
+          "health": 99
+        },
+        {
+          "t": -24,
+          "health": 99
+        },
+        {
+          "t": -23,
+          "health": 99
+        },
+        {
+          "t": -22,
+          "health": 99
+        },
+        {
+          "t": -21,
+          "health": 99
+        },
+        {
+          "t": -20,
+          "health": 99
+        },
+        {
+          "t": -19,
+          "health": 99
+        },
+        {
+          "t": -18,
+          "health": 99
+        },
+        {
+          "t": -17,
+          "health": 99
+        },
+        {
+          "t": -16,
+          "health": 99
+        },
+        {
+          "t": -15,
+          "health": 99
+        },
+        {
+          "t": -14,
+          "health": 99
+        },
+        {
+          "t": -13,
+          "health": 99
+        },
+        {
+          "t": -12,
+          "health": 99
+        },
+        {
+          "t": -11,
+          "health": 99
+        },
+        {
+          "t": -10,
+          "health": 99
+        },
+        {
+          "t": -9,
+          "health": 99
+        },
+        {
+          "t": -8,
+          "health": 99
+        },
+        {
+          "t": -7,
+          "health": 99
+        },
+        {
+          "t": -6,
+          "health": 99
+        },
+        {
+          "t": -5,
+          "health": 99
+        },
+        {
+          "t": -4,
+          "health": 99
+        },
+        {
+          "t": -3,
+          "health": 99
+        },
+        {
+          "t": -2,
+          "health": 99
+        },
+        {
+          "t": -1,
+          "health": 99
+        },
+        {
+          "t": 0,
+          "health": 99
+        }
+      ],
+      "alerts": [],
+      "predictedFailureDays": null,
+      "subsystems": {
+        "storage": {
+          "risk": 0.0093
         },
         "components": {
           "risk": 0.0009
         },
         "rul": {
           "risk": 0.0,
-          "days": 125.3
+          "days": 124.2
         }
       },
       "recommendation": {
@@ -4523,190 +4517,190 @@
     "srv-020": {
       "why": [
         {
-          "signal": "Offline uncorrectable sectors",
-          "raw_feature": "smart_198_raw",
-          "value": 5.0,
-          "impact": 4.1758,
+          "signal": "Reallocated sectors",
+          "raw_feature": "smart_5_raw",
+          "value": 30064.0,
+          "impact": 2.127,
           "direction": "raises risk"
         },
         {
-          "signal": "Reallocated sectors (7-day rise)",
-          "raw_feature": "smart_5_raw_d7",
-          "value": 11.0,
-          "impact": 2.8584,
+          "signal": "Uncorrectable errors reported",
+          "raw_feature": "smart_187_raw",
+          "value": 365.0,
+          "impact": 1.7889,
           "direction": "raises risk"
         },
         {
-          "signal": "Power-cycle count",
-          "raw_feature": "smart_12_raw",
-          "value": 175.0,
-          "impact": -1.8598,
-          "direction": "lowers risk"
+          "signal": "Pending sectors (7-day avg)",
+          "raw_feature": "smart_197_raw_roll7",
+          "value": 1416.0,
+          "impact": 1.754,
+          "direction": "raises risk"
         },
         {
           "signal": "Power-on hours",
           "raw_feature": "smart_9_raw",
-          "value": 37544.0,
-          "impact": -1.3455,
+          "value": 38377.0,
+          "impact": -0.6832,
           "direction": "lowers risk"
         }
       ],
       "history": [
         {
           "t": -39,
-          "health": 100
+          "health": 30
         },
         {
           "t": -38,
-          "health": 100
+          "health": 30
         },
         {
           "t": -37,
-          "health": 100
+          "health": 30
         },
         {
           "t": -36,
-          "health": 100
+          "health": 30
         },
         {
           "t": -35,
-          "health": 100
+          "health": 30
         },
         {
           "t": -34,
-          "health": 100
+          "health": 30
         },
         {
           "t": -33,
-          "health": 100
+          "health": 30
         },
         {
           "t": -32,
-          "health": 100
+          "health": 30
         },
         {
           "t": -31,
-          "health": 100
+          "health": 30
         },
         {
           "t": -30,
-          "health": 100
+          "health": 30
         },
         {
           "t": -29,
-          "health": 100
+          "health": 30
         },
         {
           "t": -28,
-          "health": 100
+          "health": 30
         },
         {
           "t": -27,
-          "health": 100
+          "health": 30
         },
         {
           "t": -26,
-          "health": 100
+          "health": 30
         },
         {
           "t": -25,
-          "health": 100
+          "health": 30
         },
         {
           "t": -24,
-          "health": 100
+          "health": 30
         },
         {
           "t": -23,
-          "health": 100
+          "health": 30
         },
         {
           "t": -22,
-          "health": 100
+          "health": 30
         },
         {
           "t": -21,
-          "health": 100
+          "health": 30
         },
         {
           "t": -20,
-          "health": 100
+          "health": 30
         },
         {
           "t": -19,
-          "health": 100
+          "health": 30
         },
         {
           "t": -18,
-          "health": 100
+          "health": 30
         },
         {
           "t": -17,
-          "health": 100
+          "health": 30
         },
         {
           "t": -16,
-          "health": 100
+          "health": 30
         },
         {
           "t": -15,
-          "health": 100
+          "health": 30
         },
         {
           "t": -14,
-          "health": 100
+          "health": 30
         },
         {
           "t": -13,
-          "health": 100
+          "health": 30
         },
         {
           "t": -12,
-          "health": 100
+          "health": 30
         },
         {
           "t": -11,
-          "health": 100
+          "health": 30
         },
         {
           "t": -10,
-          "health": 100
+          "health": 30
         },
         {
           "t": -9,
-          "health": 100
+          "health": 30
         },
         {
           "t": -8,
-          "health": 100
+          "health": 30
         },
         {
           "t": -7,
-          "health": 100
+          "health": 30
         },
         {
           "t": -6,
-          "health": 100
+          "health": 30
         },
         {
           "t": -5,
-          "health": 100
+          "health": 30
         },
         {
           "t": -4,
-          "health": 100
+          "health": 30
         },
         {
           "t": -3,
-          "health": 100
+          "health": 30
         },
         {
           "t": -2,
-          "health": 100
+          "health": 30
         },
         {
           "t": -1,
-          "health": 46
+          "health": 30
         },
         {
           "t": 0,
@@ -4715,32 +4709,27 @@
       ],
       "alerts": [
         {
-          "t": -1,
-          "level": "At Risk",
-          "text": "Device crossed into At Risk: health 46"
-        },
-        {
-          "t": 0,
+          "t": -39,
           "level": "Critical",
           "text": "Device crossed into Critical: health 30"
         },
         {
           "t": 0,
           "level": "Prediction",
-          "text": "Predicted failure in ~7 days (Storage (disk))"
+          "text": "Predicted failure in ~29 days (Storage (disk))"
         }
       ],
-      "predictedFailureDays": 7,
+      "predictedFailureDays": 29,
       "subsystems": {
         "storage": {
-          "risk": 0.997
+          "risk": 0.9975
         },
         "components": {
           "risk": 0.0006
         },
         "rul": {
           "risk": 0.0,
-          "days": 124.7
+          "days": 123.9
         }
       },
       "recommendation": {
@@ -4756,206 +4745,232 @@
         {
           "signal": "Power-on hours",
           "raw_feature": "smart_9_raw",
-          "value": 34827.0,
-          "impact": -2.9544,
+          "value": 56505.0,
+          "impact": -2.2233,
           "direction": "lowers risk"
         },
         {
-          "signal": "Reallocated sectors (7-day rise)",
-          "raw_feature": "smart_5_raw_d7",
-          "value": 6.0,
-          "impact": 2.5331,
-          "direction": "raises risk"
-        },
-        {
-          "signal": "Offline uncorrectable sectors",
-          "raw_feature": "smart_198_raw",
-          "value": 3.0,
-          "impact": 2.4758,
-          "direction": "raises risk"
-        },
-        {
-          "signal": "Power-cycle count",
-          "raw_feature": "smart_12_raw",
-          "value": 150.0,
-          "impact": -1.6484,
+          "signal": "Drive temperature",
+          "raw_feature": "smart_194_raw",
+          "value": 46.0,
+          "impact": -1.7816,
           "direction": "lowers risk"
+        },
+        {
+          "signal": "Pending sectors (7-day avg)",
+          "raw_feature": "smart_197_raw_roll7",
+          "value": 78.0,
+          "impact": 1.7221,
+          "direction": "raises risk"
+        },
+        {
+          "signal": "Pending sectors (awaiting reallocation)",
+          "raw_feature": "smart_197_raw",
+          "value": 78.0,
+          "impact": 1.2776,
+          "direction": "raises risk"
         }
       ],
       "history": [
         {
           "t": -39,
-          "health": 100
+          "health": 36
         },
         {
           "t": -38,
-          "health": 100
+          "health": 36
         },
         {
           "t": -37,
-          "health": 100
+          "health": 36
         },
         {
           "t": -36,
-          "health": 100
+          "health": 36
         },
         {
           "t": -35,
-          "health": 100
+          "health": 36
         },
         {
           "t": -34,
-          "health": 100
+          "health": 36
         },
         {
           "t": -33,
-          "health": 100
+          "health": 36
         },
         {
           "t": -32,
-          "health": 100
+          "health": 36
         },
         {
           "t": -31,
-          "health": 100
+          "health": 36
         },
         {
           "t": -30,
-          "health": 100
+          "health": 36
         },
         {
           "t": -29,
-          "health": 99
+          "health": 36
         },
         {
           "t": -28,
-          "health": 100
+          "health": 36
         },
         {
           "t": -27,
-          "health": 99
+          "health": 36
         },
         {
           "t": -26,
-          "health": 99
+          "health": 36
         },
         {
           "t": -25,
-          "health": 100
+          "health": 36
         },
         {
           "t": -24,
-          "health": 100
+          "health": 36
         },
         {
           "t": -23,
-          "health": 99
+          "health": 36
         },
         {
           "t": -22,
-          "health": 100
+          "health": 34
         },
         {
           "t": -21,
-          "health": 99
+          "health": 34
         },
         {
           "t": -20,
-          "health": 100
+          "health": 34
         },
         {
           "t": -19,
-          "health": 100
+          "health": 34
         },
         {
           "t": -18,
-          "health": 100
+          "health": 36
         },
         {
           "t": -17,
-          "health": 100
+          "health": 36
         },
         {
           "t": -16,
-          "health": 100
+          "health": 34
         },
         {
           "t": -15,
-          "health": 100
+          "health": 35
         },
         {
           "t": -14,
-          "health": 100
+          "health": 38
         },
         {
           "t": -13,
-          "health": 100
+          "health": 38
         },
         {
           "t": -12,
-          "health": 100
+          "health": 36
         },
         {
           "t": -11,
-          "health": 100
+          "health": 35
         },
         {
           "t": -10,
-          "health": 100
+          "health": 36
         },
         {
           "t": -9,
-          "health": 100
+          "health": 45
         },
         {
           "t": -8,
-          "health": 100
+          "health": 36
         },
         {
           "t": -7,
-          "health": 100
+          "health": 36
         },
         {
           "t": -6,
-          "health": 100
+          "health": 38
         },
         {
           "t": -5,
-          "health": 100
+          "health": 38
         },
         {
           "t": -4,
-          "health": 100
+          "health": 36
         },
         {
           "t": -3,
-          "health": 100
+          "health": 38
         },
         {
           "t": -2,
-          "health": 95
+          "health": 38
         },
         {
           "t": -1,
-          "health": 93
+          "health": 33
         },
         {
           "t": 0,
-          "health": 72
+          "health": 71
         }
       ],
-      "alerts": [],
+      "alerts": [
+        {
+          "t": -22,
+          "level": "Critical",
+          "text": "Device crossed into Critical: health 34"
+        },
+        {
+          "t": -18,
+          "level": "At Risk",
+          "text": "Device crossed into At Risk: health 36"
+        },
+        {
+          "t": -16,
+          "level": "Critical",
+          "text": "Device crossed into Critical: health 34"
+        },
+        {
+          "t": -15,
+          "level": "At Risk",
+          "text": "Device crossed into At Risk: health 35"
+        },
+        {
+          "t": -1,
+          "level": "Critical",
+          "text": "Device crossed into Critical: health 33"
+        }
+      ],
       "predictedFailureDays": null,
       "subsystems": {
         "storage": {
-          "risk": 0.396
+          "risk": 0.4206
         },
         "components": {
           "risk": 0.0
         },
         "rul": {
           "risk": 0.0,
-          "days": 124.8
+          "days": 109.6
         }
       },
       "recommendation": {
@@ -4969,208 +4984,208 @@
     "srv-022": {
       "why": [
         {
-          "signal": "Drive temperature",
-          "raw_feature": "smart_194_raw",
-          "value": 26.7,
-          "impact": -1.9541,
-          "direction": "lowers risk"
-        },
-        {
           "signal": "Power-cycle count",
           "raw_feature": "smart_12_raw",
-          "value": 253.0,
-          "impact": -0.8068,
+          "value": 8.0,
+          "impact": -1.9255,
           "direction": "lowers risk"
         },
         {
           "signal": "Power-on hours",
           "raw_feature": "smart_9_raw",
-          "value": 40253.0,
-          "impact": 0.7701,
-          "direction": "raises risk"
+          "value": 19161.0,
+          "impact": -1.2846,
+          "direction": "lowers risk"
+        },
+        {
+          "signal": "Reallocated sectors",
+          "raw_feature": "smart_5_raw",
+          "value": 0.0,
+          "impact": -0.4576,
+          "direction": "lowers risk"
         },
         {
           "signal": "Pending sectors (7-day avg)",
           "raw_feature": "smart_197_raw_roll7",
           "value": 0.0,
-          "impact": -0.2991,
+          "impact": -0.4093,
           "direction": "lowers risk"
         }
       ],
       "history": [
         {
           "t": -39,
-          "health": 96
+          "health": 99
         },
         {
           "t": -38,
-          "health": 96
+          "health": 99
         },
         {
           "t": -37,
-          "health": 96
+          "health": 99
         },
         {
           "t": -36,
-          "health": 96
+          "health": 99
         },
         {
           "t": -35,
-          "health": 96
+          "health": 99
         },
         {
           "t": -34,
-          "health": 96
+          "health": 99
         },
         {
           "t": -33,
-          "health": 96
+          "health": 99
         },
         {
           "t": -32,
-          "health": 96
+          "health": 99
         },
         {
           "t": -31,
-          "health": 96
+          "health": 99
         },
         {
           "t": -30,
-          "health": 96
+          "health": 99
         },
         {
           "t": -29,
-          "health": 96
+          "health": 99
         },
         {
           "t": -28,
-          "health": 96
+          "health": 99
         },
         {
           "t": -27,
-          "health": 96
+          "health": 99
         },
         {
           "t": -26,
-          "health": 96
+          "health": 99
         },
         {
           "t": -25,
-          "health": 96
+          "health": 99
         },
         {
           "t": -24,
-          "health": 96
+          "health": 99
         },
         {
           "t": -23,
-          "health": 96
+          "health": 99
         },
         {
           "t": -22,
-          "health": 96
+          "health": 99
         },
         {
           "t": -21,
-          "health": 96
+          "health": 99
         },
         {
           "t": -20,
-          "health": 96
+          "health": 99
         },
         {
           "t": -19,
-          "health": 96
+          "health": 99
         },
         {
           "t": -18,
-          "health": 96
+          "health": 99
         },
         {
           "t": -17,
-          "health": 96
+          "health": 99
         },
         {
           "t": -16,
-          "health": 96
+          "health": 99
         },
         {
           "t": -15,
-          "health": 96
+          "health": 99
         },
         {
           "t": -14,
-          "health": 96
+          "health": 99
         },
         {
           "t": -13,
-          "health": 96
+          "health": 99
         },
         {
           "t": -12,
-          "health": 96
+          "health": 99
         },
         {
           "t": -11,
-          "health": 96
+          "health": 99
         },
         {
           "t": -10,
-          "health": 96
+          "health": 99
         },
         {
           "t": -9,
-          "health": 96
+          "health": 99
         },
         {
           "t": -8,
-          "health": 95
+          "health": 99
         },
         {
           "t": -7,
-          "health": 95
+          "health": 99
         },
         {
           "t": -6,
-          "health": 95
+          "health": 99
         },
         {
           "t": -5,
-          "health": 95
+          "health": 99
         },
         {
           "t": -4,
-          "health": 95
+          "health": 99
         },
         {
           "t": -3,
-          "health": 94
+          "health": 99
         },
         {
           "t": -2,
-          "health": 94
+          "health": 99
         },
         {
           "t": -1,
-          "health": 94
+          "health": 99
         },
         {
           "t": 0,
-          "health": 94
+          "health": 99
         }
       ],
       "alerts": [],
       "predictedFailureDays": null,
       "subsystems": {
         "storage": {
-          "risk": 0.0821
+          "risk": 0.0109
         },
         "components": {
           "risk": 0.0001
         },
         "rul": {
           "risk": 0.0,
-          "days": 125.0
+          "days": 122.9
         }
       },
       "recommendation": {
@@ -5394,14 +5409,14 @@
       "predictedFailureDays": 10,
       "subsystems": {
         "storage": {
-          "risk": 0.0148
+          "risk": 0.0008
         },
         "components": {
           "risk": 0.9996
         },
         "rul": {
           "risk": 0.0,
-          "days": 124.5
+          "days": 123.3
         }
       },
       "recommendation": {
@@ -5415,142 +5430,142 @@
     "srv-024": {
       "why": [
         {
-          "signal": "Reallocated sectors (7-day rise)",
-          "raw_feature": "smart_5_raw_d7",
-          "value": 5.0,
-          "impact": 2.7605,
+          "signal": "Power-on hours",
+          "raw_feature": "smart_9_raw",
+          "value": 8976.0,
+          "impact": -3.2126,
+          "direction": "lowers risk"
+        },
+        {
+          "signal": "Pending sectors (7-day avg)",
+          "raw_feature": "smart_197_raw_roll7",
+          "value": 40.0,
+          "impact": 2.5405,
+          "direction": "raises risk"
+        },
+        {
+          "signal": "Uncorrectable errors reported",
+          "raw_feature": "smart_187_raw",
+          "value": 8.0,
+          "impact": 0.5795,
           "direction": "raises risk"
         },
         {
           "signal": "Offline uncorrectable sectors",
           "raw_feature": "smart_198_raw",
-          "value": 3.0,
-          "impact": 2.7353,
+          "value": 40.0,
+          "impact": 0.4283,
           "direction": "raises risk"
-        },
-        {
-          "signal": "Uncorrectable errors (7-day avg)",
-          "raw_feature": "smart_187_raw_roll7",
-          "value": 0.57,
-          "impact": 1.3147,
-          "direction": "raises risk"
-        },
-        {
-          "signal": "Power-cycle count",
-          "raw_feature": "smart_12_raw",
-          "value": 173.0,
-          "impact": -1.3121,
-          "direction": "lowers risk"
         }
       ],
       "history": [
         {
           "t": -39,
-          "health": 97
+          "health": 57
         },
         {
           "t": -38,
-          "health": 97
+          "health": 57
         },
         {
           "t": -37,
-          "health": 97
+          "health": 57
         },
         {
           "t": -36,
-          "health": 97
+          "health": 57
         },
         {
           "t": -35,
-          "health": 98
+          "health": 57
         },
         {
           "t": -34,
-          "health": 98
+          "health": 57
         },
         {
           "t": -33,
-          "health": 98
+          "health": 56
         },
         {
           "t": -32,
-          "health": 98
+          "health": 76
         },
         {
           "t": -31,
-          "health": 97
+          "health": 76
         },
         {
           "t": -30,
-          "health": 99
+          "health": 76
         },
         {
           "t": -29,
-          "health": 99
+          "health": 76
         },
         {
           "t": -28,
-          "health": 99
+          "health": 76
         },
         {
           "t": -27,
-          "health": 99
+          "health": 76
         },
         {
           "t": -26,
-          "health": 99
+          "health": 76
         },
         {
           "t": -25,
-          "health": 99
+          "health": 76
         },
         {
           "t": -24,
-          "health": 98
+          "health": 76
         },
         {
           "t": -23,
-          "health": 97
+          "health": 76
         },
         {
           "t": -22,
-          "health": 97
+          "health": 76
         },
         {
           "t": -21,
-          "health": 97
+          "health": 76
         },
         {
           "t": -20,
-          "health": 97
+          "health": 56
         },
         {
           "t": -19,
-          "health": 98
+          "health": 76
         },
         {
           "t": -18,
-          "health": 97
+          "health": 80
         },
         {
           "t": -17,
-          "health": 98
+          "health": 76
         },
         {
           "t": -16,
-          "health": 98
+          "health": 76
         },
         {
           "t": -15,
-          "health": 98
+          "health": 76
         },
         {
           "t": -14,
-          "health": 98
+          "health": 80
         },
         {
           "t": -13,
-          "health": 98
+          "health": 76
         },
         {
           "t": -12,
@@ -5558,81 +5573,91 @@
         },
         {
           "t": -11,
-          "health": 98
+          "health": 76
         },
         {
           "t": -10,
-          "health": 98
+          "health": 76
         },
         {
           "t": -9,
-          "health": 98
+          "health": 80
         },
         {
           "t": -8,
-          "health": 98
+          "health": 82
         },
         {
           "t": -7,
-          "health": 97
+          "health": 80
         },
         {
           "t": -6,
-          "health": 97
+          "health": 82
         },
         {
           "t": -5,
-          "health": 97
+          "health": 80
         },
         {
           "t": -4,
-          "health": 98
+          "health": 80
         },
         {
           "t": -3,
-          "health": 98
+          "health": 80
         },
         {
           "t": -2,
-          "health": 98
+          "health": 80
         },
         {
           "t": -1,
-          "health": 93
+          "health": 80
         },
         {
           "t": 0,
-          "health": 30
+          "health": 57
         }
       ],
       "alerts": [
         {
+          "t": -39,
+          "level": "At Risk",
+          "text": "Device crossed into At Risk: health 57"
+        },
+        {
+          "t": -20,
+          "level": "At Risk",
+          "text": "Device crossed into At Risk: health 56"
+        },
+        {
           "t": 0,
-          "level": "Critical",
-          "text": "Device crossed into Critical: health 30"
+          "level": "At Risk",
+          "text": "Device crossed into At Risk: health 57"
         },
         {
           "t": 0,
           "level": "Prediction",
-          "text": "Predicted failure in ~30 days (Storage (disk))"
+          "text": "Predicted failure in ~42 days (Storage (disk))"
         }
       ],
-      "predictedFailureDays": 30,
+      "predictedFailureDays": 42,
       "subsystems": {
         "storage": {
-          "risk": 0.9979
+          "risk": 0.6132
         },
         "components": {
           "risk": 0.0
         },
         "rul": {
           "risk": 0.0,
-          "days": 124.2
+          "days": 113.3
         }
       },
       "recommendation": {
-        "tier": "Critical",
-        "priority": "P1 - act now, high failure probability",
+        "tier": "At Risk",
+        "priority": "P2 - schedule within maintenance window",
         "action": "Back up data now and schedule drive replacement. Reallocated and pending-sector growth indicates the disk is approaching end of life.",
         "dominant": "Storage (disk)"
       },
@@ -5643,206 +5668,206 @@
         {
           "signal": "Power-on hours",
           "raw_feature": "smart_9_raw",
-          "value": 5008.0,
-          "impact": -1.7391,
+          "value": 13149.0,
+          "impact": -2.5749,
           "direction": "lowers risk"
         },
         {
-          "signal": "Power-cycle count",
-          "raw_feature": "smart_12_raw",
-          "value": 329.0,
-          "impact": -0.9007,
-          "direction": "lowers risk"
-        },
-        {
-          "signal": "Offline uncorrectable sectors",
-          "raw_feature": "smart_198_raw",
+          "signal": "Reallocated sectors",
+          "raw_feature": "smart_5_raw",
           "value": 0.0,
-          "impact": -0.2323,
+          "impact": -0.5305,
+          "direction": "lowers risk"
+        },
+        {
+          "signal": "Drive temperature",
+          "raw_feature": "smart_194_raw",
+          "value": 35.0,
+          "impact": -0.4705,
           "direction": "lowers risk"
         },
         {
           "signal": "Pending sectors (7-day avg)",
           "raw_feature": "smart_197_raw_roll7",
           "value": 0.0,
-          "impact": -0.2296,
+          "impact": -0.456,
           "direction": "lowers risk"
         }
       ],
       "history": [
         {
           "t": -39,
-          "health": 98
+          "health": 99
         },
         {
           "t": -38,
-          "health": 98
+          "health": 99
         },
         {
           "t": -37,
-          "health": 98
+          "health": 99
         },
         {
           "t": -36,
-          "health": 98
+          "health": 99
         },
         {
           "t": -35,
-          "health": 98
+          "health": 99
         },
         {
           "t": -34,
-          "health": 98
+          "health": 99
         },
         {
           "t": -33,
-          "health": 98
+          "health": 99
         },
         {
           "t": -32,
-          "health": 98
+          "health": 99
         },
         {
           "t": -31,
-          "health": 98
+          "health": 99
         },
         {
           "t": -30,
-          "health": 98
+          "health": 99
         },
         {
           "t": -29,
-          "health": 98
+          "health": 99
         },
         {
           "t": -28,
-          "health": 98
+          "health": 99
         },
         {
           "t": -27,
-          "health": 98
+          "health": 99
         },
         {
           "t": -26,
-          "health": 98
+          "health": 99
         },
         {
           "t": -25,
-          "health": 98
+          "health": 99
         },
         {
           "t": -24,
-          "health": 98
+          "health": 99
         },
         {
           "t": -23,
-          "health": 98
+          "health": 99
         },
         {
           "t": -22,
-          "health": 98
+          "health": 99
         },
         {
           "t": -21,
-          "health": 98
+          "health": 99
         },
         {
           "t": -20,
-          "health": 98
+          "health": 99
         },
         {
           "t": -19,
-          "health": 98
+          "health": 99
         },
         {
           "t": -18,
-          "health": 98
+          "health": 99
         },
         {
           "t": -17,
-          "health": 98
+          "health": 99
         },
         {
           "t": -16,
-          "health": 98
+          "health": 99
         },
         {
           "t": -15,
-          "health": 98
+          "health": 99
         },
         {
           "t": -14,
-          "health": 98
+          "health": 99
         },
         {
           "t": -13,
-          "health": 98
+          "health": 99
         },
         {
           "t": -12,
-          "health": 98
+          "health": 99
         },
         {
           "t": -11,
-          "health": 98
+          "health": 99
         },
         {
           "t": -10,
-          "health": 98
+          "health": 99
         },
         {
           "t": -9,
-          "health": 98
+          "health": 99
         },
         {
           "t": -8,
-          "health": 98
+          "health": 99
         },
         {
           "t": -7,
-          "health": 98
+          "health": 99
         },
         {
           "t": -6,
-          "health": 98
+          "health": 99
         },
         {
           "t": -5,
-          "health": 98
+          "health": 99
         },
         {
           "t": -4,
-          "health": 98
+          "health": 99
         },
         {
           "t": -3,
-          "health": 98
+          "health": 99
         },
         {
           "t": -2,
-          "health": 98
+          "health": 99
         },
         {
           "t": -1,
-          "health": 98
+          "health": 99
         },
         {
           "t": 0,
-          "health": 98
+          "health": 99
         }
       ],
       "alerts": [],
       "predictedFailureDays": null,
       "subsystems": {
         "storage": {
-          "risk": 0.0256
+          "risk": 0.0081
         },
         "components": {
           "risk": 0.0002
         },
         "rul": {
           "risk": 0.0,
-          "days": 123.8
+          "days": 119.0
         }
       },
       "recommendation": {
@@ -5858,206 +5883,206 @@
         {
           "signal": "Power-on hours",
           "raw_feature": "smart_9_raw",
-          "value": 4121.0,
-          "impact": -2.2392,
+          "value": 41540.0,
+          "impact": -0.5322,
           "direction": "lowers risk"
         },
         {
-          "signal": "Power-cycle count",
-          "raw_feature": "smart_12_raw",
-          "value": 364.0,
-          "impact": -2.0052,
-          "direction": "lowers risk"
-        },
-        {
-          "signal": "Drive temperature",
-          "raw_feature": "smart_194_raw",
-          "value": 33.4,
-          "impact": -0.5438,
+          "signal": "Reallocated sectors",
+          "raw_feature": "smart_5_raw",
+          "value": 0.0,
+          "impact": -0.4814,
           "direction": "lowers risk"
         },
         {
           "signal": "Pending sectors (7-day avg)",
           "raw_feature": "smart_197_raw_roll7",
           "value": 0.0,
-          "impact": -0.3424,
+          "impact": -0.3268,
+          "direction": "lowers risk"
+        },
+        {
+          "signal": "Power-cycle count",
+          "raw_feature": "smart_12_raw",
+          "value": 15.0,
+          "impact": -0.3249,
           "direction": "lowers risk"
         }
       ],
       "history": [
         {
           "t": -39,
-          "health": 100
+          "health": 96
         },
         {
           "t": -38,
-          "health": 100
+          "health": 96
         },
         {
           "t": -37,
-          "health": 100
+          "health": 96
         },
         {
           "t": -36,
-          "health": 100
+          "health": 96
         },
         {
           "t": -35,
-          "health": 100
+          "health": 96
         },
         {
           "t": -34,
-          "health": 100
+          "health": 96
         },
         {
           "t": -33,
-          "health": 100
+          "health": 96
         },
         {
           "t": -32,
-          "health": 100
+          "health": 96
         },
         {
           "t": -31,
-          "health": 100
+          "health": 96
         },
         {
           "t": -30,
-          "health": 100
+          "health": 96
         },
         {
           "t": -29,
-          "health": 100
+          "health": 96
         },
         {
           "t": -28,
-          "health": 100
+          "health": 96
         },
         {
           "t": -27,
-          "health": 100
+          "health": 96
         },
         {
           "t": -26,
-          "health": 100
+          "health": 96
         },
         {
           "t": -25,
-          "health": 100
+          "health": 96
         },
         {
           "t": -24,
-          "health": 100
+          "health": 96
         },
         {
           "t": -23,
-          "health": 100
+          "health": 96
         },
         {
           "t": -22,
-          "health": 100
+          "health": 96
         },
         {
           "t": -21,
-          "health": 100
+          "health": 96
         },
         {
           "t": -20,
-          "health": 100
+          "health": 96
         },
         {
           "t": -19,
-          "health": 100
+          "health": 96
         },
         {
           "t": -18,
-          "health": 100
+          "health": 96
         },
         {
           "t": -17,
-          "health": 100
+          "health": 96
         },
         {
           "t": -16,
-          "health": 100
+          "health": 96
         },
         {
           "t": -15,
-          "health": 100
+          "health": 96
         },
         {
           "t": -14,
-          "health": 100
+          "health": 96
         },
         {
           "t": -13,
-          "health": 100
+          "health": 96
         },
         {
           "t": -12,
-          "health": 100
+          "health": 96
         },
         {
           "t": -11,
-          "health": 100
+          "health": 96
         },
         {
           "t": -10,
-          "health": 100
+          "health": 96
         },
         {
           "t": -9,
-          "health": 100
+          "health": 95
         },
         {
           "t": -8,
-          "health": 100
+          "health": 95
         },
         {
           "t": -7,
-          "health": 100
+          "health": 95
         },
         {
           "t": -6,
-          "health": 100
+          "health": 94
         },
         {
           "t": -5,
-          "health": 100
+          "health": 94
         },
         {
           "t": -4,
-          "health": 100
+          "health": 94
         },
         {
           "t": -3,
-          "health": 100
+          "health": 94
         },
         {
           "t": -2,
-          "health": 100
+          "health": 94
         },
         {
           "t": -1,
-          "health": 100
+          "health": 93
         },
         {
           "t": 0,
-          "health": 100
+          "health": 93
         }
       ],
       "alerts": [],
       "predictedFailureDays": null,
       "subsystems": {
         "storage": {
-          "risk": 0.0031
+          "risk": 0.0964
         },
         "components": {
           "risk": 0.0003
         },
         "rul": {
           "risk": 0.0,
-          "days": 123.6
+          "days": 108.0
         }
       },
       "recommendation": {
@@ -6071,31 +6096,31 @@
     "srv-027": {
       "why": [
         {
-          "signal": "Power-on hours",
-          "raw_feature": "smart_9_raw",
-          "value": 5469.0,
-          "impact": -3.0451,
-          "direction": "lowers risk"
-        },
-        {
           "signal": "Power-cycle count",
           "raw_feature": "smart_12_raw",
-          "value": 346.0,
-          "impact": -2.7163,
+          "value": 8.0,
+          "impact": -2.0766,
           "direction": "lowers risk"
         },
         {
           "signal": "Drive temperature",
           "raw_feature": "smart_194_raw",
-          "value": 33.1,
-          "impact": -0.774,
+          "value": 43.0,
+          "impact": -1.7504,
           "direction": "lowers risk"
         },
         {
-          "signal": "Pending sectors (7-day avg)",
-          "raw_feature": "smart_197_raw_roll7",
+          "signal": "Power-on hours",
+          "raw_feature": "smart_9_raw",
+          "value": 36198.0,
+          "impact": -0.7728,
+          "direction": "lowers risk"
+        },
+        {
+          "signal": "Reallocated sectors",
+          "raw_feature": "smart_5_raw",
           "value": 0.0,
-          "impact": -0.3394,
+          "impact": -0.6066,
           "direction": "lowers risk"
         }
       ],
@@ -6265,14 +6290,14 @@
       "predictedFailureDays": null,
       "subsystems": {
         "storage": {
-          "risk": 0.0006
+          "risk": 0.0023
         },
         "components": {
           "risk": 0.0001
         },
         "rul": {
           "risk": 0.0,
-          "days": 125.0
+          "days": 119.9
         }
       },
       "recommendation": {
@@ -6288,29 +6313,29 @@
         {
           "signal": "Power-on hours",
           "raw_feature": "smart_9_raw",
-          "value": 29589.0,
-          "impact": -2.4253,
-          "direction": "lowers risk"
-        },
-        {
-          "signal": "Power-cycle count",
-          "raw_feature": "smart_12_raw",
-          "value": 255.0,
-          "impact": -1.8298,
+          "value": 1139.0,
+          "impact": -1.9751,
           "direction": "lowers risk"
         },
         {
           "signal": "Drive temperature",
           "raw_feature": "smart_194_raw",
-          "value": 26.1,
-          "impact": -0.6688,
+          "value": 27.0,
+          "impact": -1.8382,
           "direction": "lowers risk"
         },
         {
-          "signal": "Pending sectors (7-day avg)",
-          "raw_feature": "smart_197_raw_roll7",
+          "signal": "Power-cycle count",
+          "raw_feature": "smart_12_raw",
+          "value": 12.0,
+          "impact": -1.0098,
+          "direction": "lowers risk"
+        },
+        {
+          "signal": "Reallocated sectors",
+          "raw_feature": "smart_5_raw",
           "value": 0.0,
-          "impact": -0.3303,
+          "impact": -0.3237,
           "direction": "lowers risk"
         }
       ],
@@ -6480,14 +6505,14 @@
       "predictedFailureDays": null,
       "subsystems": {
         "storage": {
-          "risk": 0.003
+          "risk": 0.0032
         },
         "components": {
           "risk": 0.0001
         },
         "rul": {
           "risk": 0.0,
-          "days": 124.3
+          "days": 119.8
         }
       },
       "recommendation": {
@@ -6500,357 +6525,357 @@
     }
   },
   "timeline": {
-    "serial": "D00121",
+    "serial": "ZYD1WDPL",
     "steps": [
       {
-        "day": 85,
+        "day": 57,
         "daysToFailure": 34,
-        "storageRisk": 0.0071,
-        "health": 96,
+        "storageRisk": 0.1652,
+        "health": 88,
         "tier": "Healthy",
         "smart5": 0,
-        "smart197": 0,
-        "smart198": 0
+        "smart197": 66,
+        "smart198": 66
+      },
+      {
+        "day": 58,
+        "daysToFailure": 33,
+        "storageRisk": 0.2548,
+        "health": 82,
+        "tier": "Healthy",
+        "smart5": 0,
+        "smart197": 52,
+        "smart198": 52
+      },
+      {
+        "day": 59,
+        "daysToFailure": 32,
+        "storageRisk": 0.9624,
+        "health": 33,
+        "tier": "Critical",
+        "smart5": 0,
+        "smart197": 140,
+        "smart198": 140
+      },
+      {
+        "day": 60,
+        "daysToFailure": 31,
+        "storageRisk": 0.9481,
+        "health": 34,
+        "tier": "Critical",
+        "smart5": 0,
+        "smart197": 148,
+        "smart198": 148
+      },
+      {
+        "day": 61,
+        "daysToFailure": 30,
+        "storageRisk": 0.9481,
+        "health": 34,
+        "tier": "Critical",
+        "smart5": 0,
+        "smart197": 157,
+        "smart198": 157
+      },
+      {
+        "day": 62,
+        "daysToFailure": 29,
+        "storageRisk": 0.9528,
+        "health": 33,
+        "tier": "Critical",
+        "smart5": 0,
+        "smart197": 175,
+        "smart198": 175
+      },
+      {
+        "day": 63,
+        "daysToFailure": 28,
+        "storageRisk": 0.928,
+        "health": 35,
+        "tier": "At Risk",
+        "smart5": 0,
+        "smart197": 175,
+        "smart198": 175
+      },
+      {
+        "day": 64,
+        "daysToFailure": 27,
+        "storageRisk": 0.8876,
+        "health": 38,
+        "tier": "At Risk",
+        "smart5": 0,
+        "smart197": 173,
+        "smart198": 173
+      },
+      {
+        "day": 65,
+        "daysToFailure": 26,
+        "storageRisk": 0.7457,
+        "health": 48,
+        "tier": "At Risk",
+        "smart5": 0,
+        "smart197": 173,
+        "smart198": 173
+      },
+      {
+        "day": 66,
+        "daysToFailure": 25,
+        "storageRisk": 0.9463,
+        "health": 34,
+        "tier": "Critical",
+        "smart5": 0,
+        "smart197": 173,
+        "smart198": 173
+      },
+      {
+        "day": 67,
+        "daysToFailure": 24,
+        "storageRisk": 0.9537,
+        "health": 33,
+        "tier": "Critical",
+        "smart5": 0,
+        "smart197": 178,
+        "smart198": 178
+      },
+      {
+        "day": 68,
+        "daysToFailure": 23,
+        "storageRisk": 0.9654,
+        "health": 32,
+        "tier": "Critical",
+        "smart5": 0,
+        "smart197": 201,
+        "smart198": 201
+      },
+      {
+        "day": 69,
+        "daysToFailure": 22,
+        "storageRisk": 0.9654,
+        "health": 32,
+        "tier": "Critical",
+        "smart5": 0,
+        "smart197": 201,
+        "smart198": 201
+      },
+      {
+        "day": 70,
+        "daysToFailure": 21,
+        "storageRisk": 0.9648,
+        "health": 32,
+        "tier": "Critical",
+        "smart5": 0,
+        "smart197": 201,
+        "smart198": 201
+      },
+      {
+        "day": 71,
+        "daysToFailure": 20,
+        "storageRisk": 0.9654,
+        "health": 32,
+        "tier": "Critical",
+        "smart5": 0,
+        "smart197": 205,
+        "smart198": 205
+      },
+      {
+        "day": 72,
+        "daysToFailure": 19,
+        "storageRisk": 0.9648,
+        "health": 32,
+        "tier": "Critical",
+        "smart5": 0,
+        "smart197": 205,
+        "smart198": 205
+      },
+      {
+        "day": 73,
+        "daysToFailure": 18,
+        "storageRisk": 0.9648,
+        "health": 32,
+        "tier": "Critical",
+        "smart5": 0,
+        "smart197": 213,
+        "smart198": 213
+      },
+      {
+        "day": 74,
+        "daysToFailure": 17,
+        "storageRisk": 0.9648,
+        "health": 32,
+        "tier": "Critical",
+        "smart5": 0,
+        "smart197": 214,
+        "smart198": 214
+      },
+      {
+        "day": 75,
+        "daysToFailure": 16,
+        "storageRisk": 0.9693,
+        "health": 32,
+        "tier": "Critical",
+        "smart5": 0,
+        "smart197": 283,
+        "smart198": 283
+      },
+      {
+        "day": 76,
+        "daysToFailure": 15,
+        "storageRisk": 0.9693,
+        "health": 32,
+        "tier": "Critical",
+        "smart5": 0,
+        "smart197": 285,
+        "smart198": 285
+      },
+      {
+        "day": 77,
+        "daysToFailure": 14,
+        "storageRisk": 0.6695,
+        "health": 53,
+        "tier": "At Risk",
+        "smart5": 0,
+        "smart197": 293,
+        "smart198": 293
+      },
+      {
+        "day": 78,
+        "daysToFailure": 13,
+        "storageRisk": 0.6349,
+        "health": 56,
+        "tier": "At Risk",
+        "smart5": 0,
+        "smart197": 361,
+        "smart198": 361
+      },
+      {
+        "day": 79,
+        "daysToFailure": 12,
+        "storageRisk": 0.2762,
+        "health": 81,
+        "tier": "Healthy",
+        "smart5": 0,
+        "smart197": 406,
+        "smart198": 406
+      },
+      {
+        "day": 80,
+        "daysToFailure": 11,
+        "storageRisk": 0.6096,
+        "health": 57,
+        "tier": "At Risk",
+        "smart5": 0,
+        "smart197": 413,
+        "smart198": 413
+      },
+      {
+        "day": 81,
+        "daysToFailure": 10,
+        "storageRisk": 0.3762,
+        "health": 74,
+        "tier": "Healthy",
+        "smart5": 0,
+        "smart197": 429,
+        "smart198": 429
+      },
+      {
+        "day": 82,
+        "daysToFailure": 9,
+        "storageRisk": 0.2154,
+        "health": 85,
+        "tier": "Healthy",
+        "smart5": 0,
+        "smart197": 429,
+        "smart198": 429
+      },
+      {
+        "day": 83,
+        "daysToFailure": 8,
+        "storageRisk": 0.3762,
+        "health": 74,
+        "tier": "Healthy",
+        "smart5": 0,
+        "smart197": 429,
+        "smart198": 429
+      },
+      {
+        "day": 84,
+        "daysToFailure": 7,
+        "storageRisk": 0.2154,
+        "health": 85,
+        "tier": "Healthy",
+        "smart5": 0,
+        "smart197": 431,
+        "smart198": 431
+      },
+      {
+        "day": 85,
+        "daysToFailure": 6,
+        "storageRisk": 0.3851,
+        "health": 73,
+        "tier": "Healthy",
+        "smart5": 0,
+        "smart197": 441,
+        "smart198": 441
       },
       {
         "day": 86,
-        "daysToFailure": 33,
-        "storageRisk": 0.0101,
-        "health": 96,
+        "daysToFailure": 5,
+        "storageRisk": 0.1085,
+        "health": 92,
         "tier": "Healthy",
         "smart5": 0,
-        "smart197": 0,
-        "smart198": 0
+        "smart197": 441,
+        "smart198": 441
       },
       {
         "day": 87,
-        "daysToFailure": 32,
-        "storageRisk": 0.009,
-        "health": 96,
+        "daysToFailure": 4,
+        "storageRisk": 0.1059,
+        "health": 93,
         "tier": "Healthy",
-        "smart5": 3,
-        "smart197": 0,
-        "smart198": 1
+        "smart5": 0,
+        "smart197": 574,
+        "smart198": 574
       },
       {
         "day": 88,
-        "daysToFailure": 31,
-        "storageRisk": 0.3963,
-        "health": 72,
+        "daysToFailure": 3,
+        "storageRisk": 0.1121,
+        "health": 92,
         "tier": "Healthy",
-        "smart5": 2,
-        "smart197": 3,
-        "smart198": 1
+        "smart5": 0,
+        "smart197": 576,
+        "smart198": 576
       },
       {
         "day": 89,
-        "daysToFailure": 30,
-        "storageRisk": 0.9931,
-        "health": 30,
-        "tier": "Critical",
-        "smart5": 5,
-        "smart197": 2,
-        "smart198": 3
+        "daysToFailure": 2,
+        "storageRisk": 0.1121,
+        "health": 92,
+        "tier": "Healthy",
+        "smart5": 0,
+        "smart197": 576,
+        "smart198": 576
       },
       {
         "day": 90,
-        "daysToFailure": 29,
-        "storageRisk": 0.9978,
-        "health": 30,
-        "tier": "Critical",
-        "smart5": 7,
-        "smart197": 5,
-        "smart198": 1
+        "daysToFailure": 1,
+        "storageRisk": 0.1121,
+        "health": 92,
+        "tier": "Healthy",
+        "smart5": 0,
+        "smart197": 576,
+        "smart198": 576
       },
       {
         "day": 91,
-        "daysToFailure": 28,
-        "storageRisk": 0.9992,
-        "health": 30,
-        "tier": "Critical",
-        "smart5": 9,
-        "smart197": 3,
-        "smart198": 1
-      },
-      {
-        "day": 92,
-        "daysToFailure": 27,
-        "storageRisk": 0.9999,
-        "health": 30,
-        "tier": "Critical",
-        "smart5": 6,
-        "smart197": 4,
-        "smart198": 2
-      },
-      {
-        "day": 93,
-        "daysToFailure": 26,
-        "storageRisk": 1.0,
-        "health": 30,
-        "tier": "Critical",
-        "smart5": 7,
-        "smart197": 7,
-        "smart198": 5
-      },
-      {
-        "day": 94,
-        "daysToFailure": 25,
-        "storageRisk": 1.0,
-        "health": 30,
-        "tier": "Critical",
-        "smart5": 9,
-        "smart197": 8,
-        "smart198": 3
-      },
-      {
-        "day": 95,
-        "daysToFailure": 24,
-        "storageRisk": 1.0,
-        "health": 30,
-        "tier": "Critical",
-        "smart5": 8,
-        "smart197": 6,
-        "smart198": 5
-      },
-      {
-        "day": 96,
-        "daysToFailure": 23,
-        "storageRisk": 0.9996,
-        "health": 30,
-        "tier": "Critical",
-        "smart5": 6,
-        "smart197": 6,
-        "smart198": 5
-      },
-      {
-        "day": 97,
-        "daysToFailure": 22,
-        "storageRisk": 0.9999,
-        "health": 30,
-        "tier": "Critical",
-        "smart5": 14,
-        "smart197": 6,
-        "smart198": 8
-      },
-      {
-        "day": 98,
-        "daysToFailure": 21,
-        "storageRisk": 1.0,
-        "health": 30,
-        "tier": "Critical",
-        "smart5": 14,
-        "smart197": 8,
-        "smart198": 4
-      },
-      {
-        "day": 99,
-        "daysToFailure": 20,
-        "storageRisk": 1.0,
-        "health": 30,
-        "tier": "Critical",
-        "smart5": 14,
-        "smart197": 10,
-        "smart198": 8
-      },
-      {
-        "day": 100,
-        "daysToFailure": 19,
-        "storageRisk": 1.0,
-        "health": 30,
-        "tier": "Critical",
-        "smart5": 19,
-        "smart197": 11,
-        "smart198": 7
-      },
-      {
-        "day": 101,
-        "daysToFailure": 18,
-        "storageRisk": 1.0,
-        "health": 30,
-        "tier": "Critical",
-        "smart5": 15,
-        "smart197": 10,
-        "smart198": 6
-      },
-      {
-        "day": 102,
-        "daysToFailure": 17,
-        "storageRisk": 1.0,
-        "health": 30,
-        "tier": "Critical",
-        "smart5": 16,
-        "smart197": 9,
-        "smart198": 10
-      },
-      {
-        "day": 103,
-        "daysToFailure": 16,
-        "storageRisk": 1.0,
-        "health": 30,
-        "tier": "Critical",
-        "smart5": 23,
-        "smart197": 12,
-        "smart198": 8
-      },
-      {
-        "day": 104,
-        "daysToFailure": 15,
-        "storageRisk": 0.9999,
-        "health": 30,
-        "tier": "Critical",
-        "smart5": 20,
-        "smart197": 16,
-        "smart198": 6
-      },
-      {
-        "day": 105,
-        "daysToFailure": 14,
-        "storageRisk": 1.0,
-        "health": 30,
-        "tier": "Critical",
-        "smart5": 17,
-        "smart197": 16,
-        "smart198": 12
-      },
-      {
-        "day": 106,
-        "daysToFailure": 13,
-        "storageRisk": 1.0,
-        "health": 30,
-        "tier": "Critical",
-        "smart5": 24,
-        "smart197": 16,
-        "smart198": 8
-      },
-      {
-        "day": 107,
-        "daysToFailure": 12,
-        "storageRisk": 1.0,
-        "health": 30,
-        "tier": "Critical",
-        "smart5": 21,
-        "smart197": 18,
-        "smart198": 9
-      },
-      {
-        "day": 108,
-        "daysToFailure": 11,
-        "storageRisk": 1.0,
-        "health": 30,
-        "tier": "Critical",
-        "smart5": 28,
-        "smart197": 15,
-        "smart198": 8
-      },
-      {
-        "day": 109,
-        "daysToFailure": 10,
-        "storageRisk": 1.0,
-        "health": 30,
-        "tier": "Critical",
-        "smart5": 20,
-        "smart197": 22,
-        "smart198": 10
-      },
-      {
-        "day": 110,
-        "daysToFailure": 9,
-        "storageRisk": 1.0,
-        "health": 30,
-        "tier": "Critical",
-        "smart5": 29,
-        "smart197": 12,
-        "smart198": 12
-      },
-      {
-        "day": 111,
-        "daysToFailure": 8,
-        "storageRisk": 1.0,
-        "health": 30,
-        "tier": "Critical",
-        "smart5": 24,
-        "smart197": 19,
-        "smart198": 12
-      },
-      {
-        "day": 112,
-        "daysToFailure": 7,
-        "storageRisk": 0.9999,
-        "health": 30,
-        "tier": "Critical",
-        "smart5": 30,
-        "smart197": 16,
-        "smart198": 15
-      },
-      {
-        "day": 113,
-        "daysToFailure": 6,
-        "storageRisk": 1.0,
-        "health": 30,
-        "tier": "Critical",
-        "smart5": 34,
-        "smart197": 21,
-        "smart198": 17
-      },
-      {
-        "day": 114,
-        "daysToFailure": 5,
-        "storageRisk": 1.0,
-        "health": 30,
-        "tier": "Critical",
-        "smart5": 36,
-        "smart197": 19,
-        "smart198": 16
-      },
-      {
-        "day": 115,
-        "daysToFailure": 4,
-        "storageRisk": 1.0,
-        "health": 30,
-        "tier": "Critical",
-        "smart5": 38,
-        "smart197": 27,
-        "smart198": 17
-      },
-      {
-        "day": 116,
-        "daysToFailure": 3,
-        "storageRisk": 1.0,
-        "health": 30,
-        "tier": "Critical",
-        "smart5": 29,
-        "smart197": 25,
-        "smart198": 17
-      },
-      {
-        "day": 117,
-        "daysToFailure": 2,
-        "storageRisk": 1.0,
-        "health": 30,
-        "tier": "Critical",
-        "smart5": 32,
-        "smart197": 16,
-        "smart198": 17
-      },
-      {
-        "day": 118,
-        "daysToFailure": 1,
-        "storageRisk": 1.0,
-        "health": 30,
-        "tier": "Critical",
-        "smart5": 35,
-        "smart197": 18,
-        "smart198": 24
-      },
-      {
-        "day": 119,
         "daysToFailure": 0,
-        "storageRisk": 1.0,
-        "health": 30,
-        "tier": "Critical",
-        "smart5": 35,
-        "smart197": 23,
-        "smart198": 21
+        "storageRisk": 0.1437,
+        "health": 90,
+        "tier": "Healthy",
+        "smart5": 0,
+        "smart197": 586,
+        "smart198": 586
       }
     ]
   },
