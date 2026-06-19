@@ -7,7 +7,7 @@ export default function FallbackGrid() {
         className="absolute inset-0"
         style={{
           backgroundImage:
-            "linear-gradient(#8b8cf014 1px, transparent 1px), linear-gradient(90deg,#8b8cf014 1px, transparent 1px)",
+            "linear-gradient(#4f8bff14 1px, transparent 1px), linear-gradient(90deg,#4f8bff14 1px, transparent 1px)",
           backgroundSize: "60px 60px",
           transform: "perspective(600px) rotateX(60deg) scale(2)",
           transformOrigin: "center 40%",
@@ -15,7 +15,7 @@ export default function FallbackGrid() {
         }}
       />
       <div className="absolute left-1/2 top-1/3 h-72 w-72 -translate-x-1/2 rounded-full"
-        style={{ background: "radial-gradient(circle,#8b8cf033,transparent 70%)", filter: "blur(20px)" }} />
+        style={{ background: "radial-gradient(circle,#4f8bff33,transparent 70%)", filter: "blur(20px)" }} />
     </div>
   );
 }

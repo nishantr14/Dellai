@@ -13,8 +13,8 @@ export default function Nav() {
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         <a href="#hero" className="flex items-center gap-2">
           <span className="grid h-8 w-8 place-items-center rounded-lg"
-            style={{ background: "#8b8cf022", border: "1px solid #8b8cf055" }}>
-            <Activity size={17} color="#8b8cf0" />
+            style={{ background: "#4f8bff22", border: "1px solid #4f8bff55" }}>
+            <Activity size={17} color="#4f8bff" />
           </span>
           <span className="font-semibold tracking-wide">PulseGuard</span>
         </a>

@@ -7,7 +7,7 @@ const CHIPS = [
   { icon: Thermometer, label: "Temperature", value: "47°C", trend: "nominal", color: "#3fb98a" },
   { icon: Zap, label: "Power Draw", value: "412 W", trend: "stable", color: "#0085c3" },
   { icon: HardDrive, label: "Storage Health", value: "98%", trend: "healthy", color: "#3fb98a" },
-  { icon: Fan, label: "Fan Speed", value: "6,200 RPM", trend: "nominal", color: "#8b8cf0" },
+  { icon: Fan, label: "Fan Speed", value: "6,200 RPM", trend: "nominal", color: "#4f8bff" },
   { icon: Activity, label: "SMART Data", value: "0 reallocated", trend: "clean", color: "#3fb98a" },
 ];
 

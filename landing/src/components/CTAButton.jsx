@@ -13,7 +13,7 @@ export default function CTAButton({ children, href, secondary = false }) {
       style={
         secondary
           ? { color: "#e8eef6", background: "transparent", border: "1px solid #222d3d" }
-          : { color: "#0a0e14", background: "#8b8cf0", border: "none" }
+          : { color: "#0a0e14", background: "#4f8bff", border: "none" }
       }
     >
       {children}
