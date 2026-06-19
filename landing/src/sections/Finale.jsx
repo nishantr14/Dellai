@@ -32,7 +32,7 @@ export default function Finale() {
           viewport={{ once: true, amount: 0.6 }} transition={{ duration: 1, delay: 0.9 }}
           className="mt-16">
           <div className="font-mono text-4xl font-black tracking-[0.2em] md:text-6xl"
-            style={{ background: `linear-gradient(90deg,${T.brand},${T.dell})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent" }}>
+            style={{ background: `linear-gradient(90deg,${T.brand},${T.dell})`, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", filter: "drop-shadow(0 0 26px rgba(79,139,255,0.45))" }}>
             PULSEGUARD
           </div>
           <p className="mt-3 text-sm text-muted">AI-Powered Predictive Hardware Failure Detection</p>

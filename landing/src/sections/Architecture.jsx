@@ -32,9 +32,9 @@ export default function Architecture() {
             style={{ background: `linear-gradient(${T.brand},${T.dell})` }} />
           {STAGES.map((s, i) => (
             <div key={s}
-              className="pg-stage relative z-10 w-full max-w-sm rounded-xl border px-6 py-4 backdrop-blur-xl"
+              className="pg-stage relative z-10 w-full max-w-sm rounded-xl border px-6 py-4"
               style={{
-                background: "rgba(17,24,36,0.7)",
+                background: "rgba(17,24,36,0.88)",
                 borderColor: i === STAGES.length - 1 ? `${T.brand}88` : T.line,
                 boxShadow: i === STAGES.length - 1 ? `0 0 30px ${T.brand}33` : "none",
               }}>

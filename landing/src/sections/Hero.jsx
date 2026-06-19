@@ -4,8 +4,11 @@ import CTAButton from "../components/CTAButton.jsx";
 
 export default function Hero() {
   return (
-    <SectionWrapper id="hero" className="grid place-items-center text-center">
-      <div className="px-6">
+    <SectionWrapper id="hero" className="flex flex-col items-center justify-center text-center px-6 pt-28 pb-20">
+      {/* soft brand halo behind the headline */}
+      <div className="pointer-events-none absolute left-1/2 top-1/2 -z-0 h-[42rem] w-[42rem] -translate-x-1/2 -translate-y-1/2 rounded-full"
+        style={{ background: "radial-gradient(circle, rgba(79,139,255,0.16), transparent 62%)", filter: "blur(40px)" }} />
+      <div className="relative px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
@@ -16,7 +19,7 @@ export default function Hero() {
         <motion.h1
           initial={{ opacity: 0, y: 28 }} animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.1, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-          className="mx-auto max-w-4xl text-5xl font-bold leading-[1.05] tracking-tight md:text-7xl"
+          className="text-glow-soft mx-auto max-w-4xl text-5xl font-bold leading-[1.05] tracking-tight md:text-7xl"
         >
           Predict Hardware Failures<br />Before They Happen.
         </motion.h1>

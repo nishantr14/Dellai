@@ -21,3 +21,8 @@ env/
 .DS_Store
 Thumbs.db
 .superpowers/
+
+superpowers-main/
+ui-ux-pro-max-skill-main
+# loose source video (copied into landing/public/media)
+/Holographic_*.mp4

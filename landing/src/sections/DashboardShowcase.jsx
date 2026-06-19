@@ -3,6 +3,7 @@ import { useRef } from "react";
 import SectionWrapper from "../components/SectionWrapper.jsx";
 import GlassCard from "../components/GlassCard.jsx";
 import CTAButton from "../components/CTAButton.jsx";
+import TiltCard from "../components/TiltCard.jsx";
 import { T } from "../theme.js";
 
 // Stylized monitor mockup of the real ops dashboard. (Optional: drop a real
@@ -45,7 +46,9 @@ export default function DashboardShowcase() {
           A control room for your infrastructure.
         </motion.h2>
         <motion.div style={{ y }} className="mt-12">
-          <MonitorMock />
+          <TiltCard max={9} className="rounded-2xl">
+            <MonitorMock />
+          </TiltCard>
         </motion.div>
         <div className="mt-10"><CTAButton>Launch the Dashboard</CTAButton></div>
       </div>

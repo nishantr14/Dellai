@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { HardDrive, Thermometer, Zap, Clock } from "lucide-react";
 import SectionWrapper from "../components/SectionWrapper.jsx";
 import GlassCard from "../components/GlassCard.jsx";
+import TiltCard from "../components/TiltCard.jsx";
 import { T } from "../theme.js";
 
 const SIGNALS = [
@@ -26,18 +27,20 @@ export default function AIAnalysis() {
             <motion.div key={s.title}
               initial={{ opacity: 0, y: 28 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.4 }} transition={{ duration: 0.6, delay: i * 0.12 }}>
-              <GlassCard accent={T.critical} className="h-full p-5">
-                <s.icon size={20} color={T.critical} />
-                <div className="mt-4 font-semibold leading-snug">{s.title}</div>
-                <div className="mt-2 text-sm text-muted">{s.detail}</div>
-                <div className="mt-4 h-1.5 rounded-full" style={{ background: T.bg }}>
-                  <motion.div className="h-full rounded-full"
-                    initial={{ width: 0 }} whileInView={{ width: `${s.impact * 100}%` }}
-                    viewport={{ once: true }} transition={{ duration: 0.9, delay: 0.3 + i * 0.12 }}
-                    style={{ background: T.critical }} />
-                </div>
-                <div className="mt-1 text-right font-mono text-xs text-faint">{Math.round(s.impact * 100)}% impact</div>
-              </GlassCard>
+              <TiltCard max={6} className="h-full">
+                <GlassCard accent={T.critical} className="h-full p-5">
+                  <s.icon size={20} color={T.critical} />
+                  <div className="mt-4 font-semibold leading-snug">{s.title}</div>
+                  <div className="mt-2 text-sm text-muted">{s.detail}</div>
+                  <div className="mt-4 h-1.5 rounded-full" style={{ background: T.bg }}>
+                    <motion.div className="h-full rounded-full"
+                      initial={{ width: 0 }} whileInView={{ width: `${s.impact * 100}%` }}
+                      viewport={{ once: true }} transition={{ duration: 0.9, delay: 0.3 + i * 0.12 }}
+                      style={{ background: T.critical }} />
+                  </div>
+                  <div className="mt-1 text-right font-mono text-xs text-faint">{Math.round(s.impact * 100)}% impact</div>
+                </GlassCard>
+              </TiltCard>
             </motion.div>
           ))}
         </div>
