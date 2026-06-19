@@ -1,9 +1,11 @@
 import Nav from "./components/Nav.jsx";
 import ScrollProgress from "./components/ScrollProgress.jsx";
+import ServerRoom from "./three/ServerRoom.jsx";
 
 export default function App() {
   return (
     <div className="grain vignette bg-bg text-text">
+      <ServerRoom />
       <ScrollProgress />
       <Nav />
       <main>
