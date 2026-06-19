@@ -1,7 +1,17 @@
+import Nav from "./components/Nav.jsx";
+import ScrollProgress from "./components/ScrollProgress.jsx";
+
 export default function App() {
   return (
-    <main className="min-h-screen grid place-items-center bg-bg text-text">
-      <h1 className="font-sans text-4xl font-bold tracking-tight">PulseGuard</h1>
-    </main>
+    <div className="grain vignette bg-bg text-text">
+      <ScrollProgress />
+      <Nav />
+      <main>
+        <section id="hero" style={{ minHeight: "100vh" }} className="grid place-items-center">
+          <h1 className="text-5xl font-bold tracking-tight">PulseGuard</h1>
+        </section>
+        <section style={{ minHeight: "100vh" }} />
+      </main>
+    </div>
   );
 }
