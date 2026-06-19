@@ -7,6 +7,7 @@ import { initLenis } from "./lib/lenis.js";
 import { sceneState } from "./three/sceneStore.js";
 import Hero from "./sections/Hero.jsx";
 import RackFlythrough from "./sections/RackFlythrough.jsx";
+import Degradation from "./sections/Degradation.jsx";
 
 export default function App() {
   const { data } = usePulseData();
@@ -31,6 +32,7 @@ export default function App() {
       <main className="relative z-10">
         <Hero />
         <RackFlythrough />
+        <Degradation />
       </main>
     </div>
   );
