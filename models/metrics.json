@@ -19,23 +19,23 @@
     "source": "synthetic"
   },
   "components": {
-    "precision": 0.3056,
-    "recall": 0.9686,
-    "f1": 0.4646,
-    "roc_auc": 0.9793,
-    "pr_auc": 0.8477,
-    "fpr": 0.1495,
-    "threshold": 0.0164,
+    "precision": 0.1854,
+    "recall": 0.9529,
+    "f1": 0.3103,
+    "roc_auc": 0.9741,
+    "pr_auc": 0.7855,
+    "fpr": 0.1474,
+    "threshold": 0.0023,
     "confusion": {
-      "tn": 1991,
-      "fp": 350,
-      "fn": 5,
-      "tp": 154
+      "tn": 2059,
+      "fp": 356,
+      "fn": 4,
+      "tp": 81
     },
-    "positive_rate": 0.0636,
-    "naive_accuracy_baseline": 0.9364,
+    "positive_rate": 0.034,
+    "naive_accuracy_baseline": 0.966,
     "n_test": 2500,
-    "source": "synthetic"
+    "source": "real"
   },
   "rul": {
     "rmse": 16.03,
