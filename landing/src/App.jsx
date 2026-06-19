@@ -8,6 +8,7 @@ import { sceneState } from "./three/sceneStore.js";
 import Hero from "./sections/Hero.jsx";
 import RackFlythrough from "./sections/RackFlythrough.jsx";
 import Degradation from "./sections/Degradation.jsx";
+import AIAnalysis from "./sections/AIAnalysis.jsx";
 
 export default function App() {
   const { data } = usePulseData();
@@ -33,6 +34,7 @@ export default function App() {
         <Hero />
         <RackFlythrough />
         <Degradation />
+        <AIAnalysis />
       </main>
     </div>
   );
