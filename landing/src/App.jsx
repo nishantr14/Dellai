@@ -1,11 +1,14 @@
 import Nav from "./components/Nav.jsx";
 import ScrollProgress from "./components/ScrollProgress.jsx";
 import ServerRoom from "./three/ServerRoom.jsx";
+import { usePulseData } from "./data/usePulseData.js";
 
 export default function App() {
+  const { data } = usePulseData();
+  const fleet = data?.fleet ?? [];
   return (
     <div className="grain vignette bg-bg text-text">
-      <ServerRoom />
+      <ServerRoom fleet={fleet} />
       <ScrollProgress />
       <Nav />
       <main>
