@@ -12,6 +12,7 @@ import AIAnalysis from "./sections/AIAnalysis.jsx";
 import FleetView from "./sections/FleetView.jsx";
 import Architecture from "./sections/Architecture.jsx";
 import Metrics from "./sections/Metrics.jsx";
+import DashboardShowcase from "./sections/DashboardShowcase.jsx";
 
 export default function App() {
   const { data } = usePulseData();
@@ -41,6 +42,7 @@ export default function App() {
         <FleetView fleet={fleet} summary={data?.summary} />
         <Architecture />
         <Metrics metrics={data?.metrics} summary={data?.summary} />
+        <DashboardShowcase />
       </main>
     </div>
   );
