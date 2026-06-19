@@ -5,6 +5,7 @@ import ServerRoom from "./three/ServerRoom.jsx";
 import { usePulseData } from "./data/usePulseData.js";
 import { initLenis } from "./lib/lenis.js";
 import { sceneState } from "./three/sceneStore.js";
+import Hero from "./sections/Hero.jsx";
 
 export default function App() {
   const { data } = usePulseData();
@@ -26,10 +27,8 @@ export default function App() {
       <ServerRoom fleet={fleet} />
       <ScrollProgress />
       <Nav />
-      <main>
-        <section id="hero" style={{ minHeight: "100vh" }} className="grid place-items-center">
-          <h1 className="text-5xl font-bold tracking-tight">PulseGuard</h1>
-        </section>
+      <main className="relative z-10">
+        <Hero />
         <section style={{ minHeight: "100vh" }} />
       </main>
     </div>
