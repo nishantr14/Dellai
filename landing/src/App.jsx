@@ -6,6 +6,7 @@ import { usePulseData } from "./data/usePulseData.js";
 import { initLenis } from "./lib/lenis.js";
 import { sceneState } from "./three/sceneStore.js";
 import Hero from "./sections/Hero.jsx";
+import RackFlythrough from "./sections/RackFlythrough.jsx";
 
 export default function App() {
   const { data } = usePulseData();
@@ -29,7 +30,7 @@ export default function App() {
       <Nav />
       <main className="relative z-10">
         <Hero />
-        <section style={{ minHeight: "100vh" }} />
+        <RackFlythrough />
       </main>
     </div>
   );
