@@ -24,6 +24,33 @@ import pandas as pd
 DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
 SEED = 42
 
+# Provenance sidecar. Hard rule #1: real vs synthetic must never be blurred.
+# data_gen writes "synthetic"; data_loaders writes "real". train.py reads this
+# and tags each model in metrics.json so the credibility slide can filter to real.
+SOURCES_PATH = os.path.join(DATA_DIR, "sources.json")
+
+
+def record_source(name: str, source: str) -> None:
+    """Record the provenance ("synthetic"/"real") of data/<name>.csv."""
+    import json
+    sources = {}
+    if os.path.exists(SOURCES_PATH):
+        with open(SOURCES_PATH) as f:
+            sources = json.load(f)
+    sources[name] = source
+    with open(SOURCES_PATH, "w") as f:
+        json.dump(sources, f, indent=2, sort_keys=True)
+
+
+def get_source(name: str) -> str:
+    """Provenance of data/<name>.csv. Defaults to "synthetic" when unknown so we
+    never falsely claim a number is real."""
+    import json
+    if os.path.exists(SOURCES_PATH):
+        with open(SOURCES_PATH) as f:
+            return json.load(f).get(name, "synthetic")
+    return "synthetic"
+
 
 # --------------------------------------------------------------------------- #
 # 1. STORAGE  (Backblaze SMART stand-in)
@@ -239,6 +266,8 @@ def main():
     rul.to_csv(os.path.join(DATA_DIR, "rul.csv"), index=False)
     print(f"  rows={len(rul):,}  |  units={rul['unit'].nunique()}")
 
+    for name in ("storage", "components", "rul"):
+        record_source(name, "synthetic")
     print("Done. CSVs written to", DATA_DIR)
 
 

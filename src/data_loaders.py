@@ -23,7 +23,7 @@ import os
 import numpy as np
 import pandas as pd
 
-from .data_gen import DATA_DIR, SMART_FEATURES, RUL_SENSORS, RUL_CAP
+from .data_gen import DATA_DIR, SMART_FEATURES, RUL_SENSORS, RUL_CAP, record_source
 
 
 # --------------------------------------------------------------------------- #
@@ -100,12 +100,15 @@ def main():
     os.makedirs(DATA_DIR, exist_ok=True)
     if a.storage:
         load_real_storage(a.storage).to_csv(os.path.join(DATA_DIR, "storage.csv"), index=False)
+        record_source("storage", "real")
         print("wrote real storage.csv")
     if a.components:
         load_real_components(a.components).to_csv(os.path.join(DATA_DIR, "components.csv"), index=False)
+        record_source("components", "real")
         print("wrote real components.csv")
     if a.rul:
         load_real_rul(a.rul).to_csv(os.path.join(DATA_DIR, "rul.csv"), index=False)
+        record_source("rul", "real")
         print("wrote real rul.csv")
 
 

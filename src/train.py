@@ -72,6 +72,7 @@ def train_storage():
     df = pd.read_csv(os.path.join(dg.DATA_DIR, "storage.csv"))
     df, feat = fe.storage_features(df)
     X, y = df[feat], df["label_fail_30d"]
+    source = dg.get_source("storage")
     # split by drive so a drive's days never straddle train/test (no leakage)
     drives = df["serial_number"].unique()
     tr_d, te_d = train_test_split(drives, test_size=0.25, random_state=7)
@@ -88,6 +89,7 @@ def train_storage():
     prob = clf.predict_proba(X[te])[:, 1]
     thr = _choose_threshold(y[te].values, prob)
     metrics = _classification_metrics(y[te].values, prob, thr)
+    metrics["source"] = source
     joblib.dump({"model": clf, "features": feat, "threshold": thr}, os.path.join(MODEL_DIR, "storage.joblib"))
     print(f"[storage]   PR-AUC={metrics['pr_auc']}  recall={metrics['recall']}  "
           f"FPR={metrics['fpr']}  (naive acc baseline={metrics['naive_accuracy_baseline']})")
@@ -97,6 +99,7 @@ def train_storage():
 def train_components():
     df = pd.read_csv(os.path.join(dg.DATA_DIR, "components.csv"))
     df, feat = fe.component_features(df)
+    source = dg.get_source("components")
     Xtr, Xte, ytr, yte = train_test_split(
         df[feat], df["machine_failure"], test_size=0.25, random_state=7,
         stratify=df["machine_failure"])
@@ -109,6 +112,7 @@ def train_components():
     prob = clf.predict_proba(Xte)[:, 1]
     thr = _choose_threshold(yte.values, prob)
     metrics = _classification_metrics(yte.values, prob, thr)
+    metrics["source"] = source
 
     # per-component attribution heads (which subsystem is at risk)
     heads = {}
@@ -132,6 +136,7 @@ def train_components():
 def train_rul():
     df = pd.read_csv(os.path.join(dg.DATA_DIR, "rul.csv"))
     feat = fe.rul_features()
+    source = dg.get_source("rul")
     units = df["unit"].unique()
     tr_u, te_u = train_test_split(units, test_size=0.25, random_state=7)
     tr, te = df["unit"].isin(tr_u), df["unit"].isin(te_u)
@@ -147,7 +152,7 @@ def train_rul():
     joblib.dump({"model": reg, "features": feat}, os.path.join(MODEL_DIR, "rul.joblib"))
     metrics = {"rmse": round(rmse, 2), "mae": round(mae, 2),
                "nasa_score": round(score, 1), "rul_cap": dg.RUL_CAP,
-               "n_test_units": int(len(te_u))}
+               "n_test_units": int(len(te_u)), "source": source}
     print(f"[rul]       RMSE={metrics['rmse']} cycles  MAE={metrics['mae']} cycles")
     return metrics
 
