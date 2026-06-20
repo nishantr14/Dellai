@@ -42,10 +42,55 @@ Returns the fleet row PLUS a `detail` object:
       "components": { "risk": 0.99 },
       "rul":        { "risk": 0.83, "days": 5 }
     },
-    "recommendation": { "tier": "Critical", "priority": "P1 - act now", "action": "...", "dominant": "..." }
+    "recommendation": {
+      "tier": "Critical", "priority": "P1 - act now", "dominant": "...",
+      "action": "Inspect the mechanical assembly and reduce load — mechanical overstrain (wear×load) is the dominant failure signal. Resolving this root cause also relieves the co-occurring downstream stress.",
+      "headline": "Inspect the mechanical assembly and reduce load",
+      "priorityCode": "P1", "priorityReason": "act now — high, near-term failure probability",
+      "maintenanceWindow": "Immediate (within 24–48h)",
+      "topSignal": "Wear x load (overstrain index)",
+      "rootCause": "components", "targetsRootCause": false,
+      "basis": "rule-based; driven by dominant subsystem + top SHAP signal"
+    },
+    "cascade": {
+      "detected": true,
+      "chain": "Mechanical wear → vibration → drive stress",
+      "summary": "Mechanical overstrain (components risk 0.99) is co-occurring with rising storage risk (0.83). ...",
+      "rootCause": "components", "rootCauseLabel": "Thermal / power / mechanical",
+      "rootCauseNature": "mechanical",
+      "links": [ { "from": "components", "to": "storage", "mechanism": "vibration coupling" } ],
+      "basis": "authored domain-reasoning overlay (hand-written rules over co-occurring subsystem states; not learned, not model-discovered)"
+    }
   }
 }
 ```
+
+#### `detail.recommendation` — fields (enriched 2026-06-20)
+`tier`, `priority`, `dominant` are **unchanged** from before. `action` is now
+**signal-specific and cascade-aware** (was generic per-subsystem text). New fields:
+`headline` (short imperative action), `priorityCode` (`P1`…`P4` from tier + lead time),
+`priorityReason`, `maintenanceWindow` (derived from predicted failure days / RUL),
+`topSignal` (the dominant SHAP signal driving the action), `rootCause` (subsystem key
+the action targets), `targetsRootCause` (true when a cascade re-pointed the action
+upstream of the visible symptom), `basis`.
+
+#### `detail.cascade` — NEW field (added 2026-06-20)
+An **authored domain-reasoning overlay** — a hand-written rule layer, NOT a learned
+model — that flags likely cross-subsystem failure chains within a device from its
+co-occurring subsystem risks + top signals. Honesty framing: the three subsystems come
+from three different datasets, so a cascade is an engineering-reasoning hypothesis over
+co-occurring states, not proven physical causation in one drive; the `basis` field says
+so. Fields: `detected` (bool). When `false`: `chain`/`rootCause`/`rootCauseLabel` are
+`null`, `links` is `[]`, and `summary` reads "No cascade detected — ...". When `true`:
+`chain` (label), `summary`, `rootCause`/`rootCauseLabel`/`rootCauseNature`
+(`thermal|mechanical|power`), `links` (list of `{from,to,mechanism}`), `basis`.
+Fires only when an upstream driver is genuinely elevated AND a downstream subsystem is
+co-occurring/rising; otherwise `detected:false`.
+
+> ⚠️ **Machine B (frontend) — coordinated contract change.** This adds `detail.cascade`
+> and the enriched `detail.recommendation.*` fields, and upgrades `recommendation.action`
+> text. Fleet rows, health, tiers, fusion, metrics, and the timeline are unchanged. Please
+> render the cascade chain + the new recommendation fields on the device-detail view.
 
 ### `GET /api/metrics`
 Returns the `metrics.json` structure: per-model PR-AUC, recall, FPR, confusion matrix, RUL errors.

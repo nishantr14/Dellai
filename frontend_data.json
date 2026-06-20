@@ -599,8 +599,25 @@
       "recommendation": {
         "tier": "Healthy",
         "priority": "P4 - routine",
-        "action": "No action required. Continue monitoring.",
-        "dominant": "Storage (disk)"
+        "dominant": "Storage (disk)",
+        "action": "No action required. Continue routine monitoring.",
+        "headline": "No action required \u2014 continue monitoring",
+        "priorityCode": "P4",
+        "priorityReason": "routine \u2014 continue monitoring",
+        "maintenanceWindow": "Routine \u2014 next scheduled cycle",
+        "topSignal": null,
+        "rootCause": "storage",
+        "targetsRootCause": false,
+        "basis": "rule-based; driven by dominant subsystem + top SHAP signal"
+      },
+      "cascade": {
+        "detected": false,
+        "chain": null,
+        "summary": "No cascade detected \u2014 no elevated upstream driver (thermal/mechanical/power).",
+        "rootCause": null,
+        "rootCauseLabel": null,
+        "links": [],
+        "basis": "authored domain-reasoning overlay (hand-written rules over co-occurring subsystem states; not learned, not model-discovered)"
       },
       "profile": "healthy"
     },
@@ -825,8 +842,25 @@
       "recommendation": {
         "tier": "At Risk",
         "priority": "P2 - schedule within maintenance window",
-        "action": "Back up data now and schedule drive replacement. Reallocated and pending-sector growth indicates the disk is approaching end of life.",
-        "dominant": "Storage (disk)"
+        "dominant": "Storage (disk)",
+        "action": "Back up data and schedule drive replacement \u2014 drive age / wear is the dominant failure signal.",
+        "headline": "Back up data and schedule drive replacement",
+        "priorityCode": "P2",
+        "priorityReason": "schedule this week \u2014 short lead time",
+        "maintenanceWindow": "Within ~3 days (ahead of predicted failure at ~3d)",
+        "topSignal": "Power-cycle count",
+        "rootCause": "storage",
+        "targetsRootCause": false,
+        "basis": "rule-based; driven by dominant subsystem + top SHAP signal"
+      },
+      "cascade": {
+        "detected": false,
+        "chain": null,
+        "summary": "No cascade detected \u2014 no elevated upstream driver (thermal/mechanical/power).",
+        "rootCause": null,
+        "rootCauseLabel": null,
+        "links": [],
+        "basis": "authored domain-reasoning overlay (hand-written rules over co-occurring subsystem states; not learned, not model-discovered)"
       },
       "profile": "watch_disk"
     },
@@ -1040,8 +1074,25 @@
       "recommendation": {
         "tier": "Healthy",
         "priority": "P4 - routine",
-        "action": "No action required. Continue monitoring.",
-        "dominant": "Storage (disk)"
+        "dominant": "Storage (disk)",
+        "action": "No action required. Continue routine monitoring.",
+        "headline": "No action required \u2014 continue monitoring",
+        "priorityCode": "P4",
+        "priorityReason": "routine \u2014 continue monitoring",
+        "maintenanceWindow": "Routine \u2014 next scheduled cycle",
+        "topSignal": null,
+        "rootCause": "storage",
+        "targetsRootCause": false,
+        "basis": "rule-based; driven by dominant subsystem + top SHAP signal"
+      },
+      "cascade": {
+        "detected": false,
+        "chain": null,
+        "summary": "No cascade detected \u2014 no elevated upstream driver (thermal/mechanical/power).",
+        "rootCause": null,
+        "rootCauseLabel": null,
+        "links": [],
+        "basis": "authored domain-reasoning overlay (hand-written rules over co-occurring subsystem states; not learned, not model-discovered)"
       },
       "profile": "healthy"
     },
@@ -1266,8 +1317,25 @@
       "recommendation": {
         "tier": "Critical",
         "priority": "P1 - act now, high failure probability",
-        "action": "Back up data now and schedule drive replacement. Reallocated and pending-sector growth indicates the disk is approaching end of life.",
-        "dominant": "Storage (disk)"
+        "dominant": "Storage (disk)",
+        "action": "Back up data now and replace the drive \u2014 reallocated / pending sector growth is the dominant failure signal.",
+        "headline": "Back up data now and replace the drive",
+        "priorityCode": "P1",
+        "priorityReason": "act now \u2014 high, near-term failure probability",
+        "maintenanceWindow": "Immediate (within 24\u201348h)",
+        "topSignal": "Pending sectors (7-day avg)",
+        "rootCause": "storage",
+        "targetsRootCause": false,
+        "basis": "rule-based; driven by dominant subsystem + top SHAP signal"
+      },
+      "cascade": {
+        "detected": false,
+        "chain": null,
+        "summary": "No cascade detected \u2014 no elevated upstream driver (thermal/mechanical/power).",
+        "rootCause": null,
+        "rootCauseLabel": null,
+        "links": [],
+        "basis": "authored domain-reasoning overlay (hand-written rules over co-occurring subsystem states; not learned, not model-discovered)"
       },
       "profile": "crit_disk"
     },
@@ -1481,8 +1549,25 @@
       "recommendation": {
         "tier": "Healthy",
         "priority": "P4 - routine",
-        "action": "No action required. Continue monitoring.",
-        "dominant": "Storage (disk)"
+        "dominant": "Storage (disk)",
+        "action": "No action required. Continue routine monitoring.",
+        "headline": "No action required \u2014 continue monitoring",
+        "priorityCode": "P4",
+        "priorityReason": "routine \u2014 continue monitoring",
+        "maintenanceWindow": "Routine \u2014 next scheduled cycle",
+        "topSignal": null,
+        "rootCause": "storage",
+        "targetsRootCause": false,
+        "basis": "rule-based; driven by dominant subsystem + top SHAP signal"
+      },
+      "cascade": {
+        "detected": false,
+        "chain": null,
+        "summary": "No cascade detected \u2014 no elevated upstream driver (thermal/mechanical/power).",
+        "rootCause": null,
+        "rootCauseLabel": null,
+        "links": [],
+        "basis": "authored domain-reasoning overlay (hand-written rules over co-occurring subsystem states; not learned, not model-discovered)"
       },
       "profile": "healthy"
     },
@@ -1696,8 +1781,25 @@
       "recommendation": {
         "tier": "Healthy",
         "priority": "P4 - routine",
-        "action": "No action required. Continue monitoring.",
-        "dominant": "Storage (disk)"
+        "dominant": "Storage (disk)",
+        "action": "No action required. Continue routine monitoring.",
+        "headline": "No action required \u2014 continue monitoring",
+        "priorityCode": "P4",
+        "priorityReason": "routine \u2014 continue monitoring",
+        "maintenanceWindow": "Routine \u2014 next scheduled cycle",
+        "topSignal": null,
+        "rootCause": "storage",
+        "targetsRootCause": false,
+        "basis": "rule-based; driven by dominant subsystem + top SHAP signal"
+      },
+      "cascade": {
+        "detected": false,
+        "chain": null,
+        "summary": "No cascade detected \u2014 no elevated upstream driver (thermal/mechanical/power).",
+        "rootCause": null,
+        "rootCauseLabel": null,
+        "links": [],
+        "basis": "authored domain-reasoning overlay (hand-written rules over co-occurring subsystem states; not learned, not model-discovered)"
       },
       "profile": "healthy"
     },
@@ -1911,8 +2013,25 @@
       "recommendation": {
         "tier": "Healthy",
         "priority": "P4 - routine",
-        "action": "No action required. Continue monitoring.",
-        "dominant": "Storage (disk)"
+        "dominant": "Storage (disk)",
+        "action": "No action required. Continue routine monitoring.",
+        "headline": "No action required \u2014 continue monitoring",
+        "priorityCode": "P4",
+        "priorityReason": "routine \u2014 continue monitoring",
+        "maintenanceWindow": "Routine \u2014 next scheduled cycle",
+        "topSignal": null,
+        "rootCause": "storage",
+        "targetsRootCause": false,
+        "basis": "rule-based; driven by dominant subsystem + top SHAP signal"
+      },
+      "cascade": {
+        "detected": false,
+        "chain": null,
+        "summary": "No cascade detected \u2014 no elevated upstream driver (thermal/mechanical/power).",
+        "rootCause": null,
+        "rootCauseLabel": null,
+        "links": [],
+        "basis": "authored domain-reasoning overlay (hand-written rules over co-occurring subsystem states; not learned, not model-discovered)"
       },
       "profile": "healthy"
     },
@@ -2126,8 +2245,25 @@
       "recommendation": {
         "tier": "Healthy",
         "priority": "P4 - routine",
-        "action": "No action required. Continue monitoring.",
-        "dominant": "Storage (disk)"
+        "dominant": "Storage (disk)",
+        "action": "No action required. Continue routine monitoring.",
+        "headline": "No action required \u2014 continue monitoring",
+        "priorityCode": "P4",
+        "priorityReason": "routine \u2014 continue monitoring",
+        "maintenanceWindow": "Routine \u2014 next scheduled cycle",
+        "topSignal": null,
+        "rootCause": "storage",
+        "targetsRootCause": false,
+        "basis": "rule-based; driven by dominant subsystem + top SHAP signal"
+      },
+      "cascade": {
+        "detected": false,
+        "chain": null,
+        "summary": "No cascade detected \u2014 no elevated upstream driver (thermal/mechanical/power).",
+        "rootCause": null,
+        "rootCauseLabel": null,
+        "links": [],
+        "basis": "authored domain-reasoning overlay (hand-written rules over co-occurring subsystem states; not learned, not model-discovered)"
       },
       "profile": "healthy"
     },
@@ -2341,8 +2477,25 @@
       "recommendation": {
         "tier": "Healthy",
         "priority": "P4 - routine",
-        "action": "No action required. Continue monitoring.",
-        "dominant": "Storage (disk)"
+        "dominant": "Storage (disk)",
+        "action": "No action required. Continue routine monitoring.",
+        "headline": "No action required \u2014 continue monitoring",
+        "priorityCode": "P4",
+        "priorityReason": "routine \u2014 continue monitoring",
+        "maintenanceWindow": "Routine \u2014 next scheduled cycle",
+        "topSignal": null,
+        "rootCause": "storage",
+        "targetsRootCause": false,
+        "basis": "rule-based; driven by dominant subsystem + top SHAP signal"
+      },
+      "cascade": {
+        "detected": false,
+        "chain": null,
+        "summary": "No cascade detected \u2014 no elevated upstream driver (thermal/mechanical/power).",
+        "rootCause": null,
+        "rootCauseLabel": null,
+        "links": [],
+        "basis": "authored domain-reasoning overlay (hand-written rules over co-occurring subsystem states; not learned, not model-discovered)"
       },
       "profile": "healthy"
     },
@@ -2572,8 +2725,25 @@
       "recommendation": {
         "tier": "Critical",
         "priority": "P1 - act now, high failure probability",
-        "action": "Inspect cooling and power delivery. Telemetry shows the thermal margin or power envelope drifting toward the failure boundary.",
-        "dominant": "Thermal / power / mechanical"
+        "dominant": "Thermal / power / mechanical",
+        "action": "Inspect the mechanical assembly and reduce load \u2014 mechanical overstrain (wear\u00d7load) is the dominant failure signal.",
+        "headline": "Inspect the mechanical assembly and reduce load",
+        "priorityCode": "P1",
+        "priorityReason": "act now \u2014 high, near-term failure probability",
+        "maintenanceWindow": "Immediate (within 24\u201348h)",
+        "topSignal": "Wear x load (overstrain index)",
+        "rootCause": "components",
+        "targetsRootCause": false,
+        "basis": "rule-based; driven by dominant subsystem + top SHAP signal"
+      },
+      "cascade": {
+        "detected": false,
+        "chain": null,
+        "summary": "No cascade detected \u2014 components elevated but no co-occurring downstream subsystem.",
+        "rootCause": null,
+        "rootCauseLabel": null,
+        "links": [],
+        "basis": "authored domain-reasoning overlay (hand-written rules over co-occurring subsystem states; not learned, not model-discovered)"
       },
       "profile": "crit_thermal"
     },
@@ -2798,8 +2968,25 @@
       "recommendation": {
         "tier": "At Risk",
         "priority": "P2 - schedule within maintenance window",
-        "action": "Plan an engine/component service inside the predicted window. Degradation trend puts remaining useful life below the safe maintenance horizon.",
-        "dominant": "Engine wear (remaining useful life)"
+        "dominant": "Engine wear (remaining useful life)",
+        "action": "Schedule component replacement within the predicted window \u2014 remaining useful life is below the maintenance horizon.",
+        "headline": "Schedule component replacement within the predicted window",
+        "priorityCode": "P2",
+        "priorityReason": "schedule this week \u2014 short lead time",
+        "maintenanceWindow": "Within ~9 days (ahead of predicted failure at ~12d)",
+        "topSignal": "Physical core speed",
+        "rootCause": "rul",
+        "targetsRootCause": false,
+        "basis": "rule-based; driven by dominant subsystem + top SHAP signal"
+      },
+      "cascade": {
+        "detected": false,
+        "chain": null,
+        "summary": "No cascade detected \u2014 no elevated upstream driver (thermal/mechanical/power).",
+        "rootCause": null,
+        "rootCauseLabel": null,
+        "links": [],
+        "basis": "authored domain-reasoning overlay (hand-written rules over co-occurring subsystem states; not learned, not model-discovered)"
       },
       "profile": "watch_engine"
     },
@@ -3013,8 +3200,25 @@
       "recommendation": {
         "tier": "Healthy",
         "priority": "P4 - routine",
-        "action": "No action required. Continue monitoring.",
-        "dominant": "Storage (disk)"
+        "dominant": "Storage (disk)",
+        "action": "No action required. Continue routine monitoring.",
+        "headline": "No action required \u2014 continue monitoring",
+        "priorityCode": "P4",
+        "priorityReason": "routine \u2014 continue monitoring",
+        "maintenanceWindow": "Routine \u2014 next scheduled cycle",
+        "topSignal": null,
+        "rootCause": "storage",
+        "targetsRootCause": false,
+        "basis": "rule-based; driven by dominant subsystem + top SHAP signal"
+      },
+      "cascade": {
+        "detected": false,
+        "chain": null,
+        "summary": "No cascade detected \u2014 no elevated upstream driver (thermal/mechanical/power).",
+        "rootCause": null,
+        "rootCauseLabel": null,
+        "links": [],
+        "basis": "authored domain-reasoning overlay (hand-written rules over co-occurring subsystem states; not learned, not model-discovered)"
       },
       "profile": "healthy"
     },
@@ -3228,8 +3432,25 @@
       "recommendation": {
         "tier": "Healthy",
         "priority": "P4 - routine",
-        "action": "No action required. Continue monitoring.",
-        "dominant": "Storage (disk)"
+        "dominant": "Storage (disk)",
+        "action": "No action required. Continue routine monitoring.",
+        "headline": "No action required \u2014 continue monitoring",
+        "priorityCode": "P4",
+        "priorityReason": "routine \u2014 continue monitoring",
+        "maintenanceWindow": "Routine \u2014 next scheduled cycle",
+        "topSignal": null,
+        "rootCause": "storage",
+        "targetsRootCause": false,
+        "basis": "rule-based; driven by dominant subsystem + top SHAP signal"
+      },
+      "cascade": {
+        "detected": false,
+        "chain": null,
+        "summary": "No cascade detected \u2014 no elevated upstream driver (thermal/mechanical/power).",
+        "rootCause": null,
+        "rootCauseLabel": null,
+        "links": [],
+        "basis": "authored domain-reasoning overlay (hand-written rules over co-occurring subsystem states; not learned, not model-discovered)"
       },
       "profile": "healthy"
     },
@@ -3459,8 +3680,32 @@
       "recommendation": {
         "tier": "Critical",
         "priority": "P1 - act now, high failure probability",
-        "action": "Inspect cooling and power delivery. Telemetry shows the thermal margin or power envelope drifting toward the failure boundary.",
-        "dominant": "Thermal / power / mechanical"
+        "dominant": "Thermal / power / mechanical",
+        "action": "Inspect the mechanical assembly and reduce load \u2014 mechanical overstrain (wear\u00d7load) is the dominant failure signal. Resolving this root cause also relieves the co-occurring downstream stress.",
+        "headline": "Inspect the mechanical assembly and reduce load",
+        "priorityCode": "P1",
+        "priorityReason": "act now \u2014 high, near-term failure probability",
+        "maintenanceWindow": "Immediate (within 24\u201348h)",
+        "topSignal": "Wear x load (overstrain index)",
+        "rootCause": "components",
+        "targetsRootCause": false,
+        "basis": "rule-based; driven by dominant subsystem + top SHAP signal"
+      },
+      "cascade": {
+        "detected": true,
+        "chain": "Mechanical wear \u2192 vibration \u2192 drive stress",
+        "summary": "Mechanical overstrain (components risk 0.99) is co-occurring with rising storage risk (0.83). Worn rotating assemblies raise vibration, which is a recognized driver of read/write errors and head stress on nearby drives. (Also co-occurring: engine remaining-useful-life is also low.)",
+        "rootCause": "components",
+        "rootCauseLabel": "Thermal / power / mechanical",
+        "rootCauseNature": "mechanical",
+        "links": [
+          {
+            "from": "components",
+            "to": "storage",
+            "mechanism": "vibration coupling"
+          }
+        ],
+        "basis": "authored domain-reasoning overlay (hand-written rules over co-occurring subsystem states; not learned, not model-discovered)"
       },
       "profile": "crit_multi"
     },
@@ -3674,8 +3919,25 @@
       "recommendation": {
         "tier": "Healthy",
         "priority": "P4 - routine",
-        "action": "No action required. Continue monitoring.",
-        "dominant": "Storage (disk)"
+        "dominant": "Storage (disk)",
+        "action": "No action required. Continue routine monitoring.",
+        "headline": "No action required \u2014 continue monitoring",
+        "priorityCode": "P4",
+        "priorityReason": "routine \u2014 continue monitoring",
+        "maintenanceWindow": "Routine \u2014 next scheduled cycle",
+        "topSignal": null,
+        "rootCause": "storage",
+        "targetsRootCause": false,
+        "basis": "rule-based; driven by dominant subsystem + top SHAP signal"
+      },
+      "cascade": {
+        "detected": false,
+        "chain": null,
+        "summary": "No cascade detected \u2014 no elevated upstream driver (thermal/mechanical/power).",
+        "rootCause": null,
+        "rootCauseLabel": null,
+        "links": [],
+        "basis": "authored domain-reasoning overlay (hand-written rules over co-occurring subsystem states; not learned, not model-discovered)"
       },
       "profile": "healthy"
     },
@@ -3889,8 +4151,25 @@
       "recommendation": {
         "tier": "Healthy",
         "priority": "P4 - routine",
-        "action": "No action required. Continue monitoring.",
-        "dominant": "Storage (disk)"
+        "dominant": "Storage (disk)",
+        "action": "No action required. Continue routine monitoring.",
+        "headline": "No action required \u2014 continue monitoring",
+        "priorityCode": "P4",
+        "priorityReason": "routine \u2014 continue monitoring",
+        "maintenanceWindow": "Routine \u2014 next scheduled cycle",
+        "topSignal": null,
+        "rootCause": "storage",
+        "targetsRootCause": false,
+        "basis": "rule-based; driven by dominant subsystem + top SHAP signal"
+      },
+      "cascade": {
+        "detected": false,
+        "chain": null,
+        "summary": "No cascade detected \u2014 no elevated upstream driver (thermal/mechanical/power).",
+        "rootCause": null,
+        "rootCauseLabel": null,
+        "links": [],
+        "basis": "authored domain-reasoning overlay (hand-written rules over co-occurring subsystem states; not learned, not model-discovered)"
       },
       "profile": "healthy"
     },
@@ -4115,8 +4394,25 @@
       "recommendation": {
         "tier": "At Risk",
         "priority": "P2 - schedule within maintenance window",
-        "action": "Plan an engine/component service inside the predicted window. Degradation trend puts remaining useful life below the safe maintenance horizon.",
-        "dominant": "Engine wear (remaining useful life)"
+        "dominant": "Engine wear (remaining useful life)",
+        "action": "Schedule component replacement within the predicted window \u2014 remaining useful life is below the maintenance horizon.",
+        "headline": "Schedule component replacement within the predicted window",
+        "priorityCode": "P2",
+        "priorityReason": "schedule this week \u2014 short lead time",
+        "maintenanceWindow": "Within ~9 days (ahead of predicted failure at ~12d)",
+        "topSignal": "Physical core speed",
+        "rootCause": "rul",
+        "targetsRootCause": false,
+        "basis": "rule-based; driven by dominant subsystem + top SHAP signal"
+      },
+      "cascade": {
+        "detected": false,
+        "chain": null,
+        "summary": "No cascade detected \u2014 no elevated upstream driver (thermal/mechanical/power).",
+        "rootCause": null,
+        "rootCauseLabel": null,
+        "links": [],
+        "basis": "authored domain-reasoning overlay (hand-written rules over co-occurring subsystem states; not learned, not model-discovered)"
       },
       "profile": "watch_engine"
     },
@@ -4330,8 +4626,25 @@
       "recommendation": {
         "tier": "Healthy",
         "priority": "P4 - routine",
-        "action": "No action required. Continue monitoring.",
-        "dominant": "Storage (disk)"
+        "dominant": "Storage (disk)",
+        "action": "No action required. Continue routine monitoring.",
+        "headline": "No action required \u2014 continue monitoring",
+        "priorityCode": "P4",
+        "priorityReason": "routine \u2014 continue monitoring",
+        "maintenanceWindow": "Routine \u2014 next scheduled cycle",
+        "topSignal": null,
+        "rootCause": "storage",
+        "targetsRootCause": false,
+        "basis": "rule-based; driven by dominant subsystem + top SHAP signal"
+      },
+      "cascade": {
+        "detected": false,
+        "chain": null,
+        "summary": "No cascade detected \u2014 no elevated upstream driver (thermal/mechanical/power).",
+        "rootCause": null,
+        "rootCauseLabel": null,
+        "links": [],
+        "basis": "authored domain-reasoning overlay (hand-written rules over co-occurring subsystem states; not learned, not model-discovered)"
       },
       "profile": "watch_disk"
     },
@@ -4545,8 +4858,25 @@
       "recommendation": {
         "tier": "Healthy",
         "priority": "P4 - routine",
-        "action": "No action required. Continue monitoring.",
-        "dominant": "Storage (disk)"
+        "dominant": "Storage (disk)",
+        "action": "No action required. Continue routine monitoring.",
+        "headline": "No action required \u2014 continue monitoring",
+        "priorityCode": "P4",
+        "priorityReason": "routine \u2014 continue monitoring",
+        "maintenanceWindow": "Routine \u2014 next scheduled cycle",
+        "topSignal": null,
+        "rootCause": "storage",
+        "targetsRootCause": false,
+        "basis": "rule-based; driven by dominant subsystem + top SHAP signal"
+      },
+      "cascade": {
+        "detected": false,
+        "chain": null,
+        "summary": "No cascade detected \u2014 no elevated upstream driver (thermal/mechanical/power).",
+        "rootCause": null,
+        "rootCauseLabel": null,
+        "links": [],
+        "basis": "authored domain-reasoning overlay (hand-written rules over co-occurring subsystem states; not learned, not model-discovered)"
       },
       "profile": "healthy"
     },
@@ -4771,8 +5101,25 @@
       "recommendation": {
         "tier": "At Risk",
         "priority": "P2 - schedule within maintenance window",
-        "action": "Back up data now and schedule drive replacement. Reallocated and pending-sector growth indicates the disk is approaching end of life.",
-        "dominant": "Storage (disk)"
+        "dominant": "Storage (disk)",
+        "action": "Back up data now and replace the drive \u2014 reallocated / pending sector growth is the dominant failure signal.",
+        "headline": "Back up data now and replace the drive",
+        "priorityCode": "P2",
+        "priorityReason": "schedule this week \u2014 short lead time",
+        "maintenanceWindow": "Within ~3 days (ahead of predicted failure at ~-4d)",
+        "topSignal": "Pending sectors (7-day avg)",
+        "rootCause": "storage",
+        "targetsRootCause": false,
+        "basis": "rule-based; driven by dominant subsystem + top SHAP signal"
+      },
+      "cascade": {
+        "detected": false,
+        "chain": null,
+        "summary": "No cascade detected \u2014 no elevated upstream driver (thermal/mechanical/power).",
+        "rootCause": null,
+        "rootCauseLabel": null,
+        "links": [],
+        "basis": "authored domain-reasoning overlay (hand-written rules over co-occurring subsystem states; not learned, not model-discovered)"
       },
       "profile": "crit_disk"
     },
@@ -5012,8 +5359,25 @@
       "recommendation": {
         "tier": "At Risk",
         "priority": "P2 - schedule within maintenance window",
-        "action": "Back up data now and schedule drive replacement. Reallocated and pending-sector growth indicates the disk is approaching end of life.",
-        "dominant": "Storage (disk)"
+        "dominant": "Storage (disk)",
+        "action": "Back up data now and replace the drive \u2014 reallocated / pending sector growth is the dominant failure signal.",
+        "headline": "Back up data now and replace the drive",
+        "priorityCode": "P3",
+        "priorityReason": "schedule within the maintenance window",
+        "maintenanceWindow": "Within ~34 days (ahead of predicted failure at ~37d)",
+        "topSignal": "Pending sectors (7-day avg)",
+        "rootCause": "storage",
+        "targetsRootCause": false,
+        "basis": "rule-based; driven by dominant subsystem + top SHAP signal"
+      },
+      "cascade": {
+        "detected": false,
+        "chain": null,
+        "summary": "No cascade detected \u2014 no elevated upstream driver (thermal/mechanical/power).",
+        "rootCause": null,
+        "rootCauseLabel": null,
+        "links": [],
+        "basis": "authored domain-reasoning overlay (hand-written rules over co-occurring subsystem states; not learned, not model-discovered)"
       },
       "profile": "watch_disk"
     },
@@ -5227,8 +5591,25 @@
       "recommendation": {
         "tier": "Healthy",
         "priority": "P4 - routine",
-        "action": "No action required. Continue monitoring.",
-        "dominant": "Storage (disk)"
+        "dominant": "Storage (disk)",
+        "action": "No action required. Continue routine monitoring.",
+        "headline": "No action required \u2014 continue monitoring",
+        "priorityCode": "P4",
+        "priorityReason": "routine \u2014 continue monitoring",
+        "maintenanceWindow": "Routine \u2014 next scheduled cycle",
+        "topSignal": null,
+        "rootCause": "storage",
+        "targetsRootCause": false,
+        "basis": "rule-based; driven by dominant subsystem + top SHAP signal"
+      },
+      "cascade": {
+        "detected": false,
+        "chain": null,
+        "summary": "No cascade detected \u2014 no elevated upstream driver (thermal/mechanical/power).",
+        "rootCause": null,
+        "rootCauseLabel": null,
+        "links": [],
+        "basis": "authored domain-reasoning overlay (hand-written rules over co-occurring subsystem states; not learned, not model-discovered)"
       },
       "profile": "healthy"
     },
@@ -5458,8 +5839,25 @@
       "recommendation": {
         "tier": "Critical",
         "priority": "P1 - act now, high failure probability",
-        "action": "Inspect cooling and power delivery. Telemetry shows the thermal margin or power envelope drifting toward the failure boundary.",
-        "dominant": "Thermal / power / mechanical"
+        "dominant": "Thermal / power / mechanical",
+        "action": "Inspect the mechanical assembly and reduce load \u2014 mechanical overstrain (wear\u00d7load) is the dominant failure signal.",
+        "headline": "Inspect the mechanical assembly and reduce load",
+        "priorityCode": "P1",
+        "priorityReason": "act now \u2014 high, near-term failure probability",
+        "maintenanceWindow": "Immediate (within 24\u201348h)",
+        "topSignal": "Wear x load (overstrain index)",
+        "rootCause": "components",
+        "targetsRootCause": false,
+        "basis": "rule-based; driven by dominant subsystem + top SHAP signal"
+      },
+      "cascade": {
+        "detected": false,
+        "chain": null,
+        "summary": "No cascade detected \u2014 components elevated but no co-occurring downstream subsystem.",
+        "rootCause": null,
+        "rootCauseLabel": null,
+        "links": [],
+        "basis": "authored domain-reasoning overlay (hand-written rules over co-occurring subsystem states; not learned, not model-discovered)"
       },
       "profile": "crit_thermal"
     },
@@ -5684,8 +6082,25 @@
       "recommendation": {
         "tier": "At Risk",
         "priority": "P2 - schedule within maintenance window",
-        "action": "Back up data now and schedule drive replacement. Reallocated and pending-sector growth indicates the disk is approaching end of life.",
-        "dominant": "Storage (disk)"
+        "dominant": "Storage (disk)",
+        "action": "Back up data now and replace the drive \u2014 reallocated / pending sector growth is the dominant failure signal.",
+        "headline": "Back up data now and replace the drive",
+        "priorityCode": "P2",
+        "priorityReason": "schedule this week \u2014 short lead time",
+        "maintenanceWindow": "Within ~3 days (ahead of predicted failure at ~-5d)",
+        "topSignal": "Pending sectors (7-day avg)",
+        "rootCause": "storage",
+        "targetsRootCause": false,
+        "basis": "rule-based; driven by dominant subsystem + top SHAP signal"
+      },
+      "cascade": {
+        "detected": false,
+        "chain": null,
+        "summary": "No cascade detected \u2014 no elevated upstream driver (thermal/mechanical/power).",
+        "rootCause": null,
+        "rootCauseLabel": null,
+        "links": [],
+        "basis": "authored domain-reasoning overlay (hand-written rules over co-occurring subsystem states; not learned, not model-discovered)"
       },
       "profile": "watch_disk"
     },
@@ -5899,8 +6314,25 @@
       "recommendation": {
         "tier": "Healthy",
         "priority": "P4 - routine",
-        "action": "No action required. Continue monitoring.",
-        "dominant": "Storage (disk)"
+        "dominant": "Storage (disk)",
+        "action": "No action required. Continue routine monitoring.",
+        "headline": "No action required \u2014 continue monitoring",
+        "priorityCode": "P4",
+        "priorityReason": "routine \u2014 continue monitoring",
+        "maintenanceWindow": "Routine \u2014 next scheduled cycle",
+        "topSignal": null,
+        "rootCause": "storage",
+        "targetsRootCause": false,
+        "basis": "rule-based; driven by dominant subsystem + top SHAP signal"
+      },
+      "cascade": {
+        "detected": false,
+        "chain": null,
+        "summary": "No cascade detected \u2014 no elevated upstream driver (thermal/mechanical/power).",
+        "rootCause": null,
+        "rootCauseLabel": null,
+        "links": [],
+        "basis": "authored domain-reasoning overlay (hand-written rules over co-occurring subsystem states; not learned, not model-discovered)"
       },
       "profile": "healthy"
     },
@@ -5924,7 +6356,7 @@
           "signal": "Power-cycle count",
           "raw_feature": "smart_12_raw",
           "value": 14.0,
-          "impact": -0.4754,
+          "impact": -0.4755,
           "direction": "lowers risk"
         },
         {
@@ -6114,8 +6546,25 @@
       "recommendation": {
         "tier": "Healthy",
         "priority": "P4 - routine",
-        "action": "No action required. Continue monitoring.",
-        "dominant": "Storage (disk)"
+        "dominant": "Storage (disk)",
+        "action": "No action required. Continue routine monitoring.",
+        "headline": "No action required \u2014 continue monitoring",
+        "priorityCode": "P4",
+        "priorityReason": "routine \u2014 continue monitoring",
+        "maintenanceWindow": "Routine \u2014 next scheduled cycle",
+        "topSignal": null,
+        "rootCause": "storage",
+        "targetsRootCause": false,
+        "basis": "rule-based; driven by dominant subsystem + top SHAP signal"
+      },
+      "cascade": {
+        "detected": false,
+        "chain": null,
+        "summary": "No cascade detected \u2014 no elevated upstream driver (thermal/mechanical/power).",
+        "rootCause": null,
+        "rootCauseLabel": null,
+        "links": [],
+        "basis": "authored domain-reasoning overlay (hand-written rules over co-occurring subsystem states; not learned, not model-discovered)"
       },
       "profile": "healthy"
     },
@@ -6329,8 +6778,25 @@
       "recommendation": {
         "tier": "Healthy",
         "priority": "P4 - routine",
-        "action": "No action required. Continue monitoring.",
-        "dominant": "Storage (disk)"
+        "dominant": "Storage (disk)",
+        "action": "No action required. Continue routine monitoring.",
+        "headline": "No action required \u2014 continue monitoring",
+        "priorityCode": "P4",
+        "priorityReason": "routine \u2014 continue monitoring",
+        "maintenanceWindow": "Routine \u2014 next scheduled cycle",
+        "topSignal": null,
+        "rootCause": "storage",
+        "targetsRootCause": false,
+        "basis": "rule-based; driven by dominant subsystem + top SHAP signal"
+      },
+      "cascade": {
+        "detected": false,
+        "chain": null,
+        "summary": "No cascade detected \u2014 no elevated upstream driver (thermal/mechanical/power).",
+        "rootCause": null,
+        "rootCauseLabel": null,
+        "links": [],
+        "basis": "authored domain-reasoning overlay (hand-written rules over co-occurring subsystem states; not learned, not model-discovered)"
       },
       "profile": "healthy"
     },
@@ -6544,8 +7010,25 @@
       "recommendation": {
         "tier": "Healthy",
         "priority": "P4 - routine",
-        "action": "No action required. Continue monitoring.",
-        "dominant": "Storage (disk)"
+        "dominant": "Storage (disk)",
+        "action": "No action required. Continue routine monitoring.",
+        "headline": "No action required \u2014 continue monitoring",
+        "priorityCode": "P4",
+        "priorityReason": "routine \u2014 continue monitoring",
+        "maintenanceWindow": "Routine \u2014 next scheduled cycle",
+        "topSignal": null,
+        "rootCause": "storage",
+        "targetsRootCause": false,
+        "basis": "rule-based; driven by dominant subsystem + top SHAP signal"
+      },
+      "cascade": {
+        "detected": false,
+        "chain": null,
+        "summary": "No cascade detected \u2014 no elevated upstream driver (thermal/mechanical/power).",
+        "rootCause": null,
+        "rootCauseLabel": null,
+        "links": [],
+        "basis": "authored domain-reasoning overlay (hand-written rules over co-occurring subsystem states; not learned, not model-discovered)"
       },
       "profile": "healthy"
     }
