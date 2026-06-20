@@ -37,3 +37,16 @@ models/*.joblib
 # fed through src/data_loaders.py; never committed. data/ (generated CSVs) is
 # likewise untracked.
 realdata/
+# Generated training CSVs (incl. ~1.5 GB data/storage.csv). The comment above
+# already documents these as untracked; this is the actual rule.
+data/
+
+# Node deps anywhere (dashboard/ runner, landing/ — landing also has its own).
+node_modules/
+
+# Local app runner / preview scaffolding — NOT a deliverable, regenerable. The
+# dashboard/ Vite project only hosts the frontend account's frontend/App.jsx with
+# the committed frontend_data.json snapshot injected; .claude/launch.json is the
+# local preview-server config. The real dashboard source lives in frontend/App.jsx.
+dashboard/
+.claude/launch.json
