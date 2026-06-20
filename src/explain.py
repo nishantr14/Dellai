@@ -45,6 +45,31 @@ SIGNAL_NAMES = {
     "temp_diff_k": "Thermal margin (process - ambient)",
     "power_w": "Power draw",
     "wear_torque": "Wear x load (overstrain index)",
+    # NASA C-MAPSS turbofan sensors (canonical FD001 definitions, Saxena 2008)
+    "sensor_1": "Fan inlet temperature",
+    "sensor_2": "LPC outlet temperature",
+    "sensor_3": "HPC outlet temperature",
+    "sensor_4": "LPT outlet temperature",
+    "sensor_5": "Fan inlet pressure",
+    "sensor_6": "Bypass-duct pressure",
+    "sensor_7": "HPC outlet pressure",
+    "sensor_8": "Physical fan speed",
+    "sensor_9": "Physical core speed",
+    "sensor_10": "Engine pressure ratio",
+    "sensor_11": "HPC outlet static pressure",
+    "sensor_12": "Fuel flow to HPC-pressure ratio",
+    "sensor_13": "Corrected fan speed",
+    "sensor_14": "Corrected core speed",
+    "sensor_15": "Bypass ratio",
+    "sensor_16": "Burner fuel-air ratio",
+    "sensor_17": "Bleed enthalpy",
+    "sensor_18": "Demanded fan speed",
+    "sensor_19": "Demanded corrected fan speed",
+    "sensor_20": "HPT coolant bleed flow",
+    "sensor_21": "LPT coolant bleed flow",
+    "op_setting_1": "Operating condition (altitude)",
+    "op_setting_2": "Operating condition (Mach number)",
+    "op_setting_3": "Operating condition (throttle angle)",
 }
 
 
@@ -62,6 +87,10 @@ def explain(name: str, feature_row: dict, top_k: int = 3) -> list[dict]:
     X = pd.DataFrame([{f: feature_row.get(f, 0.0) for f in feats}])
     sv = explainer.shap_values(X)
     vals = sv[0] if isinstance(sv, list) else np.asarray(sv)[0]
+    # The storage/components models predict FAILURE risk, so SHAP>0 => raises risk.
+    # The RUL model is a regressor predicting REMAINING life, so the sign is
+    # inverted: SHAP>0 pushes remaining life UP => lowers risk.
+    risk_sign = -1.0 if name == "rul" else 1.0
     order = np.argsort(np.abs(vals))[::-1][:top_k]
     out = []
     for i in order:
@@ -71,7 +100,7 @@ def explain(name: str, feature_row: dict, top_k: int = 3) -> list[dict]:
             "raw_feature": f,
             "value": round(float(X.iloc[0, i]), 2),
             "impact": round(float(vals[i]), 4),
-            "direction": "raises risk" if vals[i] > 0 else "lowers risk",
+            "direction": "raises risk" if vals[i] * risk_sign > 0 else "lowers risk",
         })
     return out
 

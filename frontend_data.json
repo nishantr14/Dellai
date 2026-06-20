@@ -2580,16 +2580,32 @@
     "srv-011": {
       "why": [
         {
-          "signal": "Remaining useful life",
-          "value": 12.0,
-          "direction": "raises risk",
-          "note": "Below the 30-day maintenance horizon"
+          "signal": "Physical core speed",
+          "raw_feature": "sensor_9",
+          "value": 9131.81,
+          "impact": -18.9144,
+          "direction": "raises risk"
         },
         {
-          "signal": "Sensor degradation trend",
-          "value": null,
-          "direction": "raises risk",
-          "note": "Monotonic drift across the engine sensor suite"
+          "signal": "HPC outlet static pressure",
+          "raw_feature": "sensor_11",
+          "value": 48.0,
+          "impact": -16.1245,
+          "direction": "raises risk"
+        },
+        {
+          "signal": "Corrected core speed",
+          "raw_feature": "sensor_14",
+          "value": 8204.7,
+          "impact": -8.3463,
+          "direction": "raises risk"
+        },
+        {
+          "signal": "LPT outlet temperature",
+          "raw_feature": "sensor_4",
+          "value": 1418.52,
+          "impact": -5.8612,
+          "direction": "raises risk"
         }
       ],
       "history": [
@@ -3881,16 +3897,32 @@
     "srv-017": {
       "why": [
         {
-          "signal": "Remaining useful life",
-          "value": 12.0,
-          "direction": "raises risk",
-          "note": "Below the 30-day maintenance horizon"
+          "signal": "Physical core speed",
+          "raw_feature": "sensor_9",
+          "value": 9159.03,
+          "impact": -21.2688,
+          "direction": "raises risk"
         },
         {
-          "signal": "Sensor degradation trend",
-          "value": null,
-          "direction": "raises risk",
-          "note": "Monotonic drift across the engine sensor suite"
+          "signal": "HPC outlet static pressure",
+          "raw_feature": "sensor_11",
+          "value": 47.89,
+          "impact": -15.1914,
+          "direction": "raises risk"
+        },
+        {
+          "signal": "LPT outlet temperature",
+          "raw_feature": "sensor_4",
+          "value": 1427.41,
+          "impact": -9.1866,
+          "direction": "raises risk"
+        },
+        {
+          "signal": "Corrected core speed",
+          "raw_feature": "sensor_14",
+          "value": 8222.0,
+          "impact": -8.3332,
+          "direction": "raises risk"
         }
       ],
       "history": [

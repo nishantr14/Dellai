@@ -46,6 +46,14 @@ def _component_risk(reading: dict) -> float:
     return predict_proba("components", fe.component_features_single(reading))
 
 
+def _cycle_at_rul(rul: pd.DataFrame, unit: int, target_rul: float) -> int:
+    """Cycle of a real engine `unit` whose remaining-useful-life is closest to
+    `target_rul` -- a genuine engine snapshot near that wear level."""
+    u = rul[rul.unit == unit]
+    idx = (u["RUL"] - target_rul).abs().idxmin()
+    return int(u.loc[idx, "cycle"])
+
+
 def _rul_days(rul: pd.DataFrame, unit: int, cycle: int) -> float:
     import joblib
     if "rul_bundle" not in _cache:
@@ -117,14 +125,24 @@ def build_fleet(n: int = 28, seed: int = 11) -> list[fusion.Device]:
         c_risk = _component_risk(comp_reading)
 
         # ---- engine RUL subsystem ----
+        # Bind a REAL engine unit+cycle so the RUL "why" can be genuine SHAP on
+        # real C-MAPSS telemetry. For override profiles we snap a real engine to
+        # the target RUL (fused health unchanged: rul_d stays the override). The
+        # override branch draws NO rng (deterministic unit) so the rest of the
+        # fleet's random assignments stay byte-identical to before.
         if rul_override is not None:
             rul_d = rul_override
+            eng_unit = int(units[i % len(units)])
+            eng_cycle = _cycle_at_rul(rul, eng_unit, rul_override)
         else:
-            rul_d = _rul_days(rul, int(rng.choice(units)), int(rng.integers(5, 55)))
+            eng_unit = int(rng.choice(units))
+            eng_cycle = int(rng.integers(5, 55))
+            rul_d = _rul_days(rul, eng_unit, eng_cycle)
 
         dev = fusion.Device(did, rack, round(s_risk, 4), round(c_risk, 4), round(rul_d, 1))
         dev.detail = {"profile": prof, "drive_serial": serial, "current_day": cur_day,
-                      "component_reading": comp_reading}
+                      "component_reading": comp_reading,
+                      "rul_unit": eng_unit, "rul_cycle": eng_cycle}
         devices.append(dev.score())
 
     return devices
