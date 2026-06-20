@@ -11,6 +11,7 @@ import joblib
 import numpy as np
 import pandas as pd
 
+from src import cascade as csc
 from src import data_gen as dg
 from src import features as fe
 from src import fleet as fl
@@ -52,13 +53,21 @@ def build():
             why = explain("storage", fl._drive_row_at(storage, serial, cur_day), top_k=4)
         elif dom == "components":
             why = explain("components", fe.component_features_single(d.detail["component_reading"]), top_k=4)
-        else:  # rul regressor: reason from the degradation horizon
-            why = [{"signal": "Remaining useful life", "value": d.rul_days,
-                    "direction": "raises risk",
-                    "note": "Below the 30-day maintenance horizon"},
-                   {"signal": "Sensor degradation trend", "value": None,
-                    "direction": "raises risk",
-                    "note": "Monotonic drift across the engine sensor suite"}]
+        else:  # rul regressor: real SHAP on the bound engine's sensor snapshot
+            u, cyc = d.detail["rul_unit"], d.detail["rul_cycle"]
+            uf, _ = fe.rul_features(rul[rul.unit == u])
+            erow = uf[uf.cycle == cyc]
+            erow = (erow if not erow.empty else uf.tail(1)).iloc[0].to_dict()
+            why = explain("rul", erow, top_k=4)
+            # honesty guard: if any top signal lacks a clean human-readable name,
+            # fall back to authored text rather than showing raw "sensor_N"
+            if any(w["signal"] == w["raw_feature"] for w in why):
+                why = [{"signal": "Remaining useful life", "value": d.rul_days,
+                        "direction": "raises risk",
+                        "note": "Below the 30-day maintenance horizon"},
+                       {"signal": "Sensor degradation trend", "value": None,
+                        "direction": "raises risk",
+                        "note": "Monotonic drift across the engine sensor suite"}]
 
         # ---- degradation history (last 40 days) ----
         hist = []
@@ -101,6 +110,26 @@ def build():
             alerts.append({"t": 0, "level": "Prediction",
                            "text": f"Predicted failure in ~{pf} days ({d.rec['dominant_label']})"})
 
+        # ---- authored cross-subsystem cascade (domain-reasoning overlay) ----
+        # Risks fed to the cascade are the SAME subsystem risks fusion already
+        # used (storage/component probabilities + RUL-window risk); the cascade
+        # only interprets them, it never recomputes health or tiers.
+        risks = {"storage": d.storage_risk, "components": d.component_risk,
+                 "rul": fusion.rul_to_risk(d.rul_days)}
+        signals = {dom: why}
+        # The cascade needs the components subsystem's physical driver (thermal /
+        # mechanical / power). Compute its SHAP signals when it is elevated but
+        # not already the dominant subsystem we explained above.
+        if d.component_risk >= csc.ELEVATED and dom != "components":
+            signals["components"] = explain(
+                "components", fe.component_features_single(d.detail["component_reading"]), top_k=4)
+        cascade = csc.infer_cascade(risks, signals)
+
+        # ---- recommendation driven by dominant subsystem + top SHAP signal ----
+        rec2 = csc.build_recommendation(
+            d.rec["tier"], dom, why, pf, d.rul_days, cascade,
+            root_signals=signals.get("components"))
+
         details[d.device_id] = {
             "why": why, "history": hist, "alerts": alerts[-5:],
             "predictedFailureDays": pf,
@@ -111,8 +140,16 @@ def build():
             },
             "recommendation": {
                 "tier": d.rec["tier"], "priority": d.rec["priority"],
-                "action": d.rec["action"], "dominant": d.rec["dominant_label"],
+                "dominant": d.rec["dominant_label"],
+                # action upgraded to be signal-specific + cascade-aware (was the
+                # generic subsystem text); existing keys above kept for the frontend.
+                "action": rec2["action"], "headline": rec2["headline"],
+                "priorityCode": rec2["priorityCode"], "priorityReason": rec2["priorityReason"],
+                "maintenanceWindow": rec2["maintenanceWindow"], "topSignal": rec2["topSignal"],
+                "rootCause": rec2["rootCause"], "targetsRootCause": rec2["targetsRootCause"],
+                "basis": rec2["basis"],
             },
+            "cascade": cascade,
             "profile": d.detail["profile"],
         }
 

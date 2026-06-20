@@ -84,8 +84,12 @@ def _storage_lead_time(df_drives, clf, feat, threshold):
         if ff is not None and ff <= fday:
             leads.append(int(fday - ff))
     leads = np.array(leads)
-    out = {"n_failing_drives": int(len(fail_day)),
-           "n_flagged_before_failure": int(len(leads))}
+    n_fail = int(len(fail_day))
+    out = {"n_failing_drives": n_fail,
+           "n_flagged_before_failure": int(len(leads)),
+           # drive-LEVEL recall: did we catch each failing drive at least once
+           # before it failed? (the operationally meaningful number, vs drive-day)
+           "drive_recall": round(len(leads) / n_fail, 4) if n_fail else 0.0}
     if len(leads):
         out.update({
             "median_lead_days": float(np.median(leads)),
@@ -193,11 +197,15 @@ def train_components():
 
 def train_rul():
     df = pd.read_csv(os.path.join(dg.DATA_DIR, "rul.csv"))
-    feat = fe.rul_features()
     source = dg.get_source("rul")
+    df, cand = fe.rul_features(df)
     units = df["unit"].unique()
     tr_u, te_u = train_test_split(units, test_size=0.25, random_state=7)
     tr, te = df["unit"].isin(tr_u), df["unit"].isin(te_u)
+    # drop constant / near-constant columns (FD001 has several flat sensors), using
+    # TRAIN statistics only; the surviving list rides in the bundle for serving.
+    stds = df.loc[tr, cand].std()
+    feat = [c for c in cand if stds[c] > 1e-6]
     reg = XGBRegressor(n_estimators=300, max_depth=5, learning_rate=0.08,
                        subsample=0.9, colsample_bytree=0.9, n_jobs=4, random_state=7)
     reg.fit(df[tr][feat], df[tr]["RUL"])
@@ -210,8 +218,11 @@ def train_rul():
     joblib.dump({"model": reg, "features": feat}, os.path.join(MODEL_DIR, "rul.joblib"))
     metrics = {"rmse": round(rmse, 2), "mae": round(mae, 2),
                "nasa_score": round(score, 1), "rul_cap": dg.RUL_CAP,
-               "n_test_units": int(len(te_u)), "source": source}
-    print(f"[rul]       RMSE={metrics['rmse']} cycles  MAE={metrics['mae']} cycles")
+               "n_test_units": int(len(te_u)),
+               "n_features": len(feat), "n_features_dropped": len(cand) - len(feat),
+               "source": source}
+    print(f"[rul]       RMSE={metrics['rmse']} cycles  MAE={metrics['mae']} cycles  "
+          f"(feats {len(feat)}/{len(cand)} kept)")
     return metrics
 
 
